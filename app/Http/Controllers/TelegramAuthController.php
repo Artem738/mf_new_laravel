@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
-//wtf
 
 class TelegramAuthController extends Controller
 {
@@ -17,7 +16,7 @@ class TelegramAuthController extends Controller
         $botToken = env('TELEGRAM_BOT_TOKEN');
 
         if ($this->validateTelegramData($data, $botToken)) {
-            // Валидация успешна
+            // Валидация успешна test
             $user = json_decode($data['user'], true);
 
             // Логика авторизации пользователя
