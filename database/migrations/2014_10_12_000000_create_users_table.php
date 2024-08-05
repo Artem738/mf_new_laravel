@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('telegram_id')->unique();
+            $table->bigInteger('tg_id')->unique();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('username')->nullable();
+            $table->string('tg_username')->nullable();
+            $table->string('tg_firstname')->nullable();
+            $table->string('tg_lastname')->nullable();
             $table->string('language_code')->nullable();
-            $table->boolean('allows_write_to_pm')->default(false);
+            $table->boolean('tg_allows_write_to_pm')->default(false);
             $table->integer('user_lvl')->nullable();
             $table->timestamps();
         });

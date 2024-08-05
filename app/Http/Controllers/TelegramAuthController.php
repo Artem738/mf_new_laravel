@@ -62,17 +62,17 @@ class TelegramAuthController extends Controller
                 return response()->json(['error' => 'Error decoding user data'], 400);
             }
 
-            // Проверка наличия пользователя по telegram_id
+            // Проверка наличия пользователя по tg_id
             $telegramId = $userData['id'];
-            $user = User::where('telegram_id', $telegramId)->first();
+            $user = User::where('tg_id', $telegramId)->first();
 
             if (!$user) {
                 // Если пользователя нет, зарегистрируем его
                 $user = User::create([
-                    'telegram_id' => $telegramId,
-                    'first_name' => $userData['first_name'],
-                    'last_name' => $userData['last_name'] ?? null,
-                    'username' => $userData['username'],
+                    'tg_id' => $telegramId,
+                    'tg_firstname' => $userData['tg_firstname'],
+                    'tg_lastname' => $userData['tg_lastname'] ?? null,
+                    'tg_username' => $userData['tg_username'],
                     'language_code' => $userData['language_code'] ?? null,
                     'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
                 ]);
