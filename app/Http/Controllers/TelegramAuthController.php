@@ -25,13 +25,16 @@ class TelegramAuthController extends Controller
         $rawData = $data['raw'];
         $checkHash = $data['hash'];
 
+        // Удаляем hash из rawData для вычисления хэша
+        $rawDataWithoutHash = preg_replace('/&hash=.*$/', '', $rawData);
+
         // Создаем секретный ключ
         $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
-        $calculatedHash = hash_hmac('sha256', $rawData, $secretKey);
+        $calculatedHash = hash_hmac('sha256', $rawDataWithoutHash, $secretKey);
 
         // Логируем строку для проверки и рассчитанный хэш
         Log::info('Secret Key (hex): ' . bin2hex($secretKey));
-        Log::info('Raw Data: ' . $rawData);
+        Log::info('Raw Data Without Hash: ' . $rawDataWithoutHash);
         Log::info('Calculated Hash: ' . $calculatedHash);
         Log::info('Received Hash: ' . $checkHash);
 
