@@ -10,7 +10,7 @@ class TelegramAuthController extends Controller
     public function authenticate(Request $request)
     {
         $data = $request->all();
-        $botToken = '6739542640:AAH2x7RNESVDrulO7fCCOYBWMlClL-5W5ko'; // Ваш реальный бот-токен
+        $botToken = env('TELEGRAM_BOT_TOKEN'); // Ваш реальный бот-токен
 
         // Логируем данные для отладки
         Log::info('Received Telegram data: ', $data);
