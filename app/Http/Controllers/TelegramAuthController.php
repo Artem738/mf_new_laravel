@@ -10,15 +10,16 @@ class TelegramAuthController extends Controller
     public function authenticate(Request $request)
     {
         $data = $request->all();
-        $botToken = env('TELEGRAM_BOT_TOKEN');
+        $botToken = '6739542640:AAH2x7RNESVDrulO7fCCOYBWMlClL-5W5ko'; // Ваш реальный бот-токен
 
         // Логируем данные для отладки
         Log::info('Received Telegram data: ', $data);
 
-        // Декодируем JSON строку user
-        $data['user'] = str_replace('\"', '"', $data['user']);
+        // Создаем строку для проверки из входных данных
+        $dataCheckString = $this->generateDataCheckString($data);
 
-        if ($this->validateTelegramData($data, $botToken)) {
+        // Валидация хэша
+        if ($this->validateTelegramData($data, $dataCheckString, $botToken)) {
             // Валидация успешна
             return response()->json([
                 'status' => 'success',
@@ -31,31 +32,34 @@ class TelegramAuthController extends Controller
         }
     }
 
-    private function validateTelegramData($data, $botToken)
+    private function generateDataCheckString($data)
     {
-        if (!isset($data['hash']) || !isset($data['auth_date']) || !isset($data['user'])) {
+        $dataCheckString = [];
+
+        foreach ($data as $key => $value) {
+            if ($key !== 'hash') {
+                $dataCheckString[] = $key . '=' . $value;
+            }
+        }
+
+        sort($dataCheckString);
+        return implode("\n", $dataCheckString);
+    }
+
+    private function validateTelegramData($data, $dataCheckString, $botToken)
+    {
+        if (!isset($data['hash'])) {
             return false;
         }
 
         $checkHash = $data['hash'];
-        unset($data['hash']);
-
-        // Формируем строку для проверки
-        $dataCheckString = [];
-        foreach ($data as $key => $value) {
-            $dataCheckString[] = $key . '=' . $value;
-        }
-        sort($dataCheckString);
-        $dataCheckString = implode("\n", $dataCheckString);
-
-        // Логируем строку для проверки
-        Log::info('Data Check String: ' . $dataCheckString);
 
         // Создаем секретный ключ
         $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
         $calculatedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
 
-        // Логируем рассчитанный хэш и хэш из данных
+        // Логируем строку для проверки и рассчитанный хэш
+        Log::info('Data Check String: ' . $dataCheckString);
         Log::info('Calculated Hash: ' . $calculatedHash);
         Log::info('Received Hash: ' . $checkHash);
 
