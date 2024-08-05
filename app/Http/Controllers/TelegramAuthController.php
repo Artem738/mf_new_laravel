@@ -16,32 +16,27 @@ class TelegramAuthController extends Controller
         Log::info('Received Telegram data: ', $data);
 
         // Проверяем наличие необходимых полей
-        if (!isset($data['authDate']) || !isset($data['hash']) || !isset($data['tgId'])) {
+        if (!isset($data['raw']) || !isset($data['hash'])) {
             Log::error('Missing data fields');
             return response()->json(['status' => 'error', 'message' => 'Missing data fields'], 400);
         }
 
-        // Преобразуем данные в нужный формат
-        $user = [
-            'id' => $data['tgId'],
-            'username' => $data['username'],
-            'first_name' => $data['firstname'],
-            'last_name' => $data['lastname'],
-            'language_code' => $data['languageCode']
-        ];
+        // Получаем строку для проверки и хэш из данных
+        $rawData = $data['raw'];
+        $checkHash = $data['hash'];
 
-        // Декодируем JSON строку user
-        $data['user'] = json_encode($user);
-        $data['auth_date'] = $data['authDate'];
+        // Создаем секретный ключ
+        $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
+        $calculatedHash = hash_hmac('sha256', $rawData, $secretKey);
 
-        Log::info('Decoded user data: ', $user);
-
-        // Формируем строку для проверки
-        $dataCheckString = $this->generateDataCheckString($data);
-        Log::info('Data Check String: ' . $dataCheckString);
+        // Логируем строку для проверки и рассчитанный хэш
+        Log::info('Secret Key (hex): ' . bin2hex($secretKey));
+        Log::info('Raw Data: ' . $rawData);
+        Log::info('Calculated Hash: ' . $calculatedHash);
+        Log::info('Received Hash: ' . $checkHash);
 
         // Валидация хэша
-        if ($this->validateTelegramData($data, $dataCheckString, $botToken)) {
+        if (hash_equals($calculatedHash, $checkHash)) {
             // Валидация успешна
             Log::info('Validation successful');
             return response()->json([
@@ -54,41 +49,5 @@ class TelegramAuthController extends Controller
             Log::error('Validation failed');
             return response()->json(['status' => 'error', 'message' => 'Invalid data'], 400);
         }
-    }
-
-    private function generateDataCheckString($data)
-    {
-        $dataCheckString = [];
-
-        foreach ($data as $key => $value) {
-            if ($key !== 'hash') {
-                if (is_array($value)) {
-                    foreach ($value as $subKey => $subValue) {
-                        $dataCheckString[] = $subKey . '=' . $subValue;
-                    }
-                } else {
-                    $dataCheckString[] = $key . '=' . $value;
-                }
-            }
-        }
-
-        sort($dataCheckString);
-        return implode("\n", $dataCheckString);
-    }
-
-    private function validateTelegramData($data, $dataCheckString, $botToken)
-    {
-        $checkHash = $data['hash'];
-
-        // Создаем секретный ключ
-        $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
-        $calculatedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
-
-        // Логируем строку для проверки и рассчитанный хэш
-        Log::info('Secret Key (hex): ' . bin2hex($secretKey));
-        Log::info('Calculated Hash: ' . $calculatedHash);
-        Log::info('Received Hash: ' . $checkHash);
-
-        return hash_equals($calculatedHash, $checkHash);
     }
 }
