@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,6 +20,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'telegram_id',
+        'first_name',
+        'last_name',
+        'username',
+        'language_code',
+        'allows_write_to_pm',
     ];
 
     /**
@@ -41,5 +46,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'allows_write_to_pm' => 'boolean',
     ];
 }
