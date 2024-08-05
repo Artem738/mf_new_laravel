@@ -79,7 +79,8 @@ class TelegramAuthController extends Controller
         $calculatedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
 
         // Логируем строку для проверки и рассчитанный хэш
-        Log::info('Secret Key: ' . bin2hex($secretKey));
+        Log::info('Data Check String: ' . $dataCheckString);
+        Log::info('Secret Key (hex): ' . bin2hex($secretKey));
         Log::info('Calculated Hash: ' . $calculatedHash);
         Log::info('Received Hash: ' . $checkHash);
 
