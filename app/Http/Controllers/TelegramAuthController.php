@@ -54,18 +54,18 @@ class TelegramAuthController extends Controller
     {
         $dataCheckString = [];
 
-        foreach ($data as $key => $value) {
-            if ($key !== 'hash') {
-                if (is_array($value)) {
-                    foreach ($value as $subKey => $subValue) {
-                        $dataCheckString[] = $subKey . '=' . $subValue;
-                    }
-                } else {
-                    $dataCheckString[] = $key . '=' . $value;
-                }
+        // Добавляем auth_date отдельно
+        $dataCheckString[] = 'auth_date=' . $data['auth_date'];
+
+        // Добавляем параметры из user
+        foreach ($data['user'] as $key => $value) {
+            if ($value === null) {
+                $value = '';
             }
+            $dataCheckString[] = $key . '=' . $value;
         }
 
+        // Сортируем строку
         sort($dataCheckString);
         return implode("\n", $dataCheckString);
     }
@@ -79,7 +79,6 @@ class TelegramAuthController extends Controller
         $calculatedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
 
         // Логируем строку для проверки и рассчитанный хэш
-        Log::info('Data Check String: ' . $dataCheckString);
         Log::info('Secret Key (hex): ' . bin2hex($secretKey));
         Log::info('Calculated Hash: ' . $calculatedHash);
         Log::info('Received Hash: ' . $checkHash);
