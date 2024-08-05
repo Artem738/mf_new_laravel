@@ -15,7 +15,19 @@ class TelegramAuthController extends Controller
         // Логируем данные для отладки
         Log::info('Received Telegram data: ', $data);
 
-        // Создаем строку для проверки из входных данных
+        // Проверяем наличие необходимых полей
+        if (!isset($data['auth_date']) || !isset($data['user']) || !isset($data['hash'])) {
+            return response()->json(['status' => 'error', 'message' => 'Missing data fields'], 400);
+        }
+
+        // Декодируем JSON строку user
+        $data['user'] = json_decode($data['user'], true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return response()->json(['status' => 'error', 'message' => 'Invalid user data'], 400);
+        }
+
+        // Формируем строку для проверки
         $dataCheckString = $this->generateDataCheckString($data);
 
         // Валидация хэша
@@ -38,7 +50,13 @@ class TelegramAuthController extends Controller
 
         foreach ($data as $key => $value) {
             if ($key !== 'hash') {
-                $dataCheckString[] = $key . '=' . $value;
+                if (is_array($value)) {
+                    foreach ($value as $subKey => $subValue) {
+                        $dataCheckString[] = $subKey . '=' . $subValue;
+                    }
+                } else {
+                    $dataCheckString[] = $key . '=' . $value;
+                }
             }
         }
 
@@ -48,10 +66,6 @@ class TelegramAuthController extends Controller
 
     private function validateTelegramData($data, $dataCheckString, $botToken)
     {
-        if (!isset($data['hash'])) {
-            return false;
-        }
-
         $checkHash = $data['hash'];
 
         // Создаем секретный ключ
