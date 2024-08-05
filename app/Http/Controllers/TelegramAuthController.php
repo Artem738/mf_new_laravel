@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
-
 
 class TelegramAuthController extends Controller
 {
@@ -15,30 +12,18 @@ class TelegramAuthController extends Controller
         $data = $request->all();
         $botToken = env('TELEGRAM_BOT_TOKEN');
 
+        // Логируем данные для отладки
+        Log::info('Received Telegram data: ', $data);
+
+        // Декодируем JSON строку user
+        $data['user'] = str_replace('\"', '"', $data['user']);
+
         if ($this->validateTelegramData($data, $botToken)) {
-            // Валидация успешна test
-            $user = json_decode($data['user'], true);
-
-            // Логика авторизации пользователя
-            $user = User::updateOrCreate(
-                ['telegram_id' => $user['id']],
-                [
-                    'first_name' => $user['first_name'],
-                    'last_name' => $user['last_name'] ?? null,
-                    'username' => $user['username'] ?? null,
-                    'language_code' => $user['language_code'] ?? null,
-                    'allows_write_to_pm' => $user['allows_write_to_pm'] ?? false,
-                    'name' => $user['first_name'] ?? $user['username'],
-                    'email' => null, // Можно обновить позже
-                    'password' => null, // Можно обновить позже
-                ]
-            );
-
-            // Возвращаем успешный ответ с токеном
+            // Валидация успешна
             return response()->json([
                 'status' => 'success',
-                'user' => $user,
-                'token' => $user->createToken('TelegramAuthToken')->plainTextToken,
+                'message' => 'User is valid',
+                'token' => 'your_generated_token_here' // Здесь вы можете сгенерировать и вернуть токен
             ]);
         } else {
             // Валидация не прошла
@@ -48,10 +33,32 @@ class TelegramAuthController extends Controller
 
     private function validateTelegramData($data, $botToken)
     {
+        if (!isset($data['hash']) || !isset($data['auth_date']) || !isset($data['user'])) {
+            return false;
+        }
+
+        $checkHash = $data['hash'];
+        unset($data['hash']);
+
+        // Формируем строку для проверки
+        $dataCheckString = [];
+        foreach ($data as $key => $value) {
+            $dataCheckString[] = $key . '=' . $value;
+        }
+        sort($dataCheckString);
+        $dataCheckString = implode("\n", $dataCheckString);
+
+        // Логируем строку для проверки
+        Log::info('Data Check String: ' . $dataCheckString);
+
+        // Создаем секретный ключ
         $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
-        $dataCheckString = $data['raw'];
         $calculatedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
 
-        return hash_equals($calculatedHash, $data['hash']);
+        // Логируем рассчитанный хэш и хэш из данных
+        Log::info('Calculated Hash: ' . $calculatedHash);
+        Log::info('Received Hash: ' . $checkHash);
+
+        return hash_equals($calculatedHash, $checkHash);
     }
 }
