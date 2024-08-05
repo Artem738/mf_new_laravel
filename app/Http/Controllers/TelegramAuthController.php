@@ -16,19 +16,25 @@ class TelegramAuthController extends Controller
         Log::info('Received Telegram data: ', $data);
 
         // Проверяем наличие необходимых полей
-        if (!isset($data['auth_date']) || !isset($data['user']) || !isset($data['hash'])) {
+        if (!isset($data['authDate']) || !isset($data['hash']) || !isset($data['tgId'])) {
             Log::error('Missing data fields');
             return response()->json(['status' => 'error', 'message' => 'Missing data fields'], 400);
         }
 
-        // Декодируем JSON строку user
-        $data['user'] = json_decode($data['user'], true);
-        Log::info('Decoded user data: ', $data['user']);
+        // Преобразуем данные в нужный формат
+        $user = [
+            'id' => $data['tgId'],
+            'username' => $data['username'],
+            'first_name' => $data['firstname'],
+            'last_name' => $data['lastname'],
+            'language_code' => $data['languageCode']
+        ];
 
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            Log::error('Invalid user data', ['error' => json_last_error_msg()]);
-            return response()->json(['status' => 'error', 'message' => 'Invalid user data'], 400);
-        }
+        // Декодируем JSON строку user
+        $data['user'] = json_encode($user);
+        $data['auth_date'] = $data['authDate'];
+
+        Log::info('Decoded user data: ', $user);
 
         // Формируем строку для проверки
         $dataCheckString = $this->generateDataCheckString($data);
