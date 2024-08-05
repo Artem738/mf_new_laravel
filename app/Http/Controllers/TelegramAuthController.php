@@ -4,53 +4,58 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 
 class TelegramAuthController extends Controller
 {
     public function authenticate(Request $request)
     {
-        $data = $request->all();
-        $botToken = env('TELEGRAM_BOT_TOKEN'); // Ваш реальный бот-токен
+        // Логирование всего запроса
+        Log::info('Received request', $request->all());
 
-        // Логируем данные для отладки
-        Log::info('Received Telegram data: ', $data);
+        // Получение ключа бота из окружения
+        $botToken = env('TELEGRAM_BOT_TOKEN');
 
-        // Проверяем наличие необходимых полей
-        if (!isset($data['raw']) || !isset($data['hash'])) {
-            Log::error('Missing data fields');
-            return response()->json(['status' => 'error', 'message' => 'Missing data fields'], 400);
+        // Получение данных из запроса
+        $initData = $request->input('initData');
+
+        // Парсинг данных
+        parse_str($initData, $data);
+        Log::info('Parsed init data', $data);
+
+        // Получение хеша из данных
+        $receivedHash = $data['hash'] ?? null;
+        if (!$receivedHash) {
+            Log::error('Hash not found in init data');
+            return response()->json(['error' => 'Hash not found'], 400);
         }
 
-        // Получаем строку для проверки и хэш из данных
-        $rawData = $data['raw'];
-        $checkHash = $data['hash'];
+        // Удаление хеша из данных для проверки
+        unset($data['hash']);
 
-        // Удаляем hash из rawData для вычисления хэша
-        $rawDataWithoutHash = preg_replace('/&hash=.*$/', '', $rawData);
+        // Сортировка данных по ключам
+        ksort($data);
 
-        // Создаем секретный ключ
+        // Создание строки для проверки
+        $dataCheckString = urldecode(http_build_query($data, '', "\n"));
+        Log::info('Data check string', ['data_check_string' => $dataCheckString]);
+
+
+        // Создание секретного ключа
         $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
-        $calculatedHash = hash_hmac('sha256', $rawDataWithoutHash, $secretKey);
+        Log::info('Secret key generated', ['secret_key' => bin2hex($secretKey)]);
 
-        // Логируем строку для проверки и рассчитанный хэш
-        Log::info('Secret Key (hex): ' . bin2hex($secretKey));
-        Log::info('Raw Data Without Hash: ' . $rawDataWithoutHash);
-        Log::info('Calculated Hash: ' . $calculatedHash);
-        Log::info('Received Hash: ' . $checkHash);
+        // Создание хеша для проверки
+        $computedHash = hash_hmac('sha256', $dataCheckString, $secretKey);
+        Log::info('Computed hash', ['computed_hash' => $computedHash]);
 
-        // Валидация хэша
-        if (hash_equals($calculatedHash, $checkHash)) {
-            // Валидация успешна
-            Log::info('Validation successful');
-            return response()->json([
-                'status' => 'success',
-                'message' => 'User is valid',
-                'token' => 'your_generated_token_here' // Здесь вы можете сгенерировать и вернуть токен
-            ]);
+        // Проверка хеша
+        if (hash_equals($computedHash, $receivedHash)) {
+            Log::info('Hash verification passed');
+            return response()->json(['status' => 'success', 'message' => 'Hash verification passed']);
         } else {
-            // Валидация не прошла
-            Log::error('Validation failed');
-            return response()->json(['status' => 'error', 'message' => 'Invalid data'], 400);
+            Log::error('Hash verification failed');
+            return response()->json(['error' => 'Hash verification failed'], 403);
         }
     }
 }
