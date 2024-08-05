@@ -26,6 +26,7 @@ class User extends Authenticatable
         'username',
         'language_code',
         'allows_write_to_pm',
+        'user_lvl',
     ];
 
     /**

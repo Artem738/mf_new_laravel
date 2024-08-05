@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('language_code')->nullable();
             $table->boolean('allows_write_to_pm')->default(false);
+            $table->integer('user_lvl')->nullable();
             $table->timestamps();
         });
     }
