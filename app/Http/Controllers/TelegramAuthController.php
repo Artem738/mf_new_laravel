@@ -13,9 +13,6 @@ class TelegramAuthController extends Controller
         // Логирование всего запроса
         Log::info('Received request', $request->all());
 
-        // Получение ключа бота из окружения
-        $botToken = env('TELEGRAM_BOT_TOKEN');
-
         // Получение данных из запроса
         $initData = $request->input('initData');
 
@@ -40,6 +37,8 @@ class TelegramAuthController extends Controller
         $dataCheckString = urldecode(http_build_query($data, '', "\n"));
         Log::info('Data check string', ['data_check_string' => $dataCheckString]);
 
+        // Получение ключа бота из окружения
+        $botToken = env('TELEGRAM_BOT_TOKEN');
 
         // Создание секретного ключа
         $secretKey = hash_hmac('sha256', $botToken, 'WebAppData', true);
