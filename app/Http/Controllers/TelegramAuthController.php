@@ -72,7 +72,7 @@ class TelegramAuthController extends Controller
                     'telegram_id' => $telegramId,
                     'first_name' => $userData['first_name'],
                     'last_name' => $userData['last_name'] ?? null,
-                    'username' => $userData['username'],
+                    'username' => $userData['username'] ?? null,
                     'language_code' => $userData['language_code'] ?? null,
                     'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
                 ]);
