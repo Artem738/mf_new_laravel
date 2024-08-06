@@ -13,7 +13,7 @@ class TelegramAuthController extends Controller
 {
     public function authenticate(Request $request)
     {
-        // Логирование всего запроса
+        // Логирование всего запроса+
         Log::info('Received request', $request->all());
 
         // Получение данных из запроса
