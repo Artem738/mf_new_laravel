@@ -52,9 +52,9 @@ class TelegramAuthController extends Controller
                 // Если пользователя нет, зарегистрируем его
                 $user = User::create([
                     'telegram_id' => $telegramId,
-                    'tg_first_name' => $userData['tg_first_name'],
-                    'tg_last_name' => $userData['tg_last_name'] ?? null,
-                    'tg_username' => $userData['tg_username'] ?? null,
+                    'tg_first_name' => $userData['first_name'],
+                    'tg_last_name' => $userData['last_name'] ?? null,
+                    'tg_username' => $userData['username'] ?? null,
                     'language_code' => $userData['language_code'] ?? null,
                     'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
                 ]);
