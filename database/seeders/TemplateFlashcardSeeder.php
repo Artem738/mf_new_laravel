@@ -12,7 +12,7 @@ class TemplateFlashcardSeeder extends Seeder
         $decks = DB::table('template_decks')->pluck('id', 'name');
 
         $flashcards = [
-            'Programming' => [
+            '⌨️ Programming' => [
                 ['question' => 'Алгоритм', 'answer' => 'Algorithm', 'weight' => 0],
                 ['question' => 'Переменная', 'answer' => 'Variable', 'weight' => 0],
                 ['question' => 'Функция', 'answer' => 'Function', 'weight' => 0],
@@ -44,7 +44,7 @@ class TemplateFlashcardSeeder extends Seeder
                 ['question' => 'Архитектура', 'answer' => 'Architecture', 'weight' => 0],
                 ['question' => 'Разработка', 'answer' => 'Development', 'weight' => 0],
             ],
-            'Medicine' => [
+            '💉 Medicine' => [
                 ['question' => 'Диагноз', 'answer' => 'Diagnosis', 'weight' => 0],
                 ['question' => 'Лекарство', 'answer' => 'Medicine', 'weight' => 0],
                 ['question' => 'Врач', 'answer' => 'Doctor', 'weight' => 0],
@@ -179,7 +179,7 @@ class TemplateFlashcardSeeder extends Seeder
                 
             ],
 
-            'Technical' => [
+            '🛠 Technical' => [
                 ['question' => 'Розетка', 'answer' => 'Socket', 'weight' => 0],
                 ['question' => 'Провод', 'answer' => 'Wire', 'weight' => 0],
                 ['question' => 'Аккумулятор', 'answer' => 'Battery', 'weight' => 0],
