@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeckController;
 use App\Http\Controllers\TemplateDeckController;
+use App\Http\Controllers\ProgressController;
 
 
 
@@ -19,6 +20,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/template-decks/{id}', [TemplateDeckController::class, 'show']);
     Route::get('/template-decks/{id}/flashcards', [TemplateDeckController::class, 'showFlashcards']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/decks', [DeckController::class, 'index']);
+    Route::get('/decks/{id}', [DeckController::class, 'show']);
+    Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
+});
+
+Route::middleware('auth:sanctum')->post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
 
 
 Route::get('/decks', [DeckController::class, 'index']);

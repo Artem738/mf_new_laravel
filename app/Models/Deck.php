@@ -13,7 +13,6 @@ class Deck extends Model
         'user_id',
         'name',
         'description',
-        'is_public',
     ];
 
     // Связь с моделью User

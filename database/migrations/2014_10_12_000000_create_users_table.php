@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->bigInteger('telegram_id')->unique()->nullable();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('username')->nullable();
+            $table->string('tg_first_name')->nullable();
+            $table->string('tg_last_name')->nullable();
+            $table->string('tg_username')->nullable();
             $table->string('language_code')->nullable();
             $table->boolean('allows_write_to_pm')->default(false);
             $table->integer('user_lvl')->nullable();
