@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Deck;
 use App\Models\Flashcard;
+use App\Models\TemplateDeck;
+use App\Models\TemplateFlashcard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -52,4 +54,45 @@ class DeckController extends Controller
 
         return response()->json($flashcards);
     }
+
+    public function addTemplateBaseToUser(Request $request)
+    {
+        $user = Auth::user();
+        $templateDeckId = $request->input('template_deck_id');
+
+        // Проверка наличия шаблонной колоды
+        $templateDeck = TemplateDeck::find($templateDeckId);
+        if (!$templateDeck) {
+            return response()->json(['message' => 'Template deck not found'], 404);
+        }
+
+        // Проверка наличия колоды с таким же именем у пользователя
+        $existingDeck = Deck::where('user_id', $user->id)
+                            ->where('name', $templateDeck->name)
+                            ->first();
+        if ($existingDeck) {
+            return response()->json(['message' => 'User already has a deck with this name'], 400);
+        }
+
+        // Создание новой колоды для пользователя
+        $newDeck = Deck::create([
+            'user_id' => $user->id,
+            'name' => $templateDeck->name,
+            'description' => $templateDeck->description,
+        ]);
+
+        // Копирование карточек из шаблонной колоды
+        $templateFlashcards = TemplateFlashcard::where('deck_id', $templateDeckId)->get();
+        foreach ($templateFlashcards as $templateFlashcard) {
+            Flashcard::create([
+                'deck_id' => $newDeck->id,
+                'question' => $templateFlashcard->question,
+                'answer' => $templateFlashcard->answer,
+                'weight' => $templateFlashcard->weight,
+            ]);
+        }
+
+        return response()->json(['message' => 'Template base added to user'], 200);
+    }
+
 }

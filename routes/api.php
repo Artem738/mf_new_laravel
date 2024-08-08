@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/decks', [DeckController::class, 'index']);
     Route::get('/decks/{id}', [DeckController::class, 'show']);
     Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
+    Route::post('/add-template-to-user', [DeckController::class, 'addTemplateBaseToUser']);
 });
 
 Route::middleware('auth:sanctum')->post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
