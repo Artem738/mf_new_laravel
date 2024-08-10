@@ -10,9 +10,9 @@ class TemplateDeckSeeder extends Seeder
     public function run()
     {
         DB::table('template_decks')->insert([
-            ['name' => '⌨️ Programming', 'description' => 'Русско-Английский словарь по программированию'],
-            ['name' => '💉 Medicine', 'description' => 'Русско-Английский словарь по медицине'],
-            ['name' => '🛠 Technical', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
+            ['name' => '⌨️ Programming', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по программированию'],
+            ['name' => '💉 Medicine', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по медицине'],
+            ['name' => '🛠 Technical', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
         ]);
     }
 }

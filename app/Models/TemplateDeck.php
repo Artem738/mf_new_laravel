@@ -11,8 +11,10 @@ class TemplateDeck extends Model
 
     protected $fillable = [
         'name',
+        'deck_lang',
+        'question_lang',
+        'answer_lang',
         'description',
-        'is_public',
     ];
 
 

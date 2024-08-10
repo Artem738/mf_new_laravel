@@ -11,7 +11,11 @@ return new class extends Migration
         Schema::create('template_decks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->text('description')->nullable();            
+            $table->string('deck_lang')->nullable();
+            $table->string('question_lang')->nullable();
+            $table->string('answer_lang')->nullable();
+
             $table->timestamps();
 
         });
