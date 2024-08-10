@@ -10,9 +10,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    /**
-     * Регистрация нового пользователя
-     */
     public function register(Request $request)
     {
         Log::info('Register endpoint called', $request->all());
@@ -53,9 +50,6 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Логин пользователя и выдача токена
-     */
     public function login(Request $request)
     {
         Log::info('Login endpoint called', $request->all());
@@ -84,7 +78,11 @@ class AuthController extends Controller
 
             Log::info('Token created', ['token' => $token]);
 
-            return response()->json(['access_token' => $token, 'token_type' => 'Bearer']);
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'user' => $user->toArray(),
+            ]);
 
         } catch (ValidationException $e) {
             Log::error('Validation failed during login', $e->errors());
