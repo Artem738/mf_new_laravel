@@ -16,8 +16,14 @@ class TelegramAuthController extends Controller
     public function authenticate(Request $request)
     {
         Log::info('Received request', $request->all());
+        $validatedData = $request->validate([
+            'language_code' => 'required|string|max:3',
+        ]);
 
-        $initData = $request->input('initData');
+        Log::info('Validation passed', $validatedData);
+
+
+        $initData = $request->input('initD0ata');
         parse_str($initData, $data);
         Log::info('Parsed init data', $data);
 
@@ -30,23 +36,24 @@ class TelegramAuthController extends Controller
         if ($this->verifyHash($data, $receivedHash)) {
             Log::info('Hash verification passed');
 
-            $userData = json_decode($data['user'], true);
+            $tgUserData = json_decode($data['user'], true);
             if (json_last_error() !== JSON_ERROR_NONE) {
                 Log::error('Error decoding user data', ['error' => json_last_error_msg()]);
                 return response()->json(['error' => 'Error decoding user data'], 400);
             }
 
-            $telegramId = $userData['id'];
+            $telegramId = $tgUserData['id'];
             $user = User::where('telegram_id', $telegramId)->first();
 
             if (!$user) {
                 $user = User::create([
                     'telegram_id' => $telegramId,
-                    'tg_first_name' => $userData['first_name'],
-                    'tg_last_name' => $userData['last_name'] ?? null,
-                    'tg_username' => $userData['username'] ?? null,
-                    'tg_language_code' => $userData['tg_language_code'] ?? null,
-                    'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
+                    'tg_first_name' => $tgUserData['first_name'],
+                    'tg_last_name' => $tgUserData['last_name'] ?? null,
+                    'tg_username' => $tgUserData['username'] ?? null,
+                    'tg_language_code' => $tgUserData['tg_language_code'] ?? null,
+                    'allows_write_to_pm' => $tgUserData['allows_write_to_pm'] ?? false,
+                    'language_code' => $validatedData['language_code'] ?? null,
                 ]);
                 Log::info('User registered', ['user' => $user]);
             }
