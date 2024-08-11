@@ -13,7 +13,10 @@ use App\Http\Controllers\ProgressController;
 
 
 
-Route::middleware('auth:sanctum')->get('/user', [UserController::class, 'show']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [UserController::class, 'show']);
+    Route::patch('/user/language', [UserController::class, 'updateLanguageCode']);
+});
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/template-decks', [TemplateDeckController::class, 'index']);
@@ -27,6 +30,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
     Route::post('/add-template-to-user', [DeckController::class, 'addTemplateBaseToUser']);
 });
+
+
 
 Route::middleware('auth:sanctum')->post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
 

@@ -15,17 +15,20 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->unique()->nullable();
+            $table->rememberToken();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->rememberToken();
             $table->bigInteger('telegram_id')->unique()->nullable();
             $table->string('tg_first_name')->nullable();
             $table->string('tg_last_name')->nullable();
             $table->string('tg_username')->nullable();
+            $table->string('tg_language_code')->nullable();
             $table->string('language_code')->nullable();
             $table->boolean('allows_write_to_pm')->default(false);
             $table->integer('user_lvl')->nullable();
+            
             $table->timestamps();
+            
         });
     }
 

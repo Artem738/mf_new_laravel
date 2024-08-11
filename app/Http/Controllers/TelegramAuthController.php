@@ -45,14 +45,14 @@ class TelegramAuthController extends Controller
                     'tg_first_name' => $userData['first_name'],
                     'tg_last_name' => $userData['last_name'] ?? null,
                     'tg_username' => $userData['username'] ?? null,
-                    'language_code' => $userData['language_code'] ?? null,
+                    'tg_language_code' => $userData['tg_language_code'] ?? null,
+                    //'language_code' => $userData['language_code'] ?? null,
                     'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
                 ]);
                 Log::info('User registered', ['user' => $user]);
             }
 
             $token = $user->createToken('TelegramWebApp')->plainTextToken;
-
             Log::info('User authenticated', ['user' => $user, 'token' => $token]);
 
             return response()->json([
@@ -61,6 +61,7 @@ class TelegramAuthController extends Controller
                 'token' => $token,
                 'user' => $user->toArray(),
             ]);
+   
         } else {
             Log::error('Hash verification failed');
             return response()->json(['error' => 'Hash verification failed'], 403);

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'tg_first_name',
         'tg_last_name',
         'tg_username',
+        'tg_language_code',
         'language_code',
         'allows_write_to_pm',
         'user_lvl',
