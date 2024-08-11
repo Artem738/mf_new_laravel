@@ -12,23 +12,27 @@ class UsersTableSeeder extends Seeder
     {
         User::factory()->create([
             'name' => 'John One',
-            'tg_username' => 'one',
             'email' => '111@111.111',
             'password' => Hash::make('12345678'),
         ]);
 
         User::factory()->create([
             'name' => 'Jane Two',
-            'tg_username' => 'two',
-            'email' => '2',
-            'password' => Hash::make('2'),
+            'tg_username' => '',
+            'email' => '222@222.222',
+            'password' => Hash::make('12345678'),
         ]);
 
         User::factory()->create([
             'name' => 'Smith Three',
-            'tg_username' => 'three',
-            'email' => '3',
-            'password' => Hash::make('3'),
+            'email' => '333@333.333',
+            'password' => Hash::make('12345678'),
+        ]);
+
+        User::factory()->create([
+            'name' => 'Peter Four',
+            'email' => '444@444.444',
+            'password' => Hash::make('12345678'),
         ]);
     }
 }
