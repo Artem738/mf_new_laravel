@@ -19,7 +19,7 @@ class AuthController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8|confirmed',
-                'language_code' => 'required|string|max:3',
+                'language_code' => 'nullable|string|max:3',
             ]);
 
             Log::info('Validation passed', $validatedData);
@@ -28,7 +28,7 @@ class AuthController extends Controller
                 'name' => $validatedData['name'],
                 'email' => $validatedData['email'],
                 'password' => Hash::make($validatedData['password']),
-                'language_code' => $validatedData['language_code'],
+                'language_code' => $validatedData['language_code'] ?? null,
             ]);
 
             Log::info('User created', ['user' => $user]);

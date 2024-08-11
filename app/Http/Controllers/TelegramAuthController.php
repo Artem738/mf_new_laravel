@@ -17,7 +17,7 @@ class TelegramAuthController extends Controller
     {
         Log::info('Received request', $request->all());
         $validatedData = $request->validate([
-            'language_code' => 'string|max:3',
+            'language_code' => 'nullable|string|max:3',
         ]);
 
         Log::info('Validation passed', $validatedData);
