@@ -52,7 +52,7 @@ class TelegramAuthController extends Controller
                     'tg_first_name' => $tgUserData['first_name'],
                     'tg_last_name' => $tgUserData['last_name'] ?? null,
                     'tg_username' => $tgUserData['username'] ?? null,
-                    'tg_language_code' => $tgUserData['tg_language_code'] ?? null,
+                    'tg_language_code' => $tgUserData['language_code'] ?? null,
                     'allows_write_to_pm' => $tgUserData['allows_write_to_pm'] ?? false,
                     'language_code' => $validatedData['language_code'] ?? null,
                 ]);
