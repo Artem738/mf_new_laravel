@@ -17,15 +17,15 @@ class TelegramAuthController extends Controller
     {
         Log::info('Received request', $request->all());
         $validatedData = $request->validate([
-            'language_code' => 'required|string|max:3',
+            'language_code' => 'string|max:3',
         ]);
 
         Log::info('Validation passed', $validatedData);
 
 
-        $initData = $request->input('initD0ata');
+        $initData = $request->input('initData');
         parse_str($initData, $data);
-        Log::info('Parsed init data', $data);
+        Log::info('Parsed initData', $data);
 
         $receivedHash = $data['hash'] ?? null;
         if (!$receivedHash) {
