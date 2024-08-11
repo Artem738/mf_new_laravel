@@ -46,7 +46,6 @@ class TelegramAuthController extends Controller
                     'tg_last_name' => $userData['last_name'] ?? null,
                     'tg_username' => $userData['username'] ?? null,
                     'tg_language_code' => $userData['tg_language_code'] ?? null,
-                    'language_code' => $userData['language_code'] ?? null,
                     'allows_write_to_pm' => $userData['allows_write_to_pm'] ?? false,
                 ]);
                 Log::info('User registered', ['user' => $user]);
