@@ -176,9 +176,8 @@ class TemplateFlashcardSeeder extends Seeder
                 ['question' =>  'Вакцинация от кори', 'answer' =>  'Measles vaccination', 'weight' =>  0],
                 ['question' =>  'Вакцинация от краснухи', 'answer' =>  'Rubella vaccination', 'weight' =>  0],
                 ['question' =>  'Вакцинация от гепатита', 'answer' =>  'Hepatitis vaccination', 'weight' =>  0]
-                
-            ],
 
+            ],
             '🛠 Technical' => [
                 ['question' => 'Розетка', 'answer' => 'Socket', 'weight' => 0],
                 ['question' => 'Провод', 'answer' => 'Wire', 'weight' => 0],
@@ -212,6 +211,55 @@ class TemplateFlashcardSeeder extends Seeder
                 ['question' => 'Предохранитель', 'answer' => 'Fuse', 'weight' => 0],
                 ['question' => 'Стабилизатор напряжения', 'answer' => 'Voltage Stabilizer', 'weight' => 0],
             ],
+
+            '💻 Dart & Flutter Syntax' => [
+                ['question' => 'Переменная', 'answer' => 'var myVariable;', 'weight' => 0],
+                ['question' => 'Константа', 'answer' => 'const myConst = 42;', 'weight' => 0],
+                ['question' => 'Тип данных', 'answer' => 'int, double, String, bool', 'weight' => 0],
+                ['question' => 'Список', 'answer' => 'List<int> numbers = [1, 2, 3];', 'weight' => 0],
+                ['question' => 'Карта', 'answer' => 'Map<String, int> myMap = {\'one\': 1};', 'weight' => 0],
+                ['question' => 'Цикл for', 'answer' => 'for (var i = 0; i < 5; i++) {}', 'weight' => 0],
+                ['question' => 'Цикл while', 'answer' => 'while (condition) {}', 'weight' => 0],
+                ['question' => 'Функция', 'answer' => 'void myFunction() {}', 'weight' => 0],
+                ['question' => 'Анонимная функция', 'answer' => '(int x) => x * 2;', 'weight' => 0],
+                ['question' => 'Класс', 'answer' => 'class MyClass {}', 'weight' => 0],
+                ['question' => 'Конструктор', 'answer' => 'MyClass(this.value);', 'weight' => 0],
+                ['question' => 'Наследование', 'answer' => 'class Child extends Parent {}', 'weight' => 0],
+                ['question' => 'Полиморфизм', 'answer' => 'Parent obj = Child();', 'weight' => 0],
+                ['question' => 'Интерфейс', 'answer' => 'abstract class MyInterface {}', 'weight' => 0],
+                ['question' => 'Миксин', 'answer' => 'mixin MyMixin {}', 'weight' => 0],
+                ['question' => 'Асинхронность', 'answer' => 'Future<void> fetchData() async {}', 'weight' => 0],
+                ['question' => 'Await', 'answer' => 'await fetchData();', 'weight' => 0],
+                ['question' => 'Замыкание', 'answer' => 'Function add(int x) => (int y) => x + y;', 'weight' => 0],
+                ['question' => 'Конечный автомат', 'answer' => 'switch (state) { case ... }', 'weight' => 0],
+                ['question' => 'Провайдер', 'answer' => 'ChangeNotifierProvider(create: (_) => MyModel());', 'weight' => 0],
+                ['question' => 'Навигация', 'answer' => 'Navigator.push(context, route);', 'weight' => 0],
+                ['question' => 'Стейт', 'answer' => 'class MyStatefulWidgetState extends State<MyWidget> {}', 'weight' => 0],
+                ['question' => 'Билд метод', 'answer' => 'Widget build(BuildContext context) {}', 'weight' => 0],
+                ['question' => 'Контейнер', 'answer' => 'Container(width: 100, height: 100);', 'weight' => 0],
+                ['question' => 'Стек', 'answer' => 'Stack(children: [Widget1(), Widget2()]);', 'weight' => 0],
+                ['question' => 'Стрим', 'answer' => 'Stream<int> myStream = Stream.value(1);', 'weight' => 0],
+                ['question' => 'Асинхронный генератор', 'answer' => 'Stream<int> async* myGenerator() {}', 'weight' => 0],
+                ['question' => 'Фьючи', 'answer' => 'Future<int> futureValue = Future.value(10);', 'weight' => 0],
+                ['question' => 'Контекст сборки', 'answer' => 'final context = this.context;', 'weight' => 0],
+                ['question' => 'Инициализация состояния', 'answer' => '@override void initState() {}', 'weight' => 0],
+                ['question' => 'Завершение состояния', 'answer' => '@override void dispose() {}', 'weight' => 0],
+                ['question' => 'Текстовый виджет', 'answer' => 'Text(\'Hello World\');', 'weight' => 0],
+                ['question' => 'Кнопка', 'answer' => 'ElevatedButton(onPressed: () {}, child: Text(\'Press\'));', 'weight' => 0],
+                ['question' => 'Диалог', 'answer' => 'showDialog(context: context, builder: (_) => AlertDialog());', 'weight' => 0],
+                ['question' => 'Локализация', 'answer' => 'MaterialApp(localizationsDelegates: ...);', 'weight' => 0],
+                ['question' => 'Анимация', 'answer' => 'AnimationController(vsync: this, duration: Duration(seconds: 1));', 'weight' => 0],
+                ['question' => 'Тестирование', 'answer' => 'testWidgets(\'My Widget Test\', (WidgetTester tester) async {});', 'weight' => 0],
+                ['question' => 'HTTP запрос', 'answer' => 'http.get(Uri.parse(\'https://example.com\'));', 'weight' => 0],
+                ['question' => 'JSON сериализация', 'answer' => 'jsonEncode(myObject);', 'weight' => 0],
+                ['question' => 'Локальное хранилище', 'answer' => 'SharedPreferences prefs = await SharedPreferences.getInstance();', 'weight' => 0],
+                ['question' => 'Медиапроигрыватель', 'answer' => 'VideoPlayerController.network(\'https://example.com/video.mp4\');', 'weight' => 0],
+                ['question' => 'Пакет', 'answer' => 'import \'package:provider/provider.dart\';', 'weight' => 0],
+                ['question' => 'Библиотека', 'answer' => 'library my_library;', 'weight' => 0],
+            ],
+
+
+
         ];
 
         foreach ($flashcards as $deckName => $cards) {

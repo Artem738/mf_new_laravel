@@ -13,6 +13,7 @@ class TemplateDeckSeeder extends Seeder
             ['name' => '⌨️ Programming', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по программированию'],
             ['name' => '💉 Medicine', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по медицине'],
             ['name' => '🛠 Technical', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
+            ['name' => '💻 Dart & Flutter Syntax', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
         ]);
     }
 }
