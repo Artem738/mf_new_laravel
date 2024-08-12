@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             DecksTableSeeder::class,
             FlashcardsTableSeeder::class,
             ProgressTableSeeder::class,
-            UserDeckAccessTableSeeder::class,
+           // UserDeckAccessTableSeeder::class,
             TemplateDeckSeeder::class,
             TemplateFlashcardSeeder::class,
         ]);

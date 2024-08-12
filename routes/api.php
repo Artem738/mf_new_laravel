@@ -25,10 +25,32 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Route::get('/decks', [DeckController::class, 'index']);
+    // Route::get('/decks/{id}', [DeckController::class, 'show']);
+    // Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
+    // Route::post('/add-template-to-user', [DeckController::class, 'addTemplateBaseToUser']);
+    // Route::delete('/delete-user-deck/{id}', [DeckController::class, 'deleteUserDeck']);
+    // Получение всех колод пользователя
     Route::get('/decks', [DeckController::class, 'index']);
+    
+    // Получение конкретной колоды по ID
     Route::get('/decks/{id}', [DeckController::class, 'show']);
+    
+    // Создание новой колоды
+    Route::post('/decks', [DeckController::class, 'store']);
+    
+    // Обновление существующей колоды по ID
+    Route::put('/decks/{id}', [DeckController::class, 'update']);
+    
+    // Удаление колоды пользователя по ID
+    Route::delete('/decks/{id}', [DeckController::class, 'deleteUserDeck']);
+    
+    // Получение всех карточек в колоде
     Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
+    
+    // Добавление шаблонной базы для пользователя
     Route::post('/add-template-to-user', [DeckController::class, 'addTemplateBaseToUser']);
+    //Route::post('/delete-user-deck', [DeckController::class, 'deleteUserDeck']);
 });
 
 

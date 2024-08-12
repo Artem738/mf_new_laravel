@@ -11,6 +11,7 @@ class Deck extends Model
 
     protected $fillable = [
         'user_id',
+        'template_deck_id',
         'name',
         'description',
     ];
