@@ -27,6 +27,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+
     public function updateLanguageCode(Request $request)
     {
         $request->validate([
@@ -43,6 +44,48 @@ class UserController extends Controller
             'status' => 'success',
             'message' => 'Language code updated successfully.',
             'user' => $user->toArray(),
+        ]);
+    }
+
+    /**
+     * Обновляет поле base_font_size у аутентифицированного пользователя.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateBaseFontSize(Request $request)
+    {
+        $request->validate([
+            'base_font_size' => 'required|numeric|min:5|max:35',
+        ]);
+
+        $user = $request->user();
+        $user->base_font_size = $request->input('base_font_size');
+        $user->save();
+
+        Log::info('User base font size updated:', ['user_id' => $user->id, 'base_font_size' => $user->base_font_size]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Base font size updated successfully.',
+            'user' => $user->toArray(),
+        ]);
+    }
+
+    /**
+     * Возвращает значение base_font_size для аутентифицированного пользователя.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getBaseFontSize(Request $request)
+    {
+        $user = $request->user();
+        $baseFontSize = $user->base_font_size;
+
+        return response()->json([
+            'status' => 'success',
+            'base_font_size' => $baseFontSize,
         ]);
     }
 }

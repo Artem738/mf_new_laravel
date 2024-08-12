@@ -16,6 +16,10 @@ use App\Http\Controllers\ProgressController;
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'show']);
     Route::patch('/user/language', [UserController::class, 'updateLanguageCode']);
+    // Обновление base_font_size пользователя
+    Route::put('/user/base-font-size', [UserController::class, 'updateBaseFontSize']);
+    // Получение base_font_size пользователя
+    Route::get('/user/base-font-size', [UserController::class, 'getBaseFontSize']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -32,22 +36,22 @@ Route::middleware('auth:sanctum')->group(function () {
     // Route::delete('/delete-user-deck/{id}', [DeckController::class, 'deleteUserDeck']);
     // Получение всех колод пользователя
     Route::get('/decks', [DeckController::class, 'index']);
-    
+
     // Получение конкретной колоды по ID
     Route::get('/decks/{id}', [DeckController::class, 'show']);
-    
+
     // Создание новой колоды
     Route::post('/decks', [DeckController::class, 'store']);
-    
+
     // Обновление существующей колоды по ID
     Route::put('/decks/{id}', [DeckController::class, 'update']);
-    
+
     // Удаление колоды пользователя по ID
     Route::delete('/decks/{id}', [DeckController::class, 'deleteUserDeck']);
-    
+
     // Получение всех карточек в колоде
     Route::get('/decks/{id}/flashcards', [DeckController::class, 'showFlashcards']);
-    
+
     // Добавление шаблонной базы для пользователя
     Route::post('/add-template-to-user', [DeckController::class, 'addTemplateBaseToUser']);
     //Route::post('/delete-user-deck', [DeckController::class, 'deleteUserDeck']);
