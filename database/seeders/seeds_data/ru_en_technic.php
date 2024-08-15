@@ -1,0 +1,37 @@
+<?php
+
+
+return [
+                ['question' => 'Розетка', 'answer' => 'Socket', 'weight' => 0],
+                ['question' => 'Провод', 'answer' => 'Wire', 'weight' => 0],
+                ['question' => 'Аккумулятор', 'answer' => 'Battery', 'weight' => 0],
+                ['question' => 'Электричество', 'answer' => 'Electricity', 'weight' => 0],
+                ['question' => 'Заземление', 'answer' => 'Grounding', 'weight' => 0],
+                ['question' => 'Напряжение', 'answer' => 'Voltage', 'weight' => 0],
+                ['question' => 'Ток', 'answer' => 'Current', 'weight' => 0],
+                ['question' => 'Сопротивление', 'answer' => 'Resistance', 'weight' => 0],
+                ['question' => 'Осциллограф', 'answer' => 'Oscilloscope', 'weight' => 0],
+                ['question' => 'Трансформатор', 'answer' => 'Transformer', 'weight' => 0],
+                ['question' => 'Конденсатор', 'answer' => 'Capacitor', 'weight' => 0],
+                ['question' => 'Резистор', 'answer' => 'Resistor', 'weight' => 0],
+                ['question' => 'Диод', 'answer' => 'Diode', 'weight' => 0],
+                ['question' => 'Транзистор', 'answer' => 'Transistor', 'weight' => 0],
+                ['question' => 'Инвертор', 'answer' => 'Inverter', 'weight' => 0],
+                ['question' => 'Преобразователь', 'answer' => 'Converter', 'weight' => 0],
+                ['question' => 'Электродвигатель', 'answer' => 'Electric Motor', 'weight' => 0],
+                ['question' => 'Генератор', 'answer' => 'Generator', 'weight' => 0],
+                ['question' => 'Мультиметр', 'answer' => 'Multimeter', 'weight' => 0],
+                ['question' => 'Светодиод', 'answer' => 'LED', 'weight' => 0],
+                ['question' => 'Паяльник', 'answer' => 'Soldering Iron', 'weight' => 0],
+                ['question' => 'Схема', 'answer' => 'Circuit', 'weight' => 0],
+                ['question' => 'Плата', 'answer' => 'Board', 'weight' => 0],
+                ['question' => 'Контактор', 'answer' => 'Contactor', 'weight' => 0],
+                ['question' => 'Реле', 'answer' => 'Relay', 'weight' => 0],
+                ['question' => 'Панель управления', 'answer' => 'Control Panel', 'weight' => 0],
+                ['question' => 'Защитное устройство', 'answer' => 'Protective Device', 'weight' => 0],
+                ['question' => 'Частотный преобразователь', 'answer' => 'Frequency Converter', 'weight' => 0],
+                ['question' => 'Автоматический выключатель', 'answer' => 'Circuit Breaker', 'weight' => 0],
+                ['question' => 'Предохранитель', 'answer' => 'Fuse', 'weight' => 0],
+                ['question' => 'Стабилизатор напряжения', 'answer' => 'Voltage Stabilizer', 'weight' => 0],
+
+            ];
