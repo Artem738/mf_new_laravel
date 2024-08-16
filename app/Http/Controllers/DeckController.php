@@ -101,7 +101,7 @@ class DeckController extends Controller
                      ->where('progress.user_id', '=', $user->id);
             })
             ->where('flashcards.deck_id', $id)
-            ->select('flashcards.*', 'progress.weight', 'progress.last_reviewed_at')
+            ->select('flashcards.*', 'progress.weight', 'progress.last_answer_weight', 'progress.last_reviewed_at')
             ->get();
 
         return response()->json($flashcards);

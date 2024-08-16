@@ -9,7 +9,13 @@ class Flashcard extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['deck_id', 'question', 'answer', 'weight'];
+    protected $fillable = [
+        'deck_id',
+        'question',
+        'answer',
+        'weight',
+        'last_answer_weight',
+    ];
 
     public function deck()
     {

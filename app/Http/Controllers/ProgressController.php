@@ -14,6 +14,7 @@ class ProgressController extends Controller
     {
         $validated = $request->validate([
             'weight' => 'required|integer',
+            'last_answer_weight' => 'required|integer',
         ]);
 
         // Получение текущего пользователя
@@ -31,6 +32,7 @@ class ProgressController extends Controller
                 'flashcard_id' => $flashcardId,
                 'user_id' => $userId,
                 'weight' => $validated['weight'],
+                'last_answer_weight' => $validated['last_answer_weight'],
                 'last_reviewed_at' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -41,7 +43,8 @@ class ProgressController extends Controller
               ->where('flashcard_id', $flashcardId)
               ->where('user_id', $userId)
               ->update([
-                  'weight' => $validated['weight'],
+                  'weight' => $progress->weight + $validated['weight'],
+                  'last_answer_weight' => $validated['last_answer_weight'],
                   'last_reviewed_at' => now(),
                   'updated_at' => now(),
               ]);
