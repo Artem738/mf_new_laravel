@@ -15,7 +15,8 @@ class TemplateDeckSeeder extends Seeder
             ['id' => 3, 'name' => '⌨️ Programming', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по программированию'],
             ['id' => 4, 'name' => '💉 Medicine', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по медицине'],
             ['id' => 5, 'name' => '🛠 Technical', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
-            ['id' => 6, 'name' => '💻 Dart & Flutter Syntax', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Русско-Английский словарь по бытовым техническим вопросам'],
+            ['id' => 6, 'name' => '💻 Dart & Flutter Syntax', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Програмирование на Dart и Flutter. Просто Код...'],
+            ['id' => 7, 'name' => '🇺🇸 🛠 Handy-Man Professional', 'deck_lang' => 'ru', 'question_lang' => 'ru', 'answer_lang' => 'en', 'description' => 'Профессиональный технический словарь из секретных испанских разговорников'],
         ]);
     }
 }

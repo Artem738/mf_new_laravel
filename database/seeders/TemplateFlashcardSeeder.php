@@ -17,6 +17,7 @@ class TemplateFlashcardSeeder extends Seeder
             4 => database_path('seeders/seeds_data/en_medicine.php'),
             5 => database_path('seeders/seeds_data/ru_en_technic.php'),
             6 => database_path('seeders/seeds_data/flutter_dart.php'),
+            7 => database_path('seeders/seeds_data/ru_en_technic_pro.php'),
             // добавь остальные файлы для других колод
         ];
 
