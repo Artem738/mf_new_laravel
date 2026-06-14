@@ -14,8 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json([
+        'status' => 'ok',
+        'service' => 'MindFlasher API',
+        'message' => 'Backend is running',
+    ]);
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/test-hash', function () {
     $botToken = env('TELEGRAM_BOT_TOKEN');
