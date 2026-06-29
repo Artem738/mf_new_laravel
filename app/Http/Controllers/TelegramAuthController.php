@@ -47,14 +47,24 @@ class TelegramAuthController extends Controller
             $user = User::where('telegram_id', $telegramId)->first();
 
             if (!$user) {
+                $firstName = $tgUserData['first_name'] ?? '';
+                $lastName = $tgUserData['last_name'] ?? '';
+                $fullName = trim($firstName . ' ' . $lastName);
+                if (empty($fullName)) {
+                    $fullName = $tgUserData['username'] ?? 'Telegram User';
+                }
+
                 $user = User::create([
                     'telegram_id' => $telegramId,
+                    'name' => $fullName,
                     'tg_first_name' => $tgUserData['first_name'],
                     'tg_last_name' => $tgUserData['last_name'] ?? null,
                     'tg_username' => $tgUserData['username'] ?? null,
                     'tg_language_code' => $tgUserData['language_code'] ?? null,
                     'allows_write_to_pm' => $tgUserData['allows_write_to_pm'] ?? false,
                     'language_code' => $validatedData['language_code'] ?? null,
+                    'user_lvl' => 1,
+                    'base_font_size' => 16.0,
                 ]);
                 Log::info('User registered', ['user' => $user]);
             }
@@ -62,11 +72,14 @@ class TelegramAuthController extends Controller
             $token = $user->createToken('TelegramWebApp')->plainTextToken;
             Log::info('User authenticated', ['user' => $user, 'token' => $token]);
 
+            $userArray = $user->toArray();
+            $userArray['auth_date'] = $data['auth_date'] ?? null;
+
             return response()->json([
                 'status' => 'success',
                 'message' => 'Hash verification passed',
                 'token' => $token,
-                'user' => $user->toArray(),
+                'user' => $userArray,
             ]);
    
         } else {
