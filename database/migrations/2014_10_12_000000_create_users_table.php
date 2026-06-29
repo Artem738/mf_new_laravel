@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean('allows_write_to_pm')->default(false);
             $table->integer('user_lvl')->nullable();
             $table->double('base_font_size')->nullable();
+            $table->boolean('auto_close_cards')->default(true);
             
             $table->timestamps();
             

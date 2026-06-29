@@ -88,4 +88,29 @@ class UserController extends Controller
             'base_font_size' => $baseFontSize,
         ]);
     }
+
+    /**
+     * Обновляет поле auto_close_cards у аутентифицированного пользователя.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateAutoCloseCards(Request $request)
+    {
+        $request->validate([
+            'auto_close_cards' => 'required|boolean',
+        ]);
+
+        $user = $request->user();
+        $user->auto_close_cards = $request->input('auto_close_cards');
+        $user->save();
+
+        Log::info('User auto close cards updated:', ['user_id' => $user->id, 'auto_close_cards' => $user->auto_close_cards]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Auto close cards setting updated successfully.',
+            'user' => $user->toArray(),
+        ]);
+    }
 }

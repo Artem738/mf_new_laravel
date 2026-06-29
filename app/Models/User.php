@@ -29,6 +29,7 @@ class User extends Authenticatable
         'allows_write_to_pm',
         'user_lvl',
         'base_font_size',
+        'auto_close_cards',
     ];
 
     /**
@@ -50,5 +51,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'allows_write_to_pm' => 'boolean',
+        'auto_close_cards' => 'boolean',
     ];
 }

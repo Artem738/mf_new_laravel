@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/user/language', [UserController::class, 'updateLanguageCode']);
     Route::put('/user/base-font-size', [UserController::class, 'updateBaseFontSize']);
     Route::get('/user/base-font-size', [UserController::class, 'getBaseFontSize']);
+    Route::put('/user/auto-close-cards', [UserController::class, 'updateAutoCloseCards']);
     
     // Template Deck Routes
     Route::get('/template-decks', [TemplateDeckController::class, 'index']);
