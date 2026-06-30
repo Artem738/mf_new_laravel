@@ -18,9 +18,9 @@ class TemplateDeck extends Model
     ];
 
 
-    // Связь с моделью Flashcard
+    // Связь с моделью TemplateFlashcard
     public function flashcards()
     {
-        return $this->hasMany(Flashcard::class);
+        return $this->hasMany(TemplateFlashcard::class, 'deck_id');
     }
 }

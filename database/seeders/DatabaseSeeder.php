@@ -30,7 +30,6 @@ class DatabaseSeeder extends Seeder
             ProgressTableSeeder::class,
            // UserDeckAccessTableSeeder::class,
             TemplateDeckSeeder::class,
-            TemplateFlashcardSeeder::class,
         ]);
     }
 }

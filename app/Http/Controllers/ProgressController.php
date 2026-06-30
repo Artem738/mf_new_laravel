@@ -17,8 +17,8 @@ class ProgressController extends Controller
             'last_answer_weight' => 'required|integer',
         ]);
 
-        // Получение текущего пользователя
         $userId = $request->user()->id;
+        $grade = $validated['last_answer_weight'];
 
         // Поиск записи прогресса для указанной карточки и пользователя
         $progress = DB::table('progress')
@@ -26,28 +26,66 @@ class ProgressController extends Controller
                       ->where('user_id', $userId)
                       ->first();
 
+        // Дефолтные значения, если прогресса еще нет
+        $currentEaseFactor = $progress ? (float)$progress->ease_factor : 2.50;
+        $currentIntervalDays = $progress ? (int)$progress->interval_days : 0;
+        $currentWeight = $progress ? (int)$progress->weight : 0;
+
+        $newEaseFactor = $currentEaseFactor;
+        $newIntervalDays = $currentIntervalDays;
+        $nextReviewAt = null;
+
+        if ($grade === 1) {
+            // Плохо: сбрасываем интервал, уменьшаем коэффициент легкости
+            $newEaseFactor = max(1.30, $currentEaseFactor - 0.20);
+            $newIntervalDays = 0; // Начать заучивание заново
+            $nextReviewAt = now(); // Повторить немедленно
+        } elseif ($grade === 7) {
+            // Средне: интервал увеличивается умеренно
+            if ($currentIntervalDays === 0) {
+                $newIntervalDays = 1;
+            } else {
+                $newIntervalDays = max(1, (int)round($currentIntervalDays * 1.2));
+            }
+            $nextReviewAt = now()->addDays($newIntervalDays);
+        } elseif ($grade === 30) {
+            // Хорошо: коэффициент легкости растет, интервал умножается на него
+            $newEaseFactor = $currentEaseFactor + 0.15;
+            if ($currentIntervalDays === 0) {
+                $newIntervalDays = 3;
+            } else {
+                $newIntervalDays = max(2, (int)round($currentIntervalDays * $currentEaseFactor));
+            }
+            $nextReviewAt = now()->addDays($newIntervalDays);
+        } else {
+            $nextReviewAt = now();
+        }
+
+        // Обновляем вес (weight) для обратной совместимости
+        $newWeight = $currentWeight + $validated['weight'];
+
+        $dataToSave = [
+            'weight' => $newWeight,
+            'last_answer_weight' => $grade,
+            'ease_factor' => $newEaseFactor,
+            'interval_days' => $newIntervalDays,
+            'next_review_at' => $nextReviewAt,
+            'last_reviewed_at' => now(),
+            'updated_at' => now(),
+        ];
+
         if (!$progress) {
             // Если запись не существует, создаем новую
-            DB::table('progress')->insert([
-                'flashcard_id' => $flashcardId,
-                'user_id' => $userId,
-                'weight' => $validated['weight'],
-                'last_answer_weight' => $validated['last_answer_weight'],
-                'last_reviewed_at' => now(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+            $dataToSave['flashcard_id'] = $flashcardId;
+            $dataToSave['user_id'] = $userId;
+            $dataToSave['created_at'] = now();
+            DB::table('progress')->insert($dataToSave);
         } else {
-            // Обновление веса, если запись существует
+            // Обновление, если запись существует
             DB::table('progress')
               ->where('flashcard_id', $flashcardId)
               ->where('user_id', $userId)
-              ->update([
-                  'weight' => $progress->weight + $validated['weight'],
-                  'last_answer_weight' => $validated['last_answer_weight'],
-                  'last_reviewed_at' => now(),
-                  'updated_at' => now(),
-              ]);
+              ->update($dataToSave);
         }
 
         // Получение обновленной записи
@@ -56,6 +94,9 @@ class ProgressController extends Controller
                              ->where('user_id', $userId)
                              ->first();
 
-        return response()->json(['message' => 'Weight updated successfully', 'progress' => $updatedProgress]);
+        return response()->json([
+            'message' => 'Weight and SRS progress updated successfully',
+            'progress' => $updatedProgress
+        ]);
     }
 }

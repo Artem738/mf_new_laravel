@@ -86,7 +86,7 @@ class DeckController extends Controller
     }
 
     // Получение всех карточек колоды
-    public function showFlashcards($id)
+    public function showFlashcards(Request $request, $id)
     {
         $user = Auth::user();
         $deck = Deck::where('user_id', $user->id)->find($id);
@@ -94,15 +94,31 @@ class DeckController extends Controller
             return response()->json(['message' => 'Deck not found'], 404);
         }
 
-        // Получение карточек с учетом веса пользователя и последней даты рассмотрения
-        $flashcards = DB::table('flashcards')
+        $mode = $request->query('mode', 'srs');
+
+        $query = DB::table('flashcards')
             ->leftJoin('progress', function ($join) use ($user) {
                 $join->on('flashcards.id', '=', 'progress.flashcard_id')
                      ->where('progress.user_id', '=', $user->id);
             })
-            ->where('flashcards.deck_id', $id)
-            ->select('flashcards.*', 'progress.weight', 'progress.last_answer_weight', 'progress.last_reviewed_at')
-            ->get();
+            ->where('flashcards.deck_id', $id);
+
+        if ($mode === 'srs') {
+            $query->where(function ($q) {
+                $q->whereNull('progress.id')
+                  ->orWhere('progress.next_review_at', '<=', now());
+            });
+        }
+
+        $flashcards = $query->select(
+            'flashcards.*', 
+            'progress.weight', 
+            'progress.last_answer_weight', 
+            'progress.last_reviewed_at',
+            'progress.ease_factor',
+            'progress.interval_days',
+            'progress.next_review_at'
+        )->get();
 
         return response()->json($flashcards);
     }

@@ -3,44 +3,50 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
+use App\Models\Deck;
 
 class DecksTableSeeder extends Seeder
 {
     public function run()
     {
-
-
-        DB::table('decks')->insert([
+        $decks = [
             [
+                'id' => 1,
                 'user_id' => 1,
                 'name' => '☣️ Biology',
                 'description' => 'Biology flashcards for high school.',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
+                'id' => 2,
                 'user_id' => 1,
                 'name' => '🧪 Chemistry',
                 'description' => 'Chemistry flashcards for high school.',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
+                'id' => 3,
                 'user_id' => 1,
                 'name' => '💫 Physics',
                 'description' => 'Physics flashcards for college.',
-                'created_at' => now(),
-                'updated_at' => now(),
             ],
             [
+                'id' => 4,
                 'user_id' => 1,
                 'name' => '🇬🇧 English - Ru',
                 'description' => 'English-Russian words',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],            
-        ]);
+            ],
+        ];
+
+        foreach ($decks as $deck) {
+            Deck::updateOrCreate(
+                ['id' => $deck['id']],
+                [
+                    'user_id' => $deck['user_id'],
+                    'name' => $deck['name'],
+                    'description' => $deck['description'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+        }
     }
 }

@@ -19,6 +19,9 @@ class CreateProgressTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedInteger('weight')->default(0);
             $table->unsignedSmallInteger('last_answer_weight')->nullable();
+            $table->decimal('ease_factor', 5, 2)->default(2.50);
+            $table->unsignedInteger('interval_days')->default(0);
+            $table->timestamp('next_review_at')->nullable();
             $table->timestamp('last_reviewed_at')->nullable();
             $table->timestamps();
             $table->foreign('flashcard_id')->references('id')->on('flashcards')->onDelete('cascade');

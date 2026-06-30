@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Flashcard;
 
 class FlashcardsTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('flashcards')->insert([
+        $cards = [
             [
                 'deck_id' => 1,
                 'question' => 'What is the powerhouse of the cell?',
@@ -231,8 +231,16 @@ class FlashcardsTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+        ];
 
-
-        ]);
+        foreach ($cards as $card) {
+            Flashcard::updateOrCreate(
+                [
+                    'deck_id' => $card['deck_id'],
+                    'question' => $card['question'],
+                ],
+                $card
+            );
+        }
     }
 }

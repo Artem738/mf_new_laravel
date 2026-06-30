@@ -9,7 +9,7 @@ class ProgressTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('progress')->insert([
+        $progressRecords = [
             [
                 'flashcard_id' => 1,
                 'user_id' => 1,
@@ -34,7 +34,17 @@ class ProgressTableSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-        ]);
+        ];
+
+        foreach ($progressRecords as $record) {
+            DB::table('progress')->updateOrInsert(
+                [
+                    'flashcard_id' => $record['flashcard_id'],
+                    'user_id' => $record['user_id'],
+                ],
+                $record
+            );
+        }
     }
 }
 
