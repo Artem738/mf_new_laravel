@@ -154,6 +154,12 @@ class FlashcardController extends Controller
         // Чтение данных CSV из текстового поля
         $csvData = $request->input('csv_data');
         Log::info("CSV data received", ['csv_data' => $csvData]);
+        
+        $delimiter = $request->input('delimiter', ';');
+        if ($delimiter === '\\t' || $delimiter === '\t') {
+            $delimiter = "\t";
+        }
+        Log::info("Using delimiter", ['delimiter' => $delimiter]);
     
         // Разделение на строки
         $rows = explode("\n", $csvData);
@@ -169,8 +175,8 @@ class FlashcardController extends Controller
                 continue;
             }
     
-            // Разделение строки по `;`
-            $columns = explode(";", $row);
+            // Разделение строки по разделителю
+            $columns = explode($delimiter, $row);
     
             // Если меньше двух колонок, пропустить
             if (count($columns) < 2) {

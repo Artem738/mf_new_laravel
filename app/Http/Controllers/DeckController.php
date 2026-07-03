@@ -22,6 +22,65 @@ class DeckController extends Controller
     {
         $user = Auth::user();
         $decks = Deck::where('user_id', $user->id)->get();
+
+        if ($decks->isEmpty()) {
+            return response()->json($decks);
+        }
+
+        $stats = DB::table('flashcards')
+            ->leftJoin('progress', function ($join) use ($user) {
+                $join->on('flashcards.id', '=', 'progress.flashcard_id')
+                     ->where('progress.user_id', '=', $user->id);
+            })
+            ->whereIn('flashcards.deck_id', $decks->pluck('id'))
+            ->select('flashcards.deck_id', 'progress.last_answer_weight', DB::raw('count(*) as count'))
+            ->groupBy('flashcards.deck_id', 'progress.last_answer_weight')
+            ->get();
+
+        $deckStats = [];
+        foreach ($stats as $stat) {
+            $deckId = $stat->deck_id;
+            if (!isset($deckStats[$deckId])) {
+                $deckStats[$deckId] = [
+                    'total_cards' => 0,
+                    'gray_cards' => 0,
+                    'red_cards' => 0,
+                    'yellow_cards' => 0,
+                    'green_cards' => 0,
+                ];
+            }
+            
+            $deckStats[$deckId]['total_cards'] += $stat->count;
+            
+            if (is_null($stat->last_answer_weight)) {
+                $deckStats[$deckId]['gray_cards'] += $stat->count;
+            } elseif ($stat->last_answer_weight == 1) {
+                $deckStats[$deckId]['red_cards'] += $stat->count;
+            } elseif ($stat->last_answer_weight == 7) {
+                $deckStats[$deckId]['yellow_cards'] += $stat->count;
+            } elseif ($stat->last_answer_weight == 30) {
+                $deckStats[$deckId]['green_cards'] += $stat->count;
+            } else {
+                $deckStats[$deckId]['gray_cards'] += $stat->count;
+            }
+        }
+
+        foreach ($decks as $deck) {
+            if (isset($deckStats[$deck->id])) {
+                $deck->total_cards = $deckStats[$deck->id]['total_cards'];
+                $deck->gray_cards = $deckStats[$deck->id]['gray_cards'];
+                $deck->red_cards = $deckStats[$deck->id]['red_cards'];
+                $deck->yellow_cards = $deckStats[$deck->id]['yellow_cards'];
+                $deck->green_cards = $deckStats[$deck->id]['green_cards'];
+            } else {
+                $deck->total_cards = 0;
+                $deck->gray_cards = 0;
+                $deck->red_cards = 0;
+                $deck->yellow_cards = 0;
+                $deck->green_cards = 0;
+            }
+        }
+
         return response()->json($decks);
     }
 
@@ -33,6 +92,38 @@ class DeckController extends Controller
         if (!$deck) {
             return response()->json(['message' => 'Deck not found'], 404);
         }
+
+        $stats = DB::table('flashcards')
+            ->leftJoin('progress', function ($join) use ($user) {
+                $join->on('flashcards.id', '=', 'progress.flashcard_id')
+                     ->where('progress.user_id', '=', $user->id);
+            })
+            ->where('flashcards.deck_id', $deck->id)
+            ->select('progress.last_answer_weight', DB::raw('count(*) as count'))
+            ->groupBy('progress.last_answer_weight')
+            ->get();
+
+        $deck->total_cards = 0;
+        $deck->gray_cards = 0;
+        $deck->red_cards = 0;
+        $deck->yellow_cards = 0;
+        $deck->green_cards = 0;
+
+        foreach ($stats as $stat) {
+            $deck->total_cards += $stat->count;
+            if (is_null($stat->last_answer_weight)) {
+                $deck->gray_cards += $stat->count;
+            } elseif ($stat->last_answer_weight == 1) {
+                $deck->red_cards += $stat->count;
+            } elseif ($stat->last_answer_weight == 7) {
+                $deck->yellow_cards += $stat->count;
+            } elseif ($stat->last_answer_weight == 30) {
+                $deck->green_cards += $stat->count;
+            } else {
+                $deck->gray_cards += $stat->count;
+            }
+        }
+
         return response()->json($deck);
     }
 
