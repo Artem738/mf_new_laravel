@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return response()->json([
         'status' => 'ok',
-        'service' => 'MindFlasher API',
+        'service' => 'LeitnerCards API',
         'message' => 'Backend is running',
     ]);
 });

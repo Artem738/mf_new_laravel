@@ -10,6 +10,7 @@ class TemplateDeck extends Model
     use HasFactory;
 
     protected $fillable = [
+        'category_id',
         'name',
         'deck_lang',
         'question_lang',
@@ -17,6 +18,11 @@ class TemplateDeck extends Model
         'description',
     ];
 
+    // Связь с моделью TemplateCategory
+    public function category()
+    {
+        return $this->belongsTo(TemplateCategory::class, 'category_id');
+    }
 
     // Связь с моделью TemplateFlashcard
     public function flashcards()

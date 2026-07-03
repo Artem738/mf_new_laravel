@@ -13,10 +13,26 @@ class TemplateDeckController extends Controller
         $this->middleware('auth:sanctum');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $decks = TemplateDeck::all();
-        return response()->json($decks);
+        $user = $request->user();
+        $lang = $user->language_code ?? 'ru';
+
+        if (!in_array($lang, ['ru', 'en', 'uk'])) {
+            $lang = 'ru';
+        }
+
+        $categories = \App\Models\TemplateCategory::whereNull('parent_id')
+            ->where('lang', $lang)
+            ->whereHas('children.decks')
+            ->with(['children' => function ($query) {
+                $query->has('decks')->with(['decks' => function ($q) {
+                    $q->withCount('flashcards');
+                }]);
+            }])
+            ->get();
+
+        return response()->json($categories);
     }
 
     public function show($id)
