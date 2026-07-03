@@ -1,10 +1,10 @@
 /.phpunit.cache
-/node_modules
-/public/build
+/node_modules/
+/public/build/
 /public/hot
-/public/storage
+/public/storage/
 /storage/*.key
-/vendor
+/vendor/
 .env
 .env.backup
 .env.production
@@ -14,10 +14,12 @@ Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
-/.fleet
-/.idea
-/.vscode
+/.fleet/
+/.idea/
+/.vscode/
 
 ART_README.md
+/mindflasher_4/
 /mindflasher_4
 /tmp/
+/tmp
