@@ -115,11 +115,14 @@ class TemplateDeckSeeder extends Seeder
     }
 
     /**
-     * Генерирует стабильный 60-битный целый ID на основе уникальной строки пути.
+     * Генерирует стабильный 52-битный целый ID на основе уникальной строки пути.
+     * Ограничение в 52 бита (13 символов hex) гарантирует, что число не превысит
+     * лимит безопасного целого числа в JavaScript (Number.MAX_SAFE_INTEGER = 2^53 - 1),
+     * что критично для работы веб-клиента без потери точности.
      */
     private function generateStableId($string)
     {
-        return hexdec(substr(hash('sha256', $string), 0, 15));
+        return hexdec(substr(hash('sha256', $string), 0, 13));
     }
 
     /**
