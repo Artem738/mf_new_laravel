@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        Log::info('Register endpoint called', $request->all());
+        Log::info('Register endpoint called', $request->except(['password', 'password_confirmation']));
 
         try {
             $validatedData = $request->validate([
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        Log::info('Login endpoint called', $request->all());
+        Log::info('Login endpoint called', $request->except(['password']));
 
         try {
             $validatedData = $request->validate([
@@ -67,7 +67,7 @@ class AuthController extends Controller
             $user = User::where('email', $validatedData['email'])->first();
 
             if (!$user || !Hash::check($validatedData['password'], $user->password)) {
-                Log::warning('Invalid credentials provided', $validatedData);
+                Log::warning('Invalid credentials provided', collect($validatedData)->except(['password'])->toArray());
 
                 throw ValidationException::withMessages([
                     'email' => ['The provided credentials are incorrect.'],
@@ -78,7 +78,7 @@ class AuthController extends Controller
 
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            Log::info('Token created', ['token' => $token]);
+            Log::info('Token created for user', ['user_id' => $user->id]);
 
             return response()->json([
                 'access_token' => $token,

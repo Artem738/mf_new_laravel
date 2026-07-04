@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class FlashcardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum');
-    }
-
     // Получение одной флешкарты по ID
     public function show($id)
     {
@@ -52,6 +47,10 @@ class FlashcardController extends Controller
 
         if (!$deck) {
             return response()->json(['message' => 'Deck not found or does not belong to the user'], 404);
+        }
+
+        if ($deck->flashcards()->count() >= 1000) {
+            return response()->json(['message' => 'Deck cannot contain more than 1000 flashcards'], 400);
         }
 
         // Проверка, нет ли у пользователя флешкарты с таким же вопросом
@@ -93,8 +92,8 @@ class FlashcardController extends Controller
 
         // Валидация данных
         $request->validate([
-            'question' => 'required|string|max:255',
-            'answer' => 'required|string|max:255',
+            'question' => 'required|string|max:1000',
+            'answer' => 'required|string|max:5000',
             'weight' => 'nullable|integer',
         ]);
 
@@ -118,17 +117,8 @@ class FlashcardController extends Controller
         return response()->json($flashcard);
     }
 
-    /*
-
-    aasd;rtyyy
-    333;3333
-    555;777
-
-    */
-
     public function csvInsert(Request $request)
     {
-        Log::info("csvInsert method started.");
     
         $user = Auth::user();
         Log::info("Authenticated user", ['user_id' => $user->id]);
@@ -150,16 +140,16 @@ class FlashcardController extends Controller
             Log::warning("Deck not found or does not belong to the user", ['deck_id' => $request->input('deck_id')]);
             return response()->json(['message' => 'Deck not found or does not belong to the user'], 404);
         }
+
+        $currentCardsCount = $deck->flashcards()->count();
     
         // Чтение данных CSV из текстового поля
         $csvData = $request->input('csv_data');
-        Log::info("CSV data received", ['csv_data' => $csvData]);
         
         $delimiter = $request->input('delimiter', ';');
         if ($delimiter === '\\t' || $delimiter === '\t') {
             $delimiter = "\t";
         }
-        Log::info("Using delimiter", ['delimiter' => $delimiter]);
     
         // Разделение на строки
         $rows = explode("\n", $csvData);
@@ -167,7 +157,6 @@ class FlashcardController extends Controller
     
         // Обработка каждой строки
         foreach ($rows as $row) {
-            Log::info("Processing row", ['row' => $row]);
     
             // Если строка пустая, пропустить
             if (empty(trim($row))) {
@@ -187,8 +176,6 @@ class FlashcardController extends Controller
             $question = trim($columns[0]);
             $answer = trim($columns[1]);
     
-            Log::info("Extracted question and answer", ['question' => $question, 'answer' => $answer]);
-    
             // Проверка, нет ли у пользователя флешкарты с таким же вопросом
             $flashcard = Flashcard::where('deck_id', $request->input('deck_id'))
                 ->where('question', $question)
@@ -203,6 +190,10 @@ class FlashcardController extends Controller
                 ]);
                 Log::info("Flashcard updated", ['flashcard_id' => $flashcard->id]);
             } else {
+                if ($currentCardsCount >= 1000) {
+                    Log::warning("Deck limit reached during CSV insert. Skipping remaining.", ['deck_id' => $deck->id]);
+                    break;
+                }
                 // Создание новой флешкарты
                 $newFlashcard = Flashcard::create([
                     'deck_id' => $request->input('deck_id'),
@@ -210,6 +201,7 @@ class FlashcardController extends Controller
                     'answer' => $answer,
                     'weight' => 0, // Или передать значение, если есть в CSV
                 ]);
+                $currentCardsCount++;
                 Log::info("New flashcard created", ['flashcard_id' => $newFlashcard->id]);
             }
         }

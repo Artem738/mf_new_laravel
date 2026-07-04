@@ -45,12 +45,12 @@ class ProgressController extends Controller
             if ($currentIntervalDays === 0) {
                 $newIntervalDays = 1;
             } else {
-                $newIntervalDays = max(1, (int)round($currentIntervalDays * 1.2));
+                $newIntervalDays = max(1, (int)round($currentIntervalDays * 1.5));
             }
             $nextReviewAt = now()->addDays($newIntervalDays);
         } elseif ($grade === 30) {
             // Хорошо: коэффициент легкости растет, интервал умножается на него
-            $newEaseFactor = $currentEaseFactor + 0.15;
+            $newEaseFactor = min(3.0, $currentEaseFactor + 0.15);
             if ($currentIntervalDays === 0) {
                 $newIntervalDays = 3;
             } else {

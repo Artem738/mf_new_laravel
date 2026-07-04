@@ -54,3 +54,7 @@ This file guides Antigravity agents working on the Mindflasher recovery project.
 - **"Let's think" constraint**: If the user says "Let's think" ("Давай подумаем"), discuss options in chat and do not edit any files until approved.
 - **Markdown Formatting**: When generating text content for the app (e.g., flashcards in seeders), always use standard Markdown formatting (like actual newlines for line breaks) instead of HTML tags like `<br>`, as the frontend relies on a Markdown renderer. **Important: Markdown is only supported in the answers (the `a` field of flashcards). Do not use Markdown in questions (the `q` field).**
 - **Temporary Scripts**: When writing temporary or utility scripts (like PHP parsers, data loaders, or one-off tests), ALWAYS save them inside the `tmp/` directory. NEVER create them directly in the project root.
+
+## Limits & Constraints
+
+- **1000 Cards Limit:** A single deck must not contain more than 1000 flashcards. This is a hard limit designed to ensure optimal UX (Micro-learning) and maintain high performance for JSON responses and SQLite offline caching.

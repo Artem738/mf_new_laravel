@@ -9,14 +9,10 @@ use App\Models\TemplateFlashcard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class DeckController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:sanctum');
-    }
-
     // Получение всех колод пользователя
     public function index()
     {
@@ -235,25 +231,44 @@ class DeckController extends Controller
         }
     
         // Создание новой колоды для пользователя с привязкой к шаблонной колоде
-        $newDeck = Deck::create([
-            'user_id' => $user->id,
-            'template_deck_id' => $templateDeck->id,  // Указание template_deck_id
-            'name' => $templateDeck->name,
-            'description' => $templateDeck->description,
-        ]);
-    
-        // Копирование карточек из шаблонной колоды
-        $templateFlashcards = TemplateFlashcard::where('deck_id', $templateDeckId)->get();
-        foreach ($templateFlashcards as $templateFlashcard) {
-            Flashcard::create([
-                'deck_id' => $newDeck->id,
-                'question' => $templateFlashcard->question,
-                'answer' => $templateFlashcard->answer,
-                'weight' => $templateFlashcard->weight,
+        DB::beginTransaction();
+        try {
+            $newDeck = Deck::create([
+                'user_id' => $user->id,
+                'template_deck_id' => $templateDeck->id,  // Указание template_deck_id
+                'name' => $templateDeck->name,
+                'description' => $templateDeck->description,
             ]);
+
+            // Копирование карточек из шаблонной колоды
+            $templateFlashcards = TemplateFlashcard::where('deck_id', $templateDeckId)->get();
+            
+            $now = now();
+            $flashcardsData = [];
+            foreach ($templateFlashcards as $templateFlashcard) {
+                $flashcardsData[] = [
+                    'deck_id' => $newDeck->id,
+                    'question' => $templateFlashcard->question,
+                    'answer' => $templateFlashcard->answer,
+                    'weight' => $templateFlashcard->weight,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+
+            // Batch insert to avoid N+1 issue
+            $chunks = array_chunk($flashcardsData, 500);
+            foreach ($chunks as $chunk) {
+                Flashcard::insert($chunk);
+            }
+
+            DB::commit();
+            return response()->json(['message' => 'Template base added to user'], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Failed to add template base to user', ['error' => $e->getMessage()]);
+            return response()->json(['message' => 'Failed to add template base'], 500);
         }
-    
-        return response()->json(['message' => 'Template base added to user'], 200);
     }
 
     // Удаление колоды пользователя
