@@ -38,7 +38,7 @@ return [
         ['q' => 'He said, "Don\'t be late." -> He told me ___ late.', 'a' => "✅ **not to be**\n\n*💡 Правило: reported command: told + object + not to + verb.*"],
         ['q' => 'She said, "Please help me." -> She asked me ___ her.', 'a' => "✅ **to help**\n\n*💡 Правило: asked + object + to + verb.*"],
 
-        // --- Indirect Questions (Косвенные вопросы) ---
+        // --- Indirect Questions (Непрямі питання) ---
         ['q' => 'Where is the station? -> Do you know where the station ___?', 'a' => "✅ **is**\n\n*💡 Правило: У непрямих питаннях прямий порядок слів! (where + subject + verb).*"],
         ['q' => 'Where does he live? -> Can you tell me where he ___ (жити)?', 'a' => "✅ **lives**\n\n*💡 Правило: Допоміжні дієслова do/does/did ЗНИКАЮТЬ.*"],
         ['q' => 'Did she pass the exam? -> I wonder ___ she passed the exam.', 'a' => "✅ **if / whether**\n\n*💡 Правило: Якщо немає питального слова, використовуємо if/whether (чи).*"],
@@ -48,7 +48,7 @@ return [
         ['q' => 'The letter ___ (було відправлено) yesterday.', 'a' => "✅ **was sent**\n\n*💡 Правило: Past Simple Passive: was/were + V3.*"],
         ['q' => 'The email will ___ (бути відправлено) tomorrow.', 'a' => "✅ **be sent**\n\n*💡 Правило: Future Passive: will be + V3.*"],
 
-        // --- Gerund vs Infinitive (Разница смыслов) ---
+        // --- Gerund vs Infinitive (Різниця смислів) ---
         ['q' => 'Please remember ___ (зачинити) the door when you leave.', 'a' => "✅ **to lock**\n\n*💡 Правило: remember to do = не забудь щось зробити (майбутнє).*"],
         ['q' => 'I remember ___ (як відвідував) Paris when I was a child.', 'a' => "✅ **visiting**\n\n*💡 Правило: remember doing = згадувати про минуле.*"],
         ['q' => 'I stopped ___ (курити) last year.', 'a' => "✅ **smoking**\n\n*💡 Правило: stop doing = кинути звичку.*"],

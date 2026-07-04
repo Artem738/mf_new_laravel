@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'name' => '⚫ 🇬🇧 Англійська: C2 Слова, які плутають',
+    'description' => 'Рівень Mastery. Надзвичайно тонкі відмінності у значеннях слів, які плутають навіть освічені носії мови.',
+    'cards' => [
+        ['q' => 'Суперечити / Спростовувати (факти) vs Заперечувати (дійсність)', 'a' => 'Contradict (contradict a statement) vs Deny (deny an allegation)'],
+        ['q' => 'Пом\'якшувати (зменшувати тяжкість) vs Протистояти (заважати / працювати проти)', 'a' => 'Mitigate (mitigate the risk) vs Militate (militate against success)'],
+        ['q' => 'Благодушний (задоволений собою) vs Послужливий (охочий догодити)', 'a' => 'Complacent (a complacent attitude) vs Complaisant (a complaisant servant)'],
+        ['q' => 'Заздрісний (хоче того, що є в інших) vs Ревнивий / Пильний (боїться втратити своє)', 'a' => 'Envious (envious of her success) vs Jealous (a jealous husband / jealous of his rights)'],
+        ['q' => 'Спростовувати (доводити хибність) vs Заперечувати (казати, що це не так)', 'a' => 'Refute (refute a theory with evidence) vs Repudiate / Deny (repudiate a claim)'],
+        ['q' => 'Умисний / Навмисний (про злочин) vs Передумисний (заздалегідь спланований)', 'a' => 'Intentional / Deliberate vs Premeditated (premeditated murder)'],
+        ['q' => 'Двозначний (неясний за змістом) vs Суперечливий (має змішані почуття)', 'a' => 'Ambiguous (an ambiguous statement) vs Ambivalent (ambivalent feelings)'],
+        ['q' => 'Зневажливий (виражає презирство) vs Принизливий (применшує гідність)', 'a' => 'Contemptuous (a contemptuous look) vs Derogatory (derogatory remarks)'],
+        ['q' => 'Вкорінений (про звички/закони) vs Вроджений / Невід\'ємний', 'a' => 'Ingrained (ingrained prejudice) vs Inherent / Innate (innate talent)'],
+        ['q' => 'Практичний (має сенс) vs Здійсненний (те, що можна зробити)', 'a' => 'Practical (a practical solution) vs Practicable (a practicable plan)'],
+        ['q' => 'Незвичайний (винятковий) vs Той, що виключає / Робить виняток', 'a' => 'Exceptional (an exceptional talent) vs Exceptionable (exceptionable behaviour - що викликає заперечення)'],
+        ['q' => 'Зловісний (передвіщає біду) vs Несприятливий', 'a' => 'Ominous (ominous dark clouds) vs Inauspicious (an inauspicious start)'],
+        ['q' => 'Лютий / Жорстокий vs Ненаситний', 'a' => 'Ferocious (a ferocious beast) vs Voracious (a voracious reader / appetite)'],
+        ['q' => 'Невловимий (важко зловити/зрозуміти) vs Ілюзорний (неіснуючий)', 'a' => 'Elusive (an elusive concept) vs Illusory (an illusory hope)'],
+        ['q' => 'Швидкоплинний (недовгий) vs Минущий (тимчасовий)', 'a' => 'Fleeting (a fleeting moment) vs Transient (transient joy)'],
+        ['q' => 'Безкорисливий (не шукає вигоди) vs Незацікавлений (байдужий)', 'a' => 'Disinterested (impartial judge) vs Uninterested (bored student)'],
+        ['q' => 'Викликати / Провокувати (почуття) vs Вдаватися до (закону, духів)', 'a' => 'Evoke (evoke sympathy) vs Invoke (invoke a law / spirits)'],
+        ['q' => 'Принижувати (ображати) vs Упокорювати / Робити скромним', 'a' => 'Humiliate (humiliate someone publicly) vs Humble (it was a humbling experience)'],
+        ['q' => 'Знецінювати (знижувати вартість) vs Применшувати (принижувати заслуги)', 'a' => 'Depreciate (assets depreciate) vs Deprecate (self-deprecating humour)'],
+        ['q' => 'Непристойний vs Образливий / Огидний', 'a' => 'Obscene (obscene gestures) vs Odious (an odious crime)'],
+    ],
+];

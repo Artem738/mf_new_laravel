@@ -77,7 +77,7 @@ return [
 
         // --- Would like / Would rather ---
         ['q' => 'I would like ___ book a table.', 'a' => "✅ **to**\n\n*💡 would like + to + verb.*"],
-        ['q' => 'Would you like ___ tea?', 'a' => "✅ **some**\n\n*💡 У ввічливых реченнях часто використовуємо some.*"],
+        ['q' => 'Would you like ___ tea?', 'a' => "✅ **some**\n\n*💡 У ввічливих реченнях часто використовуємо some.*"],
         ['q' => 'I would rather ___ at home.', 'a' => "✅ **stay**\n\n*💡 would rather + verb без to = віддав би перевагу / волів би.*"],
 
         // --- Countable / Uncountable & Quantifiers ---
