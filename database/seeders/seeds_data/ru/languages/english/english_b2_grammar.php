@@ -22,8 +22,8 @@ return [
         ['q' => '___ (Представь/Допустим) you won the lottery, what would you do?', 'a' => "✅ **Suppose / Supposing**\n\n*💡 Правило: Используется для гипотетических ситуаций вместо If (обычно с 2nd Conditional).*"],
         ['q' => 'I won\'t go to the party ___ (если не / пока не) you come with me.', 'a' => "✅ **unless**\n\n*💡 Правило: Unless = If not. После него глагол ставится в УТВЕРДИТЕЛЬНОЙ форме.*"],
         ['q' => '___ (В случае) fire, do not use the elevators.', 'a' => "✅ **In case of**\n\n*💡 Правило: \"In case of\" + существительное. Означает \"Если произойдет...\".*"],
-        ['q' => 'If I ___ (not / lose) my keys yesterday, I ___ (not / stand) outside now.', 'a' => "✅ **hadn't lost / wouldn't be standing**\n\n*💡 Правило: Mixed Conditional (Past -> Present). Условие в прошлом, результат сейчас.*"],
-        ['q' => 'If he ___ (be) a better driver, he ___ (not / crash) the car last week.', 'a' => "✅ **were / wouldn't have crashed**\n\n*💡 Правило: Mixed Conditional (Present -> Past). Свойство в настоящем, результат в прошлом.*"],
+        ['q' => 'If I ___ (не потерял) my keys yesterday, I ___ (не стоял бы) outside now.', 'a' => "✅ **hadn't lost / wouldn't be standing**\n\n*💡 Правило: Mixed Conditional (Past -> Present). Условие в прошлом, результат сейчас.*"],
+        ['q' => 'If he ___ (был бы) a better driver, he ___ (не разбил бы) the car last week.', 'a' => "✅ **were / wouldn't have crashed**\n\n*💡 Правило: Mixed Conditional (Present -> Past). Свойство в настоящем, результат в прошлом.*"],
 
         // --- Passive with Reporting Verbs (Сложный пассив) ---
         ['q' => '___ (Говорят, что) he is a millionaire.', 'a' => "✅ **It is said that**\n\n*💡 Правило: Безличная пассивная конструкция.*"],
@@ -68,18 +68,14 @@ return [
         ['q' => 'Your luggage ___ (очень тяжелый).', 'a' => "✅ **is very heavy**\n\n*💡 Правило: Luggage/Baggage (багаж), Furniture (мебель), Accommodation (жилье) — всегда неисчисляемые (глагол в единственном числе: is, has, was).*"],
 
         // --- Subjunctive Mood (Сослагательное наклонение B2) ---
-        ['q' => 'I suggest that he ___ (leave) immediately.', 'a' => "✅ **leave / should leave**\n\n*💡 Правило: После глаголов suggest, recommend, insist, demand используется голый инфинитив (без s/es) даже для he/she/it! Либо should + V.*"],
-        ['q' => 'It is vital that she ___ (not / know) the truth.', 'a' => "✅ **not know / shouldn't know**\n\n*💡 Правило: Отрицание в Subjunctive mood строится без don't/doesn't (просто not + глагол).*"],
+        ['q' => 'I suggest that he ___ (покинет) immediately.', 'a' => "✅ **leave / should leave**\n\n*💡 Правило: После глаголов suggest, recommend, insist, demand используется голый инфинитив (без s/es) даже для he/she/it! Либо should + V.*"],
+        ['q' => 'It is vital that she ___ (не знает) the truth.', 'a' => "✅ **not know / shouldn't know**\n\n*💡 Правило: Отрицание в Subjunctive mood строится без don't/doesn't (просто not + глагол).*"],
+
         // --- Passive Voice (Advanced Tenses) ---
-        ['q' => 'The house ___ ___ ___ (будет построен) by next year.', 'a' => "✅ **will have been built**
+        ['q' => 'The house ___ ___ ___ (будет построен) by next year.', 'a' => "✅ **will have been built**\n\n*💡 Правило: Future Perfect Passive.*"],
+        ['q' => 'The project ___ ___ ___ (должен быть закончен) tomorrow.', 'a' => "✅ **must be finished / should be finished**\n\n*💡 Правило: Modal Passive (Modal + be + V3).*"],
 
-*💡 Правило: Future Perfect Passive.*"],
-        ['q' => 'The project ___ ___ ___ (должен быть закончен) tomorrow.', 'a' => "✅ **must be finished / should be finished**
-
-*💡 Правило: Modal Passive (Modal + be + V3).*"],
         // --- Unreal Past (I wish / If only B2) ---
-        ['q' => 'I wish you ___ (stop) making that noise!', 'a' => "✅ **would stop**
-
-*💡 Правило: I wish + somebody + would = раздражение по поводу чужого поведения.*"],
+        ['q' => 'I wish you ___ (прекратил) making that noise!', 'a' => "✅ **would stop**\n\n*💡 Правило: I wish + somebody + would = раздражение по поводу чужого поведения.*"],
     ],
 ];

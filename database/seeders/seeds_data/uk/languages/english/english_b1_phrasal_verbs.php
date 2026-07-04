@@ -1,0 +1,87 @@
+<?php
+
+return [
+    'name' => '🟠 🇬🇧 Англійська B1: Фразові дієслова та Ідіоми',
+    'description' => 'Найважливіші фразові дієслова та базові ідіоми рівня Intermediate. Без них неможливо розуміти носіїв і дивитися фільми в оригіналі.',
+    'cards' => [
+        // --- Everyday Life & Routines ---
+        ['q' => 'Прокидатися', 'a' => 'Wake up'],
+        ['q' => 'Вставати (з ліжка / зі стільця)', 'a' => 'Get up'],
+        ['q' => 'Дорослішати', 'a' => 'Grow up'],
+        ['q' => 'Дізнатися / З\'ясувати', 'a' => 'Find out'],
+        ['q' => 'Шукати (щось або когось)', 'a' => 'Look for'],
+        ['q' => 'Шукати інформацію (у словнику / в інтернеті)', 'a' => 'Look up'],
+        ['q' => 'Підняти (річ) / Забрати (на машині)', 'a' => 'Pick up'],
+        ['q' => 'Приміряти (одяг)', 'a' => 'Try on'],
+        ['q' => 'Знімати (одяг)', 'a' => 'Take off'],
+        ['q' => 'Одягати (одяг)', 'a' => 'Put on'],
+        ['q' => 'Заповнювати (форму / анкету)', 'a' => 'Fill in / Fill out'],
+        ['q' => 'Викидати', 'a' => 'Throw away'],
+
+        // --- Relationships & Socializing ---
+        ['q' => 'Ладнати з кимось', 'a' => 'Get on with / Get along with'],
+        ['q' => 'Піклуватися (доглядати) за кимось', 'a' => 'Look after'],
+        ['q' => 'Виховувати (дітей)', 'a' => 'Bring up'],
+        ['q' => 'Бути схожим на (родича характером/зовні)', 'a' => 'Take after'],
+        ['q' => 'Випадково зустріти (наштовхнутися на)', 'a' => 'Come across'],
+        ['q' => 'Розійтися / Розлучитися', 'a' => 'Break up'],
+        ['q' => 'Помиритися (після сварки)', 'a' => 'Make up (with)'],
+        ['q' => 'Посваритися', 'a' => 'Fall out (with)'],
+        ['q' => 'Підводити (когось)', 'a' => 'Let down'],
+        ['q' => 'Чекати з нетерпінням', 'a' => 'Look forward to'],
+        ['q' => 'Хвалитися (Випендрюватися)', 'a' => 'Show off'],
+        ['q' => 'Сварити (Відчитувати когось)', 'a' => 'Tell off'],
+
+        // --- Travel & Movement ---
+        ['q' => 'Вирушати в дорогу', 'a' => 'Set off'],
+        ['q' => 'Зареєструватися (в готелі / аеропорту)', 'a' => 'Check in'],
+        ['q' => 'Виселитися (з готелю)', 'a' => 'Check out'],
+        ['q' => 'Злітати (про літак)', 'a' => 'Take off'],
+        ['q' => 'Сідати (в автобус / поїзд / літак)', 'a' => 'Get on'],
+        ['q' => 'Виходити (з автобуса / поїзда / літака)', 'a' => 'Get off'],
+        ['q' => 'Сідати (в машину / таксі)', 'a' => 'Get in'],
+        ['q' => 'Виходити (з машини / таксі)', 'a' => 'Get out (of)'],
+        ['q' => 'Ламатися (про машину / механізм)', 'a' => 'Break down'],
+
+        // --- Work, Problems & Progress ---
+        ['q' => 'Вирішувати проблему (Влагоджувати)', 'a' => 'Sort out'],
+        ['q' => 'Зрозуміти / розібратися (як щось працює)', 'a' => 'Figure out'],
+        ['q' => 'Вирішувати проблему / Тренуватися', 'a' => 'Work out'],
+        ['q' => 'Здаватися / Кидати (звичку)', 'a' => 'Give up'],
+        ['q' => 'Продовжувати (щось робити)', 'a' => 'Carry on / Go on'],
+        ['q' => 'Відкладати (на потім)', 'a' => 'Put off'],
+        ['q' => 'Скасовувати (зустріч, подію)', 'a' => 'Call off'],
+        ['q' => 'Зменшити споживання (цукру/витрат)', 'a' => 'Cut down on'],
+        ['q' => 'Закінчуватися (У мене закінчилася кава)', 'a' => 'Run out of'],
+        ['q' => 'З\'ясуватися / Виявитися (Виявилося, що...)', 'a' => 'Turn out (It turned out that...)'],
+        ['q' => 'Встигати за (подіями, трендами, кимось)', 'a' => 'Keep up with'],
+        ['q' => 'Вижити / Пережити важкий час', 'a' => 'Get through'],
+
+        // --- Communication ---
+        ['q' => 'Вказувати (на щось) / Звертати увагу', 'a' => 'Point out'],
+        ['q' => 'Піднімати тему (в розмові)', 'a' => 'Bring up'],
+        ['q' => 'Говорити голосніше / Висловлюватися сміливо', 'a' => 'Speak up'],
+        ['q' => 'Вигадувати (історію, відмовку)', 'a' => 'Make up'],
+        ['q' => 'Залишати (виключати зі списку / не згадувати)', 'a' => 'Leave out'],
+
+        // --- Everyday Idioms ---
+        ['q' => 'Дуже легко (Простіше простого)', 'a' => "✅ **A piece of cake**\n\n*💡 Приклад: The exam was a piece of cake.*"],
+        ['q' => 'Нездужати (Почуватися не дуже добре)', 'a' => "✅ **Under the weather**\n\n*💡 Приклад: I am feeling a bit under the weather today.*"],
+        ['q' => 'Дуже рідко (Раз на сто років)', 'a' => "✅ **Once in a blue moon**\n\n*💡 Приклад: I eat fast food once in a blue moon.*"],
+        ['q' => 'Коштувати цілі статки (Дуже дорого)', 'a' => "✅ **Cost an arm and a leg**\n\n*💡 Приклад: This car costs an arm and a leg.*"],
+        ['q' => 'Розрядити обстановку (Розтопити лід)', 'a' => "✅ **Break the ice**\n\n*💡 Приклад: He told a joke to break the ice.*"],
+        ['q' => 'Доглянути за кимось/чимось', 'a' => "✅ **Keep an eye on**\n\n*💡 Приклад: Can you keep an eye on my bag?*"],
+        ['q' => 'Зовсім раптово / Як грім серед ясного неба', 'a' => "✅ **Out of the blue**\n\n*💡 Приклад: She called me completely out of the blue.*"],
+        ['q' => 'Здається знайомим (Пригадую)', 'a' => "✅ **Ring a bell**\n\n*💡 Приклад: His name rings a bell, but I don't remember him.*"],
+        ['q' => 'Мати на увазі / Враховувати', 'a' => "✅ **Bear in mind / Keep in mind**\n\n*💡 Приклад: Bear in mind that it will be cold there.*"],
+        ['q' => 'Працювати до пізньої ночі', 'a' => "✅ **Burn the midnight oil**\n\n*💡 Приклад: I have to burn the midnight oil to finish this project.*"],
+        ['q' => 'Привертати чиюсь увагу', 'a' => "✅ **Catch someone's eye**\n\n*💡 Приклад: The red dress caught my eye.*"],
+        ['q' => 'Зводити з розуму / Бісити', 'a' => "✅ **Drive someone crazy**\n\n*💡 Приклад: This loud music is driving me crazy.*"],
+        ['q' => 'Розуміти суть справи / Схоплювати ідею', 'a' => "✅ **Get the point / See the point**\n\n*💡 Приклад: Okay, I get the point.*"],
+        ['q' => 'Почати діяти / Взятися за справу', 'a' => "✅ **Get the ball rolling**\n\n*💡 Приклад: Let's get the ball rolling and start the meeting.*"],
+        ['q' => 'Бути в одному човні (В однаковому складному становищі)', 'a' => "✅ **Be in the same boat**\n\n*💡 Приклад: Don't worry, we are all in the same boat.*"],
+        ['q' => 'Робити з мухи слона', 'a' => "✅ **Make a mountain out of a molehill**\n\n*💡 Приклад: It's just a small scratch, don't make a mountain out of a molehill.*"],
+        ['q' => 'Змінити тему', 'a' => "✅ **Change the subject**\n\n*💡 Приклад: Let's change the subject, this is getting awkward.*"],
+        ['q' => 'Змиритися з чимось неприємним', 'a' => "✅ **Put up with (something)**\n\n*💡 Приклад: I can't put up with this noise anymore.*"],
+    ],
+];

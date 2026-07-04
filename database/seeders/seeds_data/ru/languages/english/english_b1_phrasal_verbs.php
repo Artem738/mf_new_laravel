@@ -1,0 +1,87 @@
+<?php
+
+return [
+    'name' => '🟠 🇬🇧 Английский B1: Фразовые глаголы и Идиомы',
+    'description' => 'Самые важные фразовые глаголы и базовые идиомы уровня Intermediate. Без них невозможно понимать носителей и смотреть фильмы в оригинале.',
+    'cards' => [
+        // --- Everyday Life & Routines ---
+        ['q' => 'Просыпаться', 'a' => 'Wake up'],
+        ['q' => 'Вставать (с кровати / со стула)', 'a' => 'Get up'],
+        ['q' => 'Взрослеть', 'a' => 'Grow up'],
+        ['q' => 'Узнать / Выяснить', 'a' => 'Find out'],
+        ['q' => 'Искать (что-то или кого-то)', 'a' => 'Look for'],
+        ['q' => 'Искать информацию (в словаре / в интернете)', 'a' => 'Look up'],
+        ['q' => 'Поднять (вещь) / Забрать (на машине)', 'a' => 'Pick up'],
+        ['q' => 'Примерять (одежду)', 'a' => 'Try on'],
+        ['q' => 'Снимать (одежду)', 'a' => 'Take off'],
+        ['q' => 'Надевать (одежду)', 'a' => 'Put on'],
+        ['q' => 'Заполнять (форму / анкету)', 'a' => 'Fill in / Fill out'],
+        ['q' => 'Выбрасывать', 'a' => 'Throw away'],
+
+        // --- Relationships & Socializing ---
+        ['q' => 'Ладить с кем-то', 'a' => 'Get on with / Get along with'],
+        ['q' => 'Заботиться (присматривать) за кем-то', 'a' => 'Look after'],
+        ['q' => 'Воспитывать (детей)', 'a' => 'Bring up'],
+        ['q' => 'Быть похожим на (родственника характером/внешне)', 'a' => 'Take after'],
+        ['q' => 'Случайно встретить (натолкнуться на)', 'a' => 'Come across'],
+        ['q' => 'Разойтись / Расстаться', 'a' => 'Break up'],
+        ['q' => 'Помириться (после ссоры)', 'a' => 'Make up (with)'],
+        ['q' => 'Поссориться', 'a' => 'Fall out (with)'],
+        ['q' => 'Подводить (кого-то)', 'a' => 'Let down'],
+        ['q' => 'Ждать с нетерпением', 'a' => 'Look forward to'],
+        ['q' => 'Хвастаться (Выпендриваться)', 'a' => 'Show off'],
+        ['q' => 'Ругать (Отчитывать кого-то)', 'a' => 'Tell off'],
+
+        // --- Travel & Movement ---
+        ['q' => 'Отправляться в путь', 'a' => 'Set off'],
+        ['q' => 'Зарегистрироваться (в отеле / аэропорту)', 'a' => 'Check in'],
+        ['q' => 'Выселиться (из отеля)', 'a' => 'Check out'],
+        ['q' => 'Взлетать (о самолете)', 'a' => 'Take off'],
+        ['q' => 'Садиться (в автобус / поезд / самолет)', 'a' => 'Get on'],
+        ['q' => 'Выходить (из автобуса / поезда / самолета)', 'a' => 'Get off'],
+        ['q' => 'Садиться (в машину / такси)', 'a' => 'Get in'],
+        ['q' => 'Выходить (из машины / такси)', 'a' => 'Get out (of)'],
+        ['q' => 'Ломаться (о машине / механизме)', 'a' => 'Break down'],
+
+        // --- Work, Problems & Progress ---
+        ['q' => 'Решать проблему (Улаживать)', 'a' => 'Sort out'],
+        ['q' => 'Понять / разобраться (как что-то работает)', 'a' => 'Figure out'],
+        ['q' => 'Решать проблему / Тренироваться', 'a' => 'Work out'],
+        ['q' => 'Сдаваться / Бросать (привычку)', 'a' => 'Give up'],
+        ['q' => 'Продолжать (что-то делать)', 'a' => 'Carry on / Go on'],
+        ['q' => 'Откладывать (на потом)', 'a' => 'Put off'],
+        ['q' => 'Отменять (встречу, событие)', 'a' => 'Call off'],
+        ['q' => 'Уменьшить потребление (сахара/расходов)', 'a' => 'Cut down on'],
+        ['q' => 'Заканчиваться (У меня закончился кофе)', 'a' => 'Run out of'],
+        ['q' => 'Выясниться / Оказаться (Оказалось, что...)', 'a' => 'Turn out (It turned out that...)'],
+        ['q' => 'Поспевать за (событиями, трендами, кем-то)', 'a' => 'Keep up with'],
+        ['q' => 'Выжить / Пережить тяжелое время', 'a' => 'Get through'],
+
+        // --- Communication ---
+        ['q' => 'Указывать (на что-то) / Обращать внимание', 'a' => 'Point out'],
+        ['q' => 'Поднимать тему (в разговоре)', 'a' => 'Bring up'],
+        ['q' => 'Говорить громче / Высказываться смело', 'a' => 'Speak up'],
+        ['q' => 'Выдумывать (историю, отговорку)', 'a' => 'Make up'],
+        ['q' => 'Оставлять (исключать из списка / не упоминать)', 'a' => 'Leave out'],
+
+        // --- Everyday Idioms ---
+        ['q' => 'Очень легко (Проще простого)', 'a' => "✅ **A piece of cake**\n\n*💡 Пример: The exam was a piece of cake.*"],
+        ['q' => 'Нездоровится (Чувствовать себя не очень хорошо)', 'a' => "✅ **Under the weather**\n\n*💡 Пример: I am feeling a bit under the weather today.*"],
+        ['q' => 'Очень редко (Раз в сто лет)', 'a' => "✅ **Once in a blue moon**\n\n*💡 Пример: I eat fast food once in a blue moon.*"],
+        ['q' => 'Стоить целое состояние (Очень дорого)', 'a' => "✅ **Cost an arm and a leg**\n\n*💡 Пример: This car costs an arm and a leg.*"],
+        ['q' => 'Разрядить обстановку (Растопить лед)', 'a' => "✅ **Break the ice**\n\n*💡 Пример: He told a joke to break the ice.*"],
+        ['q' => 'Присмотреть за кем-то/чем-то', 'a' => "✅ **Keep an eye on**\n\n*💡 Пример: Can you keep an eye on my bag?*"],
+        ['q' => 'Совершенно внезапно / Как гром среди ясного неба', 'a' => "✅ **Out of the blue**\n\n*💡 Пример: She called me completely out of the blue.*"],
+        ['q' => 'Кажется знакомым (Припоминаю)', 'a' => "✅ **Ring a bell**\n\n*💡 Пример: His name rings a bell, but I don't remember him.*"],
+        ['q' => 'Иметь в виду / Учитывать', 'a' => "✅ **Bear in mind / Keep in mind**\n\n*💡 Пример: Bear in mind that it will be cold there.*"],
+        ['q' => 'Работать до поздней ночи', 'a' => "✅ **Burn the midnight oil**\n\n*💡 Пример: I have to burn the midnight oil to finish this project.*"],
+        ['q' => 'Привлекать чье-то внимание', 'a' => "✅ **Catch someone's eye**\n\n*💡 Пример: The red dress caught my eye.*"],
+        ['q' => 'Сводить с ума / Бесить', 'a' => "✅ **Drive someone crazy**\n\n*💡 Пример: This loud music is driving me crazy.*"],
+        ['q' => 'Понимать суть дела / Схватывать идею', 'a' => "✅ **Get the point / See the point**\n\n*💡 Пример: Okay, I get the point.*"],
+        ['q' => 'Начать действовать / Взяться за дело', 'a' => "✅ **Get the ball rolling**\n\n*💡 Пример: Let's get the ball rolling and start the meeting.*"],
+        ['q' => 'Быть в одной лодке (В одинаковом сложном положении)', 'a' => "✅ **Be in the same boat**\n\n*💡 Пример: Don't worry, we are all in the same boat.*"],
+        ['q' => 'Делать из мухи слона', 'a' => "✅ **Make a mountain out of a molehill**\n\n*💡 Пример: It's just a small scratch, don't make a mountain out of a molehill.*"],
+        ['q' => 'Сменить тему', 'a' => "✅ **Change the subject**\n\n*💡 Пример: Let's change the subject, this is getting awkward.*"],
+        ['q' => 'Смириться с чем-то неприятным', 'a' => "✅ **Put up with (something)**\n\n*💡 Пример: I can't put up with this noise anymore.*"],
+    ],
+];
