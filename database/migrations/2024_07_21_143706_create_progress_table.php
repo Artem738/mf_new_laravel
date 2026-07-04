@@ -24,6 +24,10 @@ class CreateProgressTable extends Migration
             $table->timestamp('next_review_at')->nullable();
             $table->timestamp('last_reviewed_at')->nullable();
             $table->timestamps();
+
+            $table->unique(['flashcard_id', 'user_id']);
+            $table->index('next_review_at');
+
             $table->foreign('flashcard_id')->references('id')->on('flashcards')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

@@ -26,7 +26,7 @@ class DeckController extends Controller
         $stats = DB::table('flashcards')
             ->leftJoin('progress', function ($join) use ($user) {
                 $join->on('flashcards.id', '=', 'progress.flashcard_id')
-                     ->where('progress.user_id', '=', $user->id);
+                    ->where('progress.user_id', '=', $user->id);
             })
             ->whereIn('flashcards.deck_id', $decks->pluck('id'))
             ->select('flashcards.deck_id', 'progress.last_answer_weight', DB::raw('count(*) as count'))
@@ -45,9 +45,9 @@ class DeckController extends Controller
                     'green_cards' => 0,
                 ];
             }
-            
+
             $deckStats[$deckId]['total_cards'] += $stat->count;
-            
+
             if (is_null($stat->last_answer_weight)) {
                 $deckStats[$deckId]['gray_cards'] += $stat->count;
             } elseif ($stat->last_answer_weight == 1) {
@@ -92,7 +92,7 @@ class DeckController extends Controller
         $stats = DB::table('flashcards')
             ->leftJoin('progress', function ($join) use ($user) {
                 $join->on('flashcards.id', '=', 'progress.flashcard_id')
-                     ->where('progress.user_id', '=', $user->id);
+                    ->where('progress.user_id', '=', $user->id);
             })
             ->where('flashcards.deck_id', $deck->id)
             ->select('progress.last_answer_weight', DB::raw('count(*) as count'))
@@ -186,21 +186,21 @@ class DeckController extends Controller
         $query = DB::table('flashcards')
             ->leftJoin('progress', function ($join) use ($user) {
                 $join->on('flashcards.id', '=', 'progress.flashcard_id')
-                     ->where('progress.user_id', '=', $user->id);
+                    ->where('progress.user_id', '=', $user->id);
             })
             ->where('flashcards.deck_id', $id);
 
         if ($mode === 'srs') {
             $query->where(function ($q) {
                 $q->whereNull('progress.id')
-                  ->orWhere('progress.next_review_at', '<=', now());
+                    ->orWhere('progress.next_review_at', '<=', now());
             });
         }
 
         $flashcards = $query->select(
-            'flashcards.*', 
-            'progress.weight', 
-            'progress.last_answer_weight', 
+            'flashcards.*',
+            'progress.weight',
+            'progress.last_answer_weight',
             'progress.last_reviewed_at',
             'progress.ease_factor',
             'progress.interval_days',
@@ -215,21 +215,21 @@ class DeckController extends Controller
     {
         $user = Auth::user();
         $templateDeckId = $request->input('template_deck_id');
-    
+
         // Проверка наличия шаблонной колоды
         $templateDeck = TemplateDeck::find($templateDeckId);
         if (!$templateDeck) {
             return response()->json(['message' => 'Template deck not found'], 404);
         }
-    
+
         // Проверка наличия колоды с таким же template_deck_id у пользователя
         $existingDeck = Deck::where('user_id', $user->id)
-                            ->where('template_deck_id', $templateDeck->id)
-                            ->first();
+            ->where('template_deck_id', $templateDeck->id)
+            ->first();
         if ($existingDeck) {
             return response()->json(['message' => 'User already has a deck based on this template'], 400);
         }
-    
+
         // Создание новой колоды для пользователя с привязкой к шаблонной колоде
         DB::beginTransaction();
         try {
@@ -242,7 +242,7 @@ class DeckController extends Controller
 
             // Копирование карточек из шаблонной колоды
             $templateFlashcards = TemplateFlashcard::where('deck_id', $templateDeckId)->get();
-            
+
             $now = now();
             $flashcardsData = [];
             foreach ($templateFlashcards as $templateFlashcard) {

@@ -27,8 +27,10 @@ class TemplateDeckSeeder extends Seeder
             // Загружаем структуру категорий для этого языка
             $categoriesMap = include $categoriesPath;
 
-            // Сидируем категории (Уровень 1) и подкатегории (Уровень 2) с генерацией стабильных ID
+            // Сидируем категории (Уровень 1) и подкатегории (Уровень 2) с генерацией стабильных ID и порядковых номеров
+            $catSort = 0;
             foreach ($categoriesMap as $catKey => $catData) {
+                $catSort += 10;
                 $catId = $this->generateStableId("category/{$lang}/{$catKey}");
                 $parentCat = TemplateCategory::updateOrCreate(
                     ['id' => $catId],
@@ -36,11 +38,14 @@ class TemplateDeckSeeder extends Seeder
                         'name' => $catData['name'],
                         'parent_id' => null,
                         'lang' => $lang,
+                        'sort_order' => $catSort,
                     ]
                 );
 
                 if (isset($catData['subcategories'])) {
+                    $subcatSort = 0;
                     foreach ($catData['subcategories'] as $subcatKey => $subcatData) {
+                        $subcatSort += 10;
                         $subcatId = $this->generateStableId("subcategory/{$lang}/{$catKey}/{$subcatKey}");
                         TemplateCategory::updateOrCreate(
                             ['id' => $subcatId],
@@ -48,23 +53,20 @@ class TemplateDeckSeeder extends Seeder
                                 'name' => $subcatData['name'],
                                 'parent_id' => $parentCat->id,
                                 'lang' => $lang,
+                                'sort_order' => $subcatSort,
                             ]
                         );
                     }
                 }
             }
 
-            // 2. Рекурсивно находим и сидируем все файлы колод (Уровень 3)
+            // 2. Рекурсивно находим все файлы колод (Уровень 3)
             $deckFiles = $this->getPhpFilesRecursive($langDir);
 
+            // Группируем файлы колод по подкатегориям
+            $groupedDecks = [];
             foreach ($deckFiles as $filePath) {
                 if (basename($filePath) === 'categories.php') {
-                    continue;
-                }
-
-                $deckData = include $filePath;
-
-                if (!is_array($deckData)) {
                     continue;
                 }
 
@@ -79,36 +81,65 @@ class TemplateDeckSeeder extends Seeder
 
                 $catKey = $pathParts[0];
                 $subcatKey = $pathParts[1];
-                $fileName = basename($filePath);
-
-                // Вычисляем ID подкатегории
                 $subcatId = $this->generateStableId("subcategory/{$lang}/{$catKey}/{$subcatKey}");
 
-                // Вычисляем стабильный ID колоды на основе её пути на диске
-                $deckId = $this->generateStableId("deck/{$lang}/{$catKey}/{$subcatKey}/{$fileName}");
+                $groupedDecks[$subcatId][] = [
+                    'filePath' => $filePath,
+                    'catKey' => $catKey,
+                    'subcatKey' => $subcatKey,
+                ];
+            }
 
-                $cards = $deckData['cards'] ?? [];
-                unset($deckData['cards']);
+            // Сидируем колоды в каждой подкатегории с генерацией стабильных ID и порядковых номеров
+            foreach ($groupedDecks as $subcatId => $decksInSubcat) {
+                // Гарантируем алфавитный порядок файлов
+                usort($decksInSubcat, function ($a, $b) {
+                    return strcmp(basename($a['filePath']), basename($b['filePath']));
+                });
 
-                $deckData['id'] = $deckId;
-                $deckData['category_id'] = $subcatId;
-                $deckData['deck_lang'] = $lang;
+                foreach ($decksInSubcat as $index => $deckInfo) {
+                    $filePath = $deckInfo['filePath'];
+                    $catKey = $deckInfo['catKey'];
+                    $subcatKey = $deckInfo['subcatKey'];
+                    $fileName = basename($filePath);
 
-                $deck = TemplateDeck::updateOrCreate(
-                    ['id' => $deckId],
-                    $deckData
-                );
+                    $deckData = include $filePath;
 
-                // Удаляем старые карточки для этой колоды и записываем новые
-                TemplateFlashcard::where('deck_id', $deck->id)->delete();
+                    if (!is_array($deckData)) {
+                        continue;
+                    }
 
-                foreach ($cards as $card) {
-                    TemplateFlashcard::create([
-                        'deck_id' => $deck->id,
-                        'question' => $card['q'],
-                        'answer' => $card['a'],
-                        'weight' => $card['weight'] ?? 0,
-                    ]);
+                    // Вычисляем стабильный ID колоды на основе её пути на диске
+                    $deckId = $this->generateStableId("deck/{$lang}/{$catKey}/{$subcatKey}/{$fileName}");
+
+                    $cards = $deckData['cards'] ?? [];
+                    unset($deckData['cards']);
+
+                    // Определяем sort_order: приоритет явному ключу в файле, иначе автогенерация
+                    $sortOrder = $deckData['sort_order'] ?? (($index + 1) * 10);
+                    unset($deckData['sort_order']);
+
+                    $deckData['id'] = $deckId;
+                    $deckData['category_id'] = $subcatId;
+                    $deckData['deck_lang'] = $lang;
+                    $deckData['sort_order'] = $sortOrder;
+
+                    $deck = TemplateDeck::updateOrCreate(
+                        ['id' => $deckId],
+                        $deckData
+                    );
+
+                    // Удаляем старые карточки для этой колоды и записываем новые
+                    TemplateFlashcard::where('deck_id', $deck->id)->delete();
+
+                    foreach ($cards as $card) {
+                        TemplateFlashcard::create([
+                            'deck_id' => $deck->id,
+                            'question' => $card['q'],
+                            'answer' => $card['a'],
+                            'weight' => $card['weight'] ?? 0,
+                        ]);
+                    }
                 }
             }
         }

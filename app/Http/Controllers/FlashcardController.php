@@ -119,69 +119,69 @@ class FlashcardController extends Controller
 
     public function csvInsert(Request $request)
     {
-    
+
         $user = Auth::user();
         Log::info("Authenticated user", ['user_id' => $user->id]);
-    
+
         // Валидация данных
         $validated = $request->validate([
             'deck_id' => 'required|exists:decks,id',
             'csv_data' => 'required|string',
         ]);
         Log::info("Request validated", $validated);
-    
+
         // Проверка, что колода принадлежит пользователю
         $deck = Deck::where('id', $request->input('deck_id'))
             ->where('user_id', $user->id)
             ->first();
         Log::info("Deck checked", ['deck_id' => $request->input('deck_id'), 'deck_exists' => $deck !== null]);
-    
+
         if (!$deck) {
             Log::warning("Deck not found or does not belong to the user", ['deck_id' => $request->input('deck_id')]);
             return response()->json(['message' => 'Deck not found or does not belong to the user'], 404);
         }
 
         $currentCardsCount = $deck->flashcards()->count();
-    
+
         // Чтение данных CSV из текстового поля
         $csvData = $request->input('csv_data');
-        
+
         $delimiter = $request->input('delimiter', ';');
         if ($delimiter === '\\t' || $delimiter === '\t') {
             $delimiter = "\t";
         }
-    
+
         // Разделение на строки
         $rows = explode("\n", $csvData);
         Log::info("CSV data split into rows", ['rows' => $rows]);
-    
+
         // Обработка каждой строки
         foreach ($rows as $row) {
-    
+
             // Если строка пустая, пропустить
             if (empty(trim($row))) {
                 Log::warning("Skipping empty row", ['row' => $row]);
                 continue;
             }
-    
+
             // Разделение строки по разделителю
             $columns = explode($delimiter, $row);
-    
+
             // Если меньше двух колонок, пропустить
             if (count($columns) < 2) {
                 Log::warning("Skipping row due to insufficient columns", ['row' => $row]);
                 continue;
             }
-    
+
             $question = trim($columns[0]);
             $answer = trim($columns[1]);
-    
+
             // Проверка, нет ли у пользователя флешкарты с таким же вопросом
             $flashcard = Flashcard::where('deck_id', $request->input('deck_id'))
                 ->where('question', $question)
                 ->first();
             Log::info("Flashcard existence checked", ['flashcard_exists' => $flashcard !== null]);
-    
+
             if ($flashcard) {
                 // Обновление существующей флешкарты
                 $flashcard->update([
@@ -205,11 +205,11 @@ class FlashcardController extends Controller
                 Log::info("New flashcard created", ['flashcard_id' => $newFlashcard->id]);
             }
         }
-    
+
         Log::info("CSV data processed successfully.");
         return response()->json(['message' => 'CSV data processed successfully'], 201);
     }
-    
+
 
 
 

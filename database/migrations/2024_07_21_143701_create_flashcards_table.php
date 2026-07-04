@@ -16,6 +16,8 @@ return new class extends Migration
             $table->integer('weight')->default(0);
             $table->timestamps();
 
+            $table->index('deck_id');
+
             $table->foreign('deck_id')->references('id')->on('decks')->onDelete('cascade');
         });
     }

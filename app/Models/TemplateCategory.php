@@ -13,6 +13,7 @@ class TemplateCategory extends Model
         'name',
         'parent_id',
         'lang',
+        'sort_order',
     ];
 
     public function parent()

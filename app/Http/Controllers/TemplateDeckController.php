@@ -25,10 +25,14 @@ class TemplateDeckController extends Controller
         $categories = \App\Models\TemplateCategory::whereNull('parent_id')
             ->where('lang', $lang)
             ->whereHas('children.decks')
+            ->orderBy('sort_order', 'asc')
             ->with(['children' => function ($query) {
-                $query->has('decks')->with(['decks' => function ($q) {
-                    $q->withCount('flashcards');
-                }]);
+                $query->has('decks')
+                    ->orderBy('sort_order', 'asc')
+                    ->with(['decks' => function ($q) {
+                        $q->orderBy('sort_order', 'asc')
+                          ->withCount('flashcards');
+                    }]);
             }])
             ->get();
 

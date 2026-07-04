@@ -16,6 +16,7 @@ class TemplateDeck extends Model
         'question_lang',
         'answer_lang',
         'description',
+        'sort_order',
     ];
 
     // Связь с моделью TemplateCategory

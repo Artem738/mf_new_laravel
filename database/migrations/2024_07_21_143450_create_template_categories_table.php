@@ -13,7 +13,10 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('parent_id')->nullable();
             $table->string('lang', 3);
+            $table->integer('sort_order')->default(0);
             $table->timestamps();
+
+            $table->index(['lang', 'parent_id']);
 
             $table->foreign('parent_id')->references('id')->on('template_categories')->onDelete('cascade');
         });

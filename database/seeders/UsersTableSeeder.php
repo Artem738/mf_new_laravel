@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
                 'name' => 'Art One',
                 'email' => '111@111.111',
                 'password' => Hash::make('123'),
-                'language_code' => 'en',
+                'language_code' => 'ru',
                 'base_font_size' => 16,
                 'user_lvl' => 10,
             ],

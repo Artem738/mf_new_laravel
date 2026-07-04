@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('deck_lang')->nullable();
             $table->string('question_lang')->nullable();
             $table->string('answer_lang')->nullable();
+            $table->integer('sort_order')->default(0);
 
             $table->timestamps();
 
