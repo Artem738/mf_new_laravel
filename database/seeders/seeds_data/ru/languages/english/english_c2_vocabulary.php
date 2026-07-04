@@ -19,6 +19,14 @@ return [
         ['q' => 'Дерзость (Смелость, переходящая в наглость)', 'a' => 'Audacity'],
         ['q' => 'Самоуспокоенность (Самодовольство, мешающее развитию)', 'a' => 'Complacency'],
         ['q' => 'Странность (Особенность поведения / Причуда)', 'a' => 'Idiosyncrasy / Quirk'],
+        ['q' => 'Предвестник', 'a' => 'Harbinger / Precursor'],
+        ['q' => 'Многообразие (Множество)', 'a' => 'Myriad (A myriad of options)'],
+        ['q' => 'Недостаток (Нехватка)', 'a' => 'Dearth (A dearth of evidence) / Paucity'],
+        ['q' => 'Близость (соседство)', 'a' => 'Proximity'],
+        ['q' => 'Отголосок / Резонанс (о долговременных последствиях)', 'a' => 'Reverberation'],
+        ['q' => 'Препятствие / Помеха', 'a' => 'Hindrance / Impediment'],
+        ['q' => 'Раскол / Разлад', 'a' => 'Schism / Rift'],
+        ['q' => 'Совращение / Моральное разложение', 'a' => 'Depravity'],
 
         // --- High-level Verbs (C2) ---
         ['q' => 'Улучшать (То, что изначально было плохим)', 'a' => 'Ameliorate'],
@@ -32,6 +40,13 @@ return [
         ['q' => 'Искажать (Смысл/факты)', 'a' => 'Distort / Skew'],
         ['q' => 'Прокрастинировать (Откладывать на потом)', 'a' => 'Procrastinate'],
         ['q' => 'Портить (Делать недействительным/неэффективным)', 'a' => 'Vitiate (The contract was vitiated by fraud)'],
+        ['q' => 'Уничтожать (Стирать с лица земли)', 'a' => 'Obliterate / Annihilate'],
+        ['q' => 'Держаться подальше (Уклоняться)', 'a' => 'Eschew'],
+        ['q' => 'Запутывать (Делать неясным намеренно)', 'a' => 'Obfuscate'],
+        ['q' => 'Размножаться / Быстро распространяться', 'a' => 'Proliferate'],
+        ['q' => 'Приукрашивать (Ложью или деталями)', 'a' => 'Embellish'],
+        ['q' => 'Умолять / Настойчиво просить', 'a' => 'Implore / Beseech'],
+        ['q' => 'Порицать / Строго осуждать', 'a' => 'Castigate / Chastise'],
 
         // --- Highly Descriptive & Extreme Adjectives (C2) ---
         ['q' => 'Эфемерный (Недолговечный / Мимолетный)', 'a' => 'Ephemeral / Fleeting / Transitory'],
@@ -56,6 +71,15 @@ return [
         ['q' => 'Двусмысленный (Уклончивый)', 'a' => 'Equivocal'],
         ['q' => 'Светящийся (Излучающий свет)', 'a' => 'Luminous'],
         ['q' => 'Какофонический (Режущий слух)', 'a' => 'Cacophonous'],
+        ['q' => 'Пагубный (Вредный)', 'a' => 'Detrimental / Pernicious'],
+        ['q' => 'Жгучий / Язвительный (о критике)', 'a' => 'Scathing / Caustic'],
+        ['q' => 'Красноречивый (Убедительный)', 'a' => 'Eloquent / Articulate'],
+        ['q' => 'Безвкусный (Претенциозный)', 'a' => 'Pretentious / Ostentatious'],
+        ['q' => 'Поверхностный (Выполненный небрежно)', 'a' => 'Perfunctory'],
+        ['q' => 'Жалобный / Слезливый (часто из-за алкоголя)', 'a' => 'Maudlin'],
+        ['q' => 'Устаревший / Допотопный', 'a' => 'Antiquated / Antediluvian'],
+        ['q' => 'Неразборчивый / Плохо написанный', 'a' => 'Illegible'],
+        ['q' => 'Вездесущий / Проникающий повсюду', 'a' => 'Pervasive'],
 
         // --- Foreign / Latin Borrowings in C2 English ---
         ['q' => 'Специально для этого случая (Сиюминутный)', 'a' => 'Ad hoc'],
@@ -71,6 +95,7 @@ return [
         ['q' => 'Тупик', 'a' => 'Cul-de-sac'],
         ['q' => 'Квази- (Якобы / Почти)', 'a' => 'Quasi-'],
         ['q' => 'Сам по себе', 'a' => 'Per se'],
+        ['q' => 'До бесконечности', 'a' => 'Ad infinitum'],
 
         // --- Advanced Connecting Adverbs (Academic Stance) ---
         ['q' => 'Якобы / Для вида', 'a' => 'Ostensibly / Purportedly'],
@@ -138,15 +163,5 @@ return [
         ['q' => 'Целиком / Со всеми потрохами', 'a' => 'Lock, stock and barrel'],
         ['q' => 'Кровью и потом', 'a' => 'Blood, sweat and tears'],
         ['q' => 'Повсюду (На большие расстояния)', 'a' => 'Far and wide'],
-        // --- Extreme Nuances (Proficiency) ---
-        ['q' => 'Неопровержимый', 'a' => 'Irrefutable / Incontrovertible'],
-        ['q' => 'Снисходительный (Высокомерный)', 'a' => 'Condescending / Patronizing'],
-        ['q' => 'Неразрешимый (о проблеме)', 'a' => 'Intractable'],
-        ['q' => 'Опрометчивый / Безрассудный', 'a' => 'Foolhardy / Temerarious'],
-        ['q' => 'Хвастливый', 'a' => 'Boastful / Braggadocious'],
-        ['q' => 'Скрытый (Латентный)', 'a' => 'Latent'],
-        ['q' => 'Пагубный (Вредный)', 'a' => 'Detrimental / Pernicious'],
-        ['q' => 'Жгучий / Язвительный (о критике)', 'a' => 'Scathing / Caustic'],
-        ['q' => 'Красноречивый (Убедительный)', 'a' => 'Eloquent / Articulate'],
     ],
 ];

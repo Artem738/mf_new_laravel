@@ -2,7 +2,7 @@
 
 return [
     'name' => '🎓 🇬🇧 Английский: Грамматика C2 (Proficiency)',
-    'description' => 'Уровень носителя-интеллектуала C2. Редкие сослагательные наклонения, продвинутая эмфаза, бессоюзные конструкции, эллипсис, литоты и продвинутая инверсия.',
+    'description' => 'Уровень носителя-интеллектуала C2. Редкие сослагательные наклонения, продвинутая эмфаза, бессоюзные конструкции, эллипсис, литоты, продвинутая инверсия и пунктуация.',
     'cards' => [
         // --- Rare Subjunctives & Fixed Phrases (C2) ---
         ['q' => '___ ___ ___ ___ (Достаточно сказать), that we are not pleased.', 'a' => "✅ **Suffice it to say**\n\n*💡 Правило: Застывшая форма сослагательного наклонения. Означает \"Излишне вдаваться в детали, достаточно лишь сказать...\"*"],
@@ -10,6 +10,7 @@ return [
         ['q' => 'We must remember the fallen, ___ (чтобы не) we forget.', 'a' => "✅ **lest**\n\n*💡 Правило: Lest = \"for fear that\" (чтобы не). После него глагол всегда в базовой форме (Subjunctive): lest he fall, lest we forget.*"],
         ['q' => '___ ___ ___ (Да будет так).', 'a' => "✅ **So be it**\n\n*💡 Правило: Выражение фаталистичного согласия.*"],
         ['q' => '___ ___ (Будь то) true or false, the rumor has done its damage.', 'a' => "✅ **Be it**\n\n*💡 Правило: Уступительная форма (Whether it is).*"],
+        ['q' => 'God ___ (спаси) the Queen.', 'a' => "✅ **save**\n\n*💡 Правило: Субъюнктив в устоявшихся фразах (вместо saves).*"],
 
         // --- Extreme Inversion & Fronting ---
         ['q' => '___ ___ ___ ___ (Как бы я ни старался), I couldn\'t open the door.', 'a' => "✅ **Try as I might**\n\n*💡 Правило: Инверсия с глаголом в начале для уступки (Синоним: However hard I tried).*"],
@@ -18,6 +19,7 @@ return [
         ['q' => '___ ___ ___ (Никогда) did I agree to this!', 'a' => "✅ **At no time**\n\n*💡 Правило: Сильнейшее отрицание с инверсией (вместо \"Never\").*"],
         ['q' => '___ ___ ___ (Никоим образом) does this excuse his behavior.', 'a' => "✅ **In no way**\n\n*💡 Правило: Инверсия с отрицательной фразой в начале.*"],
         ['q' => 'Not a single word ___ ___ ___ (она не сказала).', 'a' => "✅ **did she say**\n\n*💡 Правило: Отрицательная фраза с Not a/an требует инверсии (did + подлежащее).*"],
+        ['q' => 'Nowhere ___ ___ ___ (больше ты не найдешь) such peace.', 'a' => "✅ **else will you find**\n\n*💡 Правило: Инверсия после отрицательного наречия места (Nowhere).*"],
 
         // --- Impersonal Constructions (Formal C2) ---
         ['q' => 'It is ___ ___ ___ (обязанность ложится на) the government to provide healthcare.', 'a' => "✅ **incumbent upon / on**\n\n*💡 Правило: Formal C2. Быть чьей-то прямой обязанностью.*"],
@@ -31,6 +33,7 @@ return [
         ['q' => 'He insulted the boss, ___ (после чего / в результате чего) he was fired.', 'a' => "✅ **whereupon**\n\n*💡 Правило: Whereupon = immediately after which.*"],
         ['q' => '___ ___ (За исключением) a few minor errors, the report is perfect.', 'a' => "✅ **Save for / Barring**\n\n*💡 Правило: Barring/Save for = Except for (Если не брать в расчет / За исключением).*"],
         ['q' => 'I would have gone, ___ ___ (если бы не) I was ill.', 'a' => "✅ **but that**\n\n*💡 Правило: but that = except that (в значении \"если бы не то обстоятельство, что\").*"],
+        ['q' => 'I bought it ___ (из-за) its rarity.', 'a' => "✅ **by virtue of**\n\n*💡 Правило: by virtue of = because of / as a result of (благодаря).*"],
 
         // --- Complex Non-finite Clauses (Participle Clauses) ---
         ['q' => '___ ___ ___ (Будучи сказанным) to wait, he sat down quietly.', 'a' => "✅ **Having been told**\n\n*💡 Правило: Perfect Passive Participle (действие произошло в прошлом и оно пассивное).*"],
@@ -45,6 +48,7 @@ return [
         ['q' => '___ (Без) your support, the project would have failed.', 'a' => "✅ **Without / But for**\n\n*💡 Правило: Безглагольное условие.*"],
         ['q' => 'Were it ___ ___ ___ ___ (если бы не тот факт, что) he is my brother, I would sue him.', 'a' => "✅ **not for the fact that**\n\n*💡 Правило: Усложненная версия But for с придаточным предложением.*"],
         ['q' => '___ ___ government ___ ___ (Если бы правительство не вмешалось), the bank would have collapsed.', 'a' => "✅ **Had the / not intervened**\n\n*💡 Правило: Инверсия 3-го типа (Had it not been for = Had the government not...).*"],
+        ['q' => '___ ___ (В случае) of an emergency, break the glass.', 'a' => "✅ **In the event**\n\n*💡 Правило: Формальная замена \"If there is\".*"],
 
         // --- Modals, Preferences & Unreal Time (Past Time) ---
         ['q' => 'You ___ ___ ___ (зря побеспокоился / не стоило). I already bought it.', 'a' => "✅ **needn\'t have bothered**\n\n*💡 Правило: needn't have + V3 означает, что действие было сделано, но в нем не было нужды.*"],
@@ -63,15 +67,20 @@ return [
         // --- Wh-ever Clauses (Уступительные придаточные) ---
         ['q' => '___ ___ (Кто бы она ни была), she has no right to be here.', 'a' => "✅ **Whoever she may be**\n\n*💡 Правило: Whoever / Whatever / However + may/might be.*"],
         ['q' => '___ ___ (Как бы ни) hard he tries, he always fails.', 'a' => "✅ **However**\n\n*💡 Правило: However + Прилагательное/Наречие (No matter how hard = However hard).*"],
+
         // --- Extreme Edge Cases C2 ---
-        ['q' => 'It was not the money, ___ ___ ___ (а принцип, который) mattered.', 'a' => "✅ **but the principle that**
+        ['q' => 'It was not the money, ___ ___ ___ (а принцип, который) mattered.', 'a' => "✅ **but the principle that**\n\n*💡 Правило: Продвинутые Cleft Sentences с противопоставлением (It was not X, but Y that...)*"],
+        ['q' => 'She is ___ ___ (безусловно) the most talented musician here.', 'a' => "✅ **easily / arguably / undoubtedly**\n\n*💡 Правило: C2 усилители превосходной степени.*"],
+        ['q' => '___ ___ ___ (Ни за что на свете) would I do that.', 'a' => "✅ **Not for anything / Under no circumstances**\n\n*💡 Правило: Эмфатическая инверсия.*"],
+        ['q' => 'The author ___ ___ (не столько) explains the theory ___ (сколько) demonstrates it.', 'a' => "✅ **so much / as**\n\n*💡 Правило: Конструкция not so much X as Y (не столько X, сколько Y).*"],
 
-*💡 Правило: Продвинутые Cleft Sentences с противопоставлением (It was not X, but Y that...)*"],
-        ['q' => 'She is ___ ___ (безусловно) the most talented musician here.', 'a' => "✅ **easily / arguably / undoubtedly**
-
-*💡 Правило: C2 усилители превосходной степени.*"],
-        ['q' => '___ ___ ___ (Ни за что на свете) would I do that.', 'a' => "✅ **Not for anything / Under no circumstances**
-
-*💡 Правило: Эмфатическая инверсия.*"],
+        // --- C2 Punctuation Rules (Пунктуация) ---
+        ['q' => 'Пунктуация: Точка с запятой (;). Когда используется вместо точки?', 'a' => "✅ **Semicolon (;)**\n\n*💡 Правило: Соединяет два тесно связанных независимых предложения без союза (and/but). Пример: The weather was beautiful; we decided to go for a walk.*"],
+        ['q' => 'Пунктуация: Двоеточие (:). Когда ставится перед списком или объяснением?', 'a' => "✅ **Colon (:)**\n\n*💡 Правило: Вводит список, цитату или пояснение. Важно: перед двоеточием должно быть полноценное предложение. Пример: I have three hobbies: reading, writing, and hiking.*"],
+        ['q' => 'Пунктуация: Длинное тире (—). Эффект применения.', 'a' => "✅ **Em dash (—)**\n\n*💡 Правило: Используется для сильного выделения мысли, прерывания или вставки (вместо запятых или скобок). Не отделяется пробелами. Пример: The suspect—whom I had never seen before—suddenly ran away.*"],
+        ['q' => 'Пунктуация: Короткое тире (–). Для чего используется?', 'a' => "✅ **En dash (–)**\n\n*💡 Правило: Используется для указания диапазонов (чисел, дат, времени) или связей. Пример: Read pages 10–25. The London–Paris train.*"],
+        ['q' => 'Пунктуация: Дефис (-). Когда использовать с прилагательными?', 'a' => "✅ **Hyphen (-)**\n\n*💡 Правило: Соединяет слова в сложные прилагательные ПЕРЕД существительным. Пример: a state-of-the-art facility, a well-known actor. (Но: The actor is well known).*"],
+        ['q' => 'Пунктуация: Оксфордская запятая (Oxford Comma). Что это?', 'a' => "✅ **Oxford Comma**\n\n*💡 Правило: Запятая перед 'and' или 'or' в списке из трех и более пунктов. Избегает двусмысленности. Пример: I dedicate this to my parents, Ayn Rand, and God.*"],
+        ['q' => 'Пунктуация: Использование апострофа с годами (1990-е).', 'a' => "✅ **1990s (БЕЗ апострофа)**\n\n*💡 Правило: Апостроф не ставится при образовании множественного числа десятилетий. Правильно: in the 1990s (НЕ 1990's).*"],
     ],
 ];
