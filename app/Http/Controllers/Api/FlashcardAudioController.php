@@ -46,6 +46,6 @@ class FlashcardAudioController extends Controller
             abort(404, 'Audio file not found');
         }
 
-        return $disk->response($path);
+        return $disk->response($path, null, ['Content-Type' => 'audio/mpeg']);
     }
 }
