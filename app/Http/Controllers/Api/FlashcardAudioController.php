@@ -51,34 +51,44 @@ class FlashcardAudioController extends Controller
 
     public function directAudio(Request $request, $id, AudioService $audioService)
     {
-        // Вручную проверяем токен из query параметров, т.к. html5 <audio> не умеет посылать заголовки
+        \Illuminate\Support\Facades\Log::info("=== DIRECT AUDIO REQUEST STARTED for ID: {$id} ===");
+        
+        // Вручную проверяем токен из query параметров
         $token = $request->query('token');
         if (!$token) {
-            \Illuminate\Support\Facades\Log::error("Direct Audio: Token missing for flashcard {$id}");
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: Token missing from query string.");
             abort(401, 'Unauthorized: Token missing');
         }
 
         $accessToken = \Laravel\Sanctum\PersonalAccessToken::findToken($token);
         if (!$accessToken || !$accessToken->tokenable) {
-            \Illuminate\Support\Facades\Log::error("Direct Audio: Invalid token for flashcard {$id}");
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: Token is invalid or expired.");
             abort(401, 'Unauthorized: Invalid token');
         }
+        
+        \Illuminate\Support\Facades\Log::info("Direct Audio [ID {$id}]: Token valid for User ID: " . $accessToken->tokenable->id);
 
         $flashcard = Flashcard::find($id);
         if (!$flashcard) {
-            \Illuminate\Support\Facades\Log::error("CRITICAL: Frontend requested audio for NON-EXISTENT Flashcard ID: {$id}. The local SQLite database is out of sync with the server!");
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: Flashcard NOT FOUND in DB!");
             abort(404, 'Flashcard not found');
         }
+        
+        \Illuminate\Support\Facades\Log::info("Direct Audio [ID {$id}]: Flashcard found.");
 
         $voiceId = $request->query('voice_id');
         $lang = $request->query('lang', 'en');
 
+        \Illuminate\Support\Facades\Log::info("Direct Audio [ID {$id}]: Calling AudioService->getAudioUrl...");
         // Получаем URL от AudioService
         $url = $audioService->getAudioUrl($flashcard->answer, $lang, $voiceId);
 
         if (!$url) {
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: AudioService returned null!");
             abort(400, 'Failed to generate audio or no suitable text found');
         }
+
+        \Illuminate\Support\Facades\Log::info("Direct Audio [ID {$id}]: AudioService returned URL: {$url}");
 
         // URL имеет вид http://.../api/audio/stream?path=...
         // Извлекаем path из URL
@@ -87,6 +97,7 @@ class FlashcardAudioController extends Controller
         $path = $query['path'] ?? null;
 
         if (!$path) {
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: Failed to parse path from URL!");
             abort(500, 'Failed to parse audio path');
         }
 
@@ -94,9 +105,11 @@ class FlashcardAudioController extends Controller
         $disk = \Illuminate\Support\Facades\Storage::disk('audio');
         
         if (!$disk->exists($path)) {
+            \Illuminate\Support\Facades\Log::error("Direct Audio [ID {$id}]: File does NOT exist on disk: {$path}");
             abort(404, 'Audio file not found');
         }
 
+        \Illuminate\Support\Facades\Log::info("Direct Audio [ID {$id}]: SUCCESS! Streaming file {$path} to client.");
         return $disk->response($path, null, ['Content-Type' => 'audio/mpeg']);
     }
 }
