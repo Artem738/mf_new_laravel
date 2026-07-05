@@ -49,8 +49,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
 });
 
-// Публичный роут для отдачи аудиофайлов (нужно без авторизации, т.к. html5 <audio> не умеет посылать Bearer токен)
+// Публичный роут для отдачи аудиофайлов
 Route::get('/audio/stream', [FlashcardAudioController::class, 'streamAudio']);
+
+// ВРЕМЕННЫЙ роут для чтения логов на хостинге
+Route::get('/debug/logs', function () {
+    $logFile = storage_path('logs/laravel.log');
+    if (!file_exists($logFile)) return 'No log file found.';
+    // Читаем последние 500 строк
+    $lines = file($logFile);
+    $lastLines = array_slice($lines, -500);
+    return response('<pre>' . htmlspecialchars(implode("", $lastLines)) . '</pre>', 200)
+        ->header('Content-Type', 'text/html; charset=UTF-8');
+});
 
 // Логи
 Route::post('/log', [ApiLoggerController::class, 'logMessage']);
