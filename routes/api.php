@@ -52,6 +52,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Публичный роут для отдачи аудиофайлов
 Route::get('/audio/stream', [FlashcardAudioController::class, 'streamAudio']);
 
+// Публичный роут для прямой потоковой отдачи аудио (проверка токена внутри контроллера)
+Route::get('/flashcards/{flashcard}/audio/direct', [FlashcardAudioController::class, 'directAudio']);
+
 // ВРЕМЕННЫЙ роут для чтения логов на хостинге
 Route::get('/debug/logs', function () {
     $logFile = storage_path('logs/laravel.log');
