@@ -53,7 +53,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/audio/stream', [FlashcardAudioController::class, 'streamAudio']);
 
 // Публичный роут для прямой потоковой отдачи аудио (проверка токена внутри контроллера)
-Route::get('/flashcards/{flashcard}/audio/direct', [FlashcardAudioController::class, 'directAudio']);
+Route::get('/flashcards/{id}/audio/direct', [FlashcardAudioController::class, 'directAudio']);
 
 // ВРЕМЕННЫЙ роут для чтения логов на хостинге
 Route::get('/debug/logs', function () {

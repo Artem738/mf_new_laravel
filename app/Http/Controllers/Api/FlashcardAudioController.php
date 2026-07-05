@@ -49,17 +49,25 @@ class FlashcardAudioController extends Controller
         return $disk->response($path, null, ['Content-Type' => 'audio/mpeg']);
     }
 
-    public function directAudio(Request $request, Flashcard $flashcard, AudioService $audioService)
+    public function directAudio(Request $request, $id, AudioService $audioService)
     {
         // Вручную проверяем токен из query параметров, т.к. html5 <audio> не умеет посылать заголовки
         $token = $request->query('token');
         if (!$token) {
+            \Illuminate\Support\Facades\Log::error("Direct Audio: Token missing for flashcard {$id}");
             abort(401, 'Unauthorized: Token missing');
         }
 
         $accessToken = \Laravel\Sanctum\PersonalAccessToken::findToken($token);
         if (!$accessToken || !$accessToken->tokenable) {
+            \Illuminate\Support\Facades\Log::error("Direct Audio: Invalid token for flashcard {$id}");
             abort(401, 'Unauthorized: Invalid token');
+        }
+
+        $flashcard = Flashcard::find($id);
+        if (!$flashcard) {
+            \Illuminate\Support\Facades\Log::error("CRITICAL: Frontend requested audio for NON-EXISTENT Flashcard ID: {$id}. The local SQLite database is out of sync with the server!");
+            abort(404, 'Flashcard not found');
         }
 
         $voiceId = $request->query('voice_id');
