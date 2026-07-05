@@ -44,6 +44,14 @@ return [
             'throw' => false,
         ],
 
+        'audio' => [
+            'driver' => 'local',
+            'root' => public_path('audio'),
+            'url' => env('APP_URL').'/audio',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

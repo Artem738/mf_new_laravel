@@ -10,6 +10,7 @@ use App\Http\Controllers\DeckController;
 use App\Http\Controllers\TemplateDeckController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\FlashcardController;
+use App\Http\Controllers\Api\FlashcardAudioController;
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/flashcards/{id}', [FlashcardController::class, 'update']);
     Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy']);
     Route::post('/flashcards/csv-insert', [FlashcardController::class, 'csvInsert']);
+    Route::get('/flashcards/{flashcard}/audio', [FlashcardAudioController::class, 'getAudio']);
 
     // User Routes
     Route::get('/user', [UserController::class, 'show']);

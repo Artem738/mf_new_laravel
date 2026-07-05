@@ -3,6 +3,8 @@
 /public/build/
 /public/hot
 /public/storage/
+/public/audio/
+/public/audio
 /storage/*.key
 /vendor/
 .env
