@@ -48,7 +48,7 @@ class AudioService
             ->first();
 
         if ($cachedAudio && $disk->exists($cachedAudio->file_path)) {
-            return $disk->url($cachedAudio->file_path);
+            return url('/api/audio/stream?path=' . urlencode($cachedAudio->file_path));
         }
 
         // 2. Auto-heal: If DB was wiped (e.g., migrate:fresh) but the file exists on disk
@@ -62,7 +62,7 @@ class AudioService
                     'file_path' => $relativePath,
                 ]
             );
-            return $disk->url($relativePath);
+            return url('/api/audio/stream?path=' . urlencode($relativePath));
         }
 
         // 3. Generate the audio file
@@ -83,7 +83,7 @@ class AudioService
             ]
         );
 
-        return $disk->url($filePath);
+        return url('/api/audio/stream?path=' . urlencode($filePath));
     }
 
     /**

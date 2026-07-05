@@ -49,6 +49,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
 });
 
+// Публичный роут для отдачи аудиофайлов (нужно без авторизации, т.к. html5 <audio> не умеет посылать Bearer токен)
+Route::get('/audio/stream', [FlashcardAudioController::class, 'streamAudio']);
+
 // Логи
 Route::post('/log', [ApiLoggerController::class, 'logMessage']);
 
