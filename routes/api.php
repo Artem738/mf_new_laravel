@@ -55,17 +55,6 @@ Route::get('/audio/stream', [FlashcardAudioController::class, 'streamAudio']);
 // Публичный роут для прямой потоковой отдачи аудио (проверка токена внутри контроллера)
 Route::get('/flashcards/{id}/audio/direct', [FlashcardAudioController::class, 'directAudio']);
 
-// ВРЕМЕННЫЙ роут для чтения логов на хостинге
-Route::get('/debug/logs', function () {
-    $logFile = storage_path('logs/laravel.log');
-    if (!file_exists($logFile)) return 'No log file found.';
-    // Читаем последние 500 строк
-    $lines = file($logFile);
-    $lastLines = array_slice($lines, -500);
-    return response('<pre>' . htmlspecialchars(implode("", $lastLines)) . '</pre>', 200)
-        ->header('Content-Type', 'text/html; charset=UTF-8');
-});
-
 // Логи
 Route::post('/log', [ApiLoggerController::class, 'logMessage']);
 
