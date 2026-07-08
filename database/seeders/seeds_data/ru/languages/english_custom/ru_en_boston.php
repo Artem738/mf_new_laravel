@@ -8,7 +8,7 @@ return [
   'cards' => [
     0 => [
       'q' => 'Возможно, может быть',
-      'a' => '[v]Might, may[/v]',
+      'a' => '[v]Might[/v], [v]may[/v]',
     ],
     1 => [
       'q' => 'Совпадение',
@@ -32,11 +32,11 @@ return [
     ],
     6 => [
       'q' => 'Преимущества',
-      'a' => '[v]Advantages, benefits[/v]',
+      'a' => '[v]Advantages[/v], [v]benefits[/v]',
     ],
     7 => [
       'q' => 'Приносить пользу, быть полезным',
-      'a' => '[v]To benefit, to be beneficial[/v]',
+      'a' => '[v]To benefit[/v], [v]to be beneficial[/v]',
     ],
     8 => [
       'q' => 'Настойчивый, постоянный',
@@ -44,19 +44,19 @@ return [
     ],
     9 => [
       'q' => 'Жители',
-      'a' => '[v]Inhabitants, residents[/v]',
+      'a' => '[v]Inhabitants[/v], [v]residents[/v]',
     ],
     10 => [
       'q' => 'Обеспокоенность, опасения',
-      'a' => '[v]Concerns, worries[/v]',
+      'a' => '[v]Concerns[/v], [v]worries[/v]',
     ],
     11 => [
       'q' => 'Определённый, уверенный; определённо',
-      'a' => '[v]Certain, certainly[/v]',
+      'a' => '[v]Certain[/v], [v]certainly[/v]',
     ],
     12 => [
       'q' => 'Психические заболевания',
-      'a' => '[v]Mental illness, mental disorders[/v]',
+      'a' => '[v]Mental illness[/v], [v]mental disorders[/v]',
     ],
     13 => [
       'q' => 'Надоело, достало',
@@ -64,7 +64,7 @@ return [
     ],
     14 => [
       'q' => 'Приобретать, получать; достигать цели',
-      'a' => '[v]Acquire, achieve[/v]',
+      'a' => '[v]Acquire[/v], [v]achieve[/v]',
     ],
     15 => [
       'q' => 'Отношение',
@@ -104,7 +104,7 @@ return [
     ],
     24 => [
       'q' => 'Относиться к чему-то, быть связанным с чем-то',
-      'a' => '[v]Related to, connected with[/v]',
+      'a' => '[v]Related to[/v], [v]connected with[/v]',
     ],
     25 => [
       'q' => 'Изобретать',
@@ -120,7 +120,7 @@ return [
     ],
     28 => [
       'q' => 'Бросить пить кофе, перестать пить кофе',
-      'a' => '[v]Give up coffee, go off coffee[/v]',
+      'a' => '[v]Give up coffee[/v], [v]go off coffee[/v]',
     ],
     29 => [
       'q' => 'Ладить с кем-то',
@@ -132,19 +132,19 @@ return [
     ],
     31 => [
       'q' => 'Исключение',
-      'a' => '[v]Exclusion, exception[/v]',
+      'a' => '[v]Exclusion[/v], [v]exception[/v]',
     ],
     32 => [
       'q' => 'Наибольшая тревога, главная обеспокоенность',
-      'a' => '[v]Greatest concern, main concern[/v]',
+      'a' => '[v]Greatest concern[/v], [v]main concern[/v]',
     ],
     33 => [
       'q' => 'Быть довольным',
-      'a' => '[v]To be content, to be satisfied[/v]',
+      'a' => '[v]To be content[/v], [v]to be satisfied[/v]',
     ],
     34 => [
       'q' => 'Впоследствии, позже',
-      'a' => '[v]Subsequently, later[/v]',
+      'a' => '[v]Subsequently[/v], [v]later[/v]',
     ],
     35 => [
       'q' => 'Иметь намерение',
@@ -152,7 +152,7 @@ return [
     ],
     36 => [
       'q' => 'Хвастаться',
-      'a' => '[v]Boast, brag[/v]',
+      'a' => '[v]Boast[/v], [v]brag[/v]',
     ],
     37 => [
       'q' => 'Захватить, завладеть',
@@ -160,11 +160,11 @@ return [
     ],
     38 => [
       'q' => 'Болеть за кого-то',
-      'a' => '[v]Support, root for[/v]',
+      'a' => '[v]Support[/v], [v]root for[/v]',
     ],
     39 => [
       'q' => 'Говорить кратко, быть кратким',
-      'a' => '[v]Be concise, keep it brief[/v]',
+      'a' => '[v]Be concise[/v], [v]keep it brief[/v]',
     ],
     40 => [
       'q' => 'Выделяться',
@@ -180,7 +180,7 @@ return [
     ],
     43 => [
       'q' => 'Предсказывать, прогнозировать',
-      'a' => '[v]Predict, forecast[/v]',
+      'a' => '[v]Predict[/v], [v]forecast[/v]',
     ],
     44 => [
       'q' => 'Очень тяжёлый, обременительный',
@@ -188,23 +188,23 @@ return [
     ],
     45 => [
       'q' => 'Несмотря на что-то',
-      'a' => '[v]Despite, in spite of[/v]',
+      'a' => '[v]Despite[/v], [v]in spite of[/v]',
     ],
     46 => [
       'q' => 'Последний, крайний',
-      'a' => '[v]Latter, final[/v]',
+      'a' => '[v]Latter[/v], [v]final[/v]',
     ],
     47 => [
       'q' => 'Неудача, провал',
-      'a' => '[v]Failure, setback[/v]',
+      'a' => '[v]Failure[/v], [v]setback[/v]',
     ],
     48 => [
       'q' => 'Трусики, нижнее бельё',
-      'a' => '[v]Panties, underwear[/v]',
+      'a' => '[v]Panties[/v], [v]underwear[/v]',
     ],
     49 => [
       'q' => 'Восстановление',
-      'a' => '[v]Recovery, restoration[/v]',
+      'a' => '[v]Recovery[/v], [v]restoration[/v]',
     ],
     50 => [
       'q' => 'Открывать заново',
@@ -212,7 +212,7 @@ return [
     ],
     51 => [
       'q' => 'Голод',
-      'a' => '[v]Hunger, famine[/v]',
+      'a' => '[v]Hunger[/v], [v]famine[/v]',
     ],
     52 => [
       'q' => 'Голодный',
@@ -228,11 +228,11 @@ return [
     ],
     55 => [
       'q' => 'Гораздо дольше, намного дольше',
-      'a' => '[v]Far longer, much longer[/v]',
+      'a' => '[v]Far longer[/v], [v]much longer[/v]',
     ],
     56 => [
       'q' => 'Полагаться, рассчитывать',
-      'a' => '[v]Rely on, depend on[/v]',
+      'a' => '[v]Rely on[/v], [v]depend on[/v]',
     ],
     57 => [
       'q' => 'Правительственные чиновники',
@@ -248,11 +248,11 @@ return [
     ],
     60 => [
       'q' => 'Близость',
-      'a' => '[v]Proximity, closeness[/v]',
+      'a' => '[v]Proximity[/v], [v]closeness[/v]',
     ],
     61 => [
       'q' => 'Тяжело, сурово; сильно',
-      'a' => '[v]Heavily, severely[/v]',
+      'a' => '[v]Heavily[/v], [v]severely[/v]',
     ],
     62 => [
       'q' => 'Подписываться',
@@ -260,27 +260,27 @@ return [
     ],
     63 => [
       'q' => 'Вредить',
-      'a' => '[v]Harm, damage[/v]',
+      'a' => '[v]Harm[/v], [v]damage[/v]',
     ],
     64 => [
       'q' => 'Преступления',
-      'a' => '[v]Crimes, offences[/v]',
+      'a' => '[v]Crimes[/v], [v]offences[/v]',
     ],
     65 => [
       'q' => 'Разрешать, позволять',
-      'a' => '[v]Allow, permit[/v]',
+      'a' => '[v]Allow[/v], [v]permit[/v]',
     ],
     66 => [
       'q' => 'Пугать, испугать',
-      'a' => '[v]Scare, frighten[/v]',
+      'a' => '[v]Scare[/v], [v]frighten[/v]',
     ],
     67 => [
       'q' => 'Подталкивать, побуждать',
-      'a' => '[v]Encourage, prompt[/v]',
+      'a' => '[v]Encourage[/v], [v]prompt[/v]',
     ],
     68 => [
       'q' => 'Место, участок, площадка',
-      'a' => '[v]Site, place[/v]',
+      'a' => '[v]Site[/v], [v]place[/v]',
     ],
     69 => [
       'q' => 'Угрожать',
@@ -304,7 +304,7 @@ return [
     ],
     74 => [
       'q' => 'Благодаря этому',
-      'a' => '[v]Thanks to this, because of this[/v]',
+      'a' => '[v]Thanks to this[/v], [v]because of this[/v]',
     ],
     75 => [
       'q' => 'Руда',
@@ -312,11 +312,11 @@ return [
     ],
     76 => [
       'q' => 'Затвердевший, твёрдый',
-      'a' => '[v]Solidified, hardened[/v]',
+      'a' => '[v]Solidified[/v], [v]hardened[/v]',
     ],
     77 => [
       'q' => 'Количество',
-      'a' => '[v]Amount, quantity[/v]',
+      'a' => '[v]Amount[/v], [v]quantity[/v]',
     ],
     78 => [
       'q' => 'Расплавленный',
@@ -324,11 +324,11 @@ return [
     ],
     79 => [
       'q' => 'Итог, вывод',
-      'a' => '[v]Takeaway, conclusion[/v]',
+      'a' => '[v]Takeaway[/v], [v]conclusion[/v]',
     ],
     80 => [
       'q' => 'Коренные жители',
-      'a' => '[v]Indigenous people, native inhabitants[/v]',
+      'a' => '[v]Indigenous people[/v], [v]native inhabitants[/v]',
     ],
     81 => [
       'q' => 'Кое-что, несколько вещей',
@@ -336,11 +336,11 @@ return [
     ],
     82 => [
       'q' => 'Восхождение на гору, подъём',
-      'a' => '[v]Climb, ascent[/v]',
+      'a' => '[v]Climb[/v], [v]ascent[/v]',
     ],
     83 => [
       'q' => 'Опасный',
-      'a' => '[v]Hazardous, dangerous[/v]',
+      'a' => '[v]Hazardous[/v], [v]dangerous[/v]',
     ],
     84 => [
       'q' => 'Травмы, повреждения',
@@ -348,7 +348,7 @@ return [
     ],
     85 => [
       'q' => 'Обязательный',
-      'a' => '[v]Mandatory, compulsory[/v]',
+      'a' => '[v]Mandatory[/v], [v]compulsory[/v]',
     ],
     86 => [
       'q' => 'Браслет',
@@ -364,7 +364,7 @@ return [
     ],
     89 => [
       'q' => 'Глобальный',
-      'a' => '[v]Global, worldwide[/v]',
+      'a' => '[v]Global[/v], [v]worldwide[/v]',
     ],
     90 => [
       'q' => 'В пути',
@@ -372,15 +372,15 @@ return [
     ],
     91 => [
       'q' => 'Большая ошибка, серьёзная оплошность',
-      'a' => '[v]Major mistake, big mistake[/v]',
+      'a' => '[v]Major mistake[/v], [v]big mistake[/v]',
     ],
     92 => [
       'q' => 'Надёжда, уверенность',
-      'a' => '[v]Reliability, confidence[/v]',
+      'a' => '[v]Reliability[/v], [v]confidence[/v]',
     ],
     93 => [
       'q' => 'Хрупкий, ломкий',
-      'a' => '[v]Fragile, brittle[/v]',
+      'a' => '[v]Fragile[/v], [v]brittle[/v]',
     ],
     94 => [
       'q' => 'Цепь, цепочка',
@@ -392,7 +392,7 @@ return [
     ],
     96 => [
       'q' => 'Обязательный курс, необходимый курс',
-      'a' => '[v]Required course, mandatory course[/v]',
+      'a' => '[v]Required course[/v], [v]mandatory course[/v]',
     ],
     97 => [
       'q' => 'Воображение',
@@ -400,47 +400,47 @@ return [
     ],
     98 => [
       'q' => 'Найдены, обнаружены',
-      'a' => '[v]Found, discovered[/v]',
+      'a' => '[v]Found[/v], [v]discovered[/v]',
     ],
     99 => [
       'q' => 'Со стороны родителей',
-      'a' => '[v]From parents, on the part of parents[/v]',
+      'a' => '[v]From parents[/v], [v]on the part of parents[/v]',
     ],
     100 => [
       'q' => 'Зрители',
-      'a' => '[v]Spectators, audience[/v]',
+      'a' => '[v]Spectators[/v], [v]audience[/v]',
     ],
     101 => [
       'q' => 'Хлопать, аплодировать',
-      'a' => '[v]Clap, applaud[/v]',
+      'a' => '[v]Clap[/v], [v]applaud[/v]',
     ],
     102 => [
       'q' => 'Стандартный, обычный',
-      'a' => '[v]Standard, regular[/v]',
+      'a' => '[v]Standard[/v], [v]regular[/v]',
     ],
     103 => [
       'q' => 'Относительно, сравнительно',
-      'a' => '[v]Relatively, comparatively[/v]',
+      'a' => '[v]Relatively[/v], [v]comparatively[/v]',
     ],
     104 => [
       'q' => 'Взволнованный, нервный',
-      'a' => '[v]Nervous, anxious[/v]',
+      'a' => '[v]Nervous[/v], [v]anxious[/v]',
     ],
     105 => [
       'q' => 'Первое время, поначалу',
-      'a' => '[v]At first, initially[/v]',
+      'a' => '[v]At first[/v], [v]initially[/v]',
     ],
     106 => [
       'q' => 'Представлять, изображать',
-      'a' => '[v]Represent, depict[/v]',
+      'a' => '[v]Represent[/v], [v]depict[/v]',
     ],
     107 => [
       'q' => 'Истощать, исчерпывать',
-      'a' => '[v]Deplete, exhaust[/v]',
+      'a' => '[v]Deplete[/v], [v]exhaust[/v]',
     ],
     108 => [
       'q' => 'Сжимать',
-      'a' => '[v]Compress, squeeze[/v]',
+      'a' => '[v]Compress[/v], [v]squeeze[/v]',
     ],
     109 => [
       'q' => 'Вес',
@@ -456,7 +456,7 @@ return [
     ],
     112 => [
       'q' => 'Чтобы сдвинуться с места',
-      'a' => '[v]To move off, to get moving[/v]',
+      'a' => '[v]To move off[/v], [v]to get moving[/v]',
     ],
     113 => [
       'q' => 'Вес, который поддерживает',
@@ -464,7 +464,7 @@ return [
     ],
     114 => [
       'q' => 'До этого',
-      'a' => '[v]Before that, prior to that[/v]',
+      'a' => '[v]Before that[/v], [v]prior to that[/v]',
     ],
     115 => [
       'q' => 'Повреждение',
@@ -472,7 +472,7 @@ return [
     ],
     116 => [
       'q' => 'Похищение',
-      'a' => '[v]Kidnapping, abduction[/v]',
+      'a' => '[v]Kidnapping[/v], [v]abduction[/v]',
     ],
     117 => [
       'q' => 'Ждать с нетерпением',
@@ -480,11 +480,11 @@ return [
     ],
     118 => [
       'q' => 'Горничная, служанка',
-      'a' => '[v]Maid, housemaid[/v]',
+      'a' => '[v]Maid[/v], [v]housemaid[/v]',
     ],
     119 => [
       'q' => 'Уволиться',
-      'a' => '[v]Quit, resign[/v]',
+      'a' => '[v]Quit[/v], [v]resign[/v]',
     ],
     120 => [
       'q' => 'Высокомерный',
@@ -496,7 +496,7 @@ return [
     ],
     122 => [
       'q' => 'Признание',
-      'a' => '[v]Recognition, admission[/v]',
+      'a' => '[v]Recognition[/v], [v]admission[/v]',
     ],
     123 => [
       'q' => 'Связь, соединение',
@@ -508,11 +508,11 @@ return [
     ],
     125 => [
       'q' => 'Всё сильнее',
-      'a' => '[v]Increasingly, more and more[/v]',
+      'a' => '[v]Increasingly[/v], [v]more and more[/v]',
     ],
     126 => [
       'q' => 'Значительный рост, большой подъём',
-      'a' => '[v]Significant increase, major rise[/v]',
+      'a' => '[v]Significant increase[/v], [v]major rise[/v]',
     ],
     127 => [
       'q' => 'Очень ценный',
@@ -524,7 +524,7 @@ return [
     ],
     129 => [
       'q' => 'Давление, нагрузка',
-      'a' => '[v]Pressure, strain[/v]',
+      'a' => '[v]Pressure[/v], [v]strain[/v]',
     ],
     130 => [
       'q' => 'Отсутствие разнообразия',
@@ -536,7 +536,7 @@ return [
     ],
     132 => [
       'q' => 'Похищение',
-      'a' => '[v]Abduction, kidnapping[/v]',
+      'a' => '[v]Abduction[/v], [v]kidnapping[/v]',
     ],
     133 => [
       'q' => 'Сломать, разрушить, переломить',
@@ -548,7 +548,7 @@ return [
     ],
     135 => [
       'q' => 'По сравнению с этим',
-      'a' => '[v]By comparison, in comparison[/v]',
+      'a' => '[v]By comparison[/v], [v]in comparison[/v]',
     ],
     136 => [
       'q' => 'В буквальном смысле',
@@ -556,31 +556,31 @@ return [
     ],
     137 => [
       'q' => 'Не совсем, не обязательно',
-      'a' => '[v]Not exactly, not necessarily[/v]',
+      'a' => '[v]Not exactly[/v], [v]not necessarily[/v]',
     ],
     138 => [
       'q' => 'Охота, преследование',
-      'a' => '[v]Hunting, pursuit[/v]',
+      'a' => '[v]Hunting[/v], [v]pursuit[/v]',
     ],
     139 => [
       'q' => 'В значительной степени',
-      'a' => '[v]Largely, to a large extent[/v]',
+      'a' => '[v]Largely[/v], [v]to a large extent[/v]',
     ],
     140 => [
       'q' => 'Волнение, шум; суета',
-      'a' => '[v]Commotion, fuss[/v]',
+      'a' => '[v]Commotion[/v], [v]fuss[/v]',
     ],
     141 => [
       'q' => 'Всё же, тем не менее',
-      'a' => '[v]Still, nevertheless[/v]',
+      'a' => '[v]Still[/v], [v]nevertheless[/v]',
     ],
     142 => [
       'q' => 'Нападение, атака',
-      'a' => '[v]Attack, assault[/v]',
+      'a' => '[v]Attack[/v], [v]assault[/v]',
     ],
     143 => [
       'q' => 'Недвижимость, имущество',
-      'a' => '[v]Property, real estate[/v]',
+      'a' => '[v]Property[/v], [v]real estate[/v]',
     ],
     144 => [
       'q' => 'В отличие от',
@@ -588,7 +588,7 @@ return [
     ],
     145 => [
       'q' => 'Повезло',
-      'a' => '[v]Got lucky, was lucky[/v]',
+      'a' => '[v]Got lucky[/v], [v]was lucky[/v]',
     ],
     146 => [
       'q' => 'Двоюродный брат или сестра',
@@ -600,19 +600,19 @@ return [
     ],
     148 => [
       'q' => 'Убийство',
-      'a' => '[v]Murder, killing[/v]',
+      'a' => '[v]Murder[/v], [v]killing[/v]',
     ],
     149 => [
       'q' => 'Действительно, в самом деле',
-      'a' => '[v]Indeed, really[/v]',
+      'a' => '[v]Indeed[/v], [v]really[/v]',
     ],
     150 => [
       'q' => 'Менять, заменять',
-      'a' => '[v]Switch, replace[/v]',
+      'a' => '[v]Switch[/v], [v]replace[/v]',
     ],
     151 => [
       'q' => 'Клиент',
-      'a' => '[v]Customer, client[/v]',
+      'a' => '[v]Customer[/v], [v]client[/v]',
     ],
     152 => [
       'q' => 'Владелец',
@@ -620,7 +620,7 @@ return [
     ],
     153 => [
       'q' => 'Жестокий',
-      'a' => '[v]Cruel, brutal[/v]',
+      'a' => '[v]Cruel[/v], [v]brutal[/v]',
     ],
     154 => [
       'q' => 'Плотно заселённый',
@@ -648,23 +648,23 @@ return [
     ],
     160 => [
       'q' => 'На самом деле',
-      'a' => '[v]Actually, in fact[/v]',
+      'a' => '[v]Actually[/v], [v]in fact[/v]',
     ],
     161 => [
       'q' => 'Жёсткий, строгий',
-      'a' => '[v]Strict, tough[/v]',
+      'a' => '[v]Strict[/v], [v]tough[/v]',
     ],
     162 => [
       'q' => 'Превращать, преобразовывать',
-      'a' => '[v]Transform, convert[/v]',
+      'a' => '[v]Transform[/v], [v]convert[/v]',
     ],
     163 => [
       'q' => 'Утверждение, заявление',
-      'a' => '[v]Statement, claim[/v]',
+      'a' => '[v]Statement[/v], [v]claim[/v]',
     ],
     164 => [
       'q' => 'Экстраординарный, необыкновенный',
-      'a' => '[v]Extraordinary, remarkable[/v]',
+      'a' => '[v]Extraordinary[/v], [v]remarkable[/v]',
     ],
     165 => [
       'q' => 'Следовать за кем-то, продолжать',
@@ -672,11 +672,11 @@ return [
     ],
     166 => [
       'q' => 'Удивительный, поразительный',
-      'a' => '[v]Amazing, astonishing[/v]',
+      'a' => '[v]Amazing[/v], [v]astonishing[/v]',
     ],
     167 => [
       'q' => 'Число, цифра, показатель',
-      'a' => '[v]Figure, number[/v]',
+      'a' => '[v]Figure[/v], [v]number[/v]',
     ],
     168 => [
       'q' => 'В сочетании с',
@@ -684,23 +684,23 @@ return [
     ],
     169 => [
       'q' => 'Проживание, жильё',
-      'a' => '[v]Accommodation, housing[/v]',
+      'a' => '[v]Accommodation[/v], [v]housing[/v]',
     ],
     170 => [
       'q' => 'Основание, фундамент',
-      'a' => '[v]Foundation, base[/v]',
+      'a' => '[v]Foundation[/v], [v]base[/v]',
     ],
     171 => [
       'q' => 'Предыдущий',
-      'a' => '[v]Previous, prior[/v]',
+      'a' => '[v]Previous[/v], [v]prior[/v]',
     ],
     172 => [
       'q' => 'Предел, ограничение',
-      'a' => '[v]Limit, restriction[/v]',
+      'a' => '[v]Limit[/v], [v]restriction[/v]',
     ],
     173 => [
       'q' => 'Прежде всего',
-      'a' => '[v]First of all, above all[/v]',
+      'a' => '[v]First of all[/v], [v]above all[/v]',
     ],
   ],
 ];

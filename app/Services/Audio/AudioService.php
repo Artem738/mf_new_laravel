@@ -123,7 +123,9 @@ class AudioService
             return $this->generateWithOpenAI($text, $textHash, $voiceId);
         }
 
-        // Future providers can be handled here
+        if ($provider === 'google') {
+            return $this->generateWithGoogleCloud($text, $textHash, $voiceId);
+        }
 
         return null;
     }
@@ -157,6 +159,53 @@ class AudioService
         $relativePath = "{$dir1}/{$dir2}/{$fileName}";
 
         Storage::disk('audio')->put($relativePath, $response->body());
+
+        return $relativePath;
+    }
+
+    protected function generateWithGoogleCloud(string $text, string $textHash, string $voiceId): ?string
+    {
+        $apiKey = config('audio.providers.google.key');
+
+        if (!$apiKey) {
+            Log::error('Google API key missing for AudioService.');
+            return null;
+        }
+
+        // Extract language code from voice id, e.g. en-US-Neural2-F -> en-US
+        $parts = explode('-', $voiceId);
+        $languageCode = isset($parts[0], $parts[1]) ? "{$parts[0]}-{$parts[1]}" : 'en-US';
+
+        $response = Http::post('https://texttospeech.googleapis.com/v1/text:synthesize?key=' . $apiKey, [
+            'input' => [
+                'text' => $text
+            ],
+            'voice' => [
+                'languageCode' => $languageCode,
+                'name' => $voiceId
+            ],
+            'audioConfig' => [
+                'audioEncoding' => 'MP3'
+            ]
+        ]);
+
+        if ($response->failed()) {
+            Log::error('Google TTS Error: ' . $response->body());
+            return null;
+        }
+
+        $content = $response->json('audioContent');
+        if (!$content) {
+            Log::error('Google TTS Error: No audioContent in response');
+            return null;
+        }
+
+        $dir1 = substr($textHash, 0, 2);
+        $dir2 = substr($textHash, 2, 2);
+        $fileName = "{$textHash}_{$voiceId}.mp3";
+        $relativePath = "{$dir1}/{$dir2}/{$fileName}";
+
+        Storage::disk('audio')->put($relativePath, base64_decode($content));
 
         return $relativePath;
     }

@@ -34,5 +34,27 @@ return [
             ],
             'default_voice' => 'alloy',
         ],
+        'google' => [
+            'key' => env('GOOGLE_TTS_API_KEY'),
+            'voices' => [
+                'en-US-Neural2-F', // English Female (Requested by user)
+                'en-US-Neural2-J', // English Male
+                'en-US-Neural2-H', // English Female
+                'en-US-Neural2-I', // English Male
+                
+                // German
+                'de-DE-Neural2-F', // Female
+                'de-DE-Neural2-B', // Male
+                
+                // French
+                'fr-FR-Neural2-A', // Female
+                'fr-FR-Neural2-B', // Male
+                
+                // Spanish
+                'es-ES-Neural2-A', // Female
+                'es-ES-Neural2-B', // Male
+            ],
+            'default_voice' => 'en-US-Neural2-J',
+        ],
     ],
 ];

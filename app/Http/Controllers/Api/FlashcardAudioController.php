@@ -120,9 +120,17 @@ class FlashcardAudioController extends Controller
             }
         }
 
+        $provider = config('audio.default', 'openai');
+        $voicesToClear = $voiceId ? [$voiceId] : config("audio.providers.{$provider}.voices", []);
+        if (empty($voicesToClear)) {
+            $voicesToClear = [config("audio.providers.{$provider}.default_voice")];
+        }
+
         $cleared = 0;
         foreach ($textsToClear as $text) {
-            $cleared += $audioService->clearAudioCache($text, $lang, $voiceId);
+            foreach ($voicesToClear as $v) {
+                $cleared += $audioService->clearAudioCache($text, $lang, $v);
+            }
         }
 
         return response()->json(['message' => 'Cache cleared', 'cleared_count' => $cleared]);
