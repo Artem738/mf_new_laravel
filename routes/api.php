@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/flashcards/{id}', [FlashcardController::class, 'destroy']);
     Route::post('/flashcards/csv-insert', [FlashcardController::class, 'csvInsert']);
     Route::get('/flashcards/{flashcard}/audio', [FlashcardAudioController::class, 'getAudio']);
+    Route::delete('/flashcards/{id}/audio/cache', [FlashcardAudioController::class, 'clearCache']);
 
     // User Routes
     Route::get('/user', [UserController::class, 'show']);

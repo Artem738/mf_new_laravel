@@ -96,7 +96,18 @@ class AudioService
 
         if (!empty($matches[1])) {
             // Join all [v]word[/v] blocks found
-            return trim(implode('. ', $matches[1]));
+            $extracted = trim(implode('. ', $matches[1]));
+
+            // OpenAI tts-1 workaround: single words sometimes cause silence hallucination.
+            // Prepending a comma forces the neural network to process it correctly.
+            if (!str_contains(trim($extracted), ' ')) {
+                $extracted = ', ' . $extracted;
+            }
+
+            if (!preg_match('/[.!?;:]$/', $extracted)) {
+                $extracted .= '.';
+            }
+            return $extracted;
         }
 
         // If no markup is found, we don't generate audio.
@@ -148,5 +159,49 @@ class AudioService
         Storage::disk('audio')->put($relativePath, $response->body());
 
         return $relativePath;
+    }
+
+    /**
+     * Clears the audio cache for the given text.
+     */
+    public function clearAudioCache(string $rawText, string $lang, ?string $voiceId = null): int
+    {
+        $textToSpeak = $this->extractTextToSpeak($rawText);
+        if (empty($textToSpeak)) {
+            return 0;
+        }
+
+        $provider = config('audio.default', 'openai');
+        
+        $voices = config("audio.providers.{$provider}.voices", []);
+        if (!$voiceId || !in_array($voiceId, $voices)) {
+            $voiceId = config("audio.providers.{$provider}.default_voice");
+        }
+
+        $textHash = md5($textToSpeak . '_' . $lang);
+        
+        $cachedAudio = AudioCache::where('text_hash', $textHash)
+            ->where('voice_id', $voiceId)
+            ->first();
+
+        $cleared = 0;
+
+        if ($cachedAudio) {
+            Storage::disk('audio')->delete($cachedAudio->file_path);
+            $cachedAudio->delete();
+            $cleared++;
+        }
+
+        $dir1 = substr($textHash, 0, 2);
+        $dir2 = substr($textHash, 2, 2);
+        $fileName = "{$textHash}_{$voiceId}.mp3";
+        $relativePath = "{$dir1}/{$dir2}/{$fileName}";
+
+        if (Storage::disk('audio')->exists($relativePath)) {
+            Storage::disk('audio')->delete($relativePath);
+            $cleared++;
+        }
+
+        return $cleared > 0 ? 1 : 0;
     }
 }

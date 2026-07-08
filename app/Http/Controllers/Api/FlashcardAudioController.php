@@ -44,7 +44,8 @@ class FlashcardAudioController extends Controller
             abort(404, 'Audio file not found');
         }
 
-        return $disk->response($path, null, ['Content-Type' => 'audio/mpeg']);
+        $fullPath = $disk->path($path);
+        return response()->file($fullPath, ['Content-Type' => 'audio/mpeg']);
     }
 
     public function directAudio(Request $request, $id, AudioService $audioService)
@@ -96,6 +97,34 @@ class FlashcardAudioController extends Controller
             abort(404, 'Audio file not found');
         }
 
-        return $disk->response($path, null, ['Content-Type' => 'audio/mpeg']);
+        $fullPath = $disk->path($path);
+        return response()->file($fullPath, ['Content-Type' => 'audio/mpeg']);
+    }
+
+    public function clearCache(Request $request, $id, AudioService $audioService)
+    {
+        $flashcard = Flashcard::with('deck')->findOrFail($id);
+        $lang = $flashcard->deck?->answer_lang ?? $request->query('lang', 'en');
+        $voiceId = $request->query('voice_id');
+
+        $textsToClear = [];
+
+        // 1. Full answer text
+        $textsToClear[] = $flashcard->answer;
+
+        // 2. Individual words
+        preg_match_all('/\[v\](.*?)\[\/v\]/is', $flashcard->answer, $matches);
+        if (!empty($matches[1])) {
+            foreach ($matches[1] as $word) {
+                $textsToClear[] = "[v]{$word}[/v]";
+            }
+        }
+
+        $cleared = 0;
+        foreach ($textsToClear as $text) {
+            $cleared += $audioService->clearAudioCache($text, $lang, $voiceId);
+        }
+
+        return response()->json(['message' => 'Cache cleared', 'cleared_count' => $cleared]);
     }
 }
