@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: C1 Фрази та кліше',
     'description' => 'Просунуті розмовні фрази та академічні кліше для есе, дебатів та публічних виступів (рівень Advanced).',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Широко визнано, що...', 'a' => 'It is widely acknowledged that... / It is generally accepted that...'],
         ['q' => 'Часто стверджують, що...', 'a' => 'It is often claimed that...'],

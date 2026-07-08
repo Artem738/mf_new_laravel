@@ -3,8 +3,8 @@
 return [
   'name' => '⌨️ Programming',
   'description' => 'Русско-Английский словарь по программированию',
-  'question_lang' => 'ru',
-  'answer_lang' => 'en',
+  'question_lang' => 'en',
+  'answer_lang' => 'ru',
   'cards' => [
     0 => [
       'q' => 'Inheritance',

@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Английский: C1 Фразы и клише',
     'description' => 'Продвинутые разговорные фразы и академические клише для эссе, дебатов и публичных выступлений (уровень Advanced).',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Широко признано, что...', 'a' => 'It is widely acknowledged that... / It is generally accepted that...'],
         ['q' => 'Часто утверждают, что...', 'a' => 'It is often claimed that...'],

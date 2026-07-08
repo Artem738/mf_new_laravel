@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Англійська: B2 Слова, які плутають',
     'description' => 'Слова, які виглядають або звучать однаково, але мають різні значення (Confusing words). Те, на чому найчастіше втрачають бали на іспитах.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Розумний (адекватний) vs Чутливий (вразливий)', 'a' => 'Sensible vs Sensitive'],
         ['q' => 'Історично важливий (доленосний) vs Історичний (пов\'язаний з історією)', 'a' => 'Historic (a historic victory) vs Historical (historical documents)'],

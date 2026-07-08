@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Английский: B2 Фразы и идиомы',
     'description' => 'Полезные разговорные фразы, выражения и идиомы для повседневного общения на продвинутом уровне (B2).',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Expressing Opinions & Agreement ---
         ['q' => 'Насколько я понимаю', 'a' => 'As far as I\'m concerned'],

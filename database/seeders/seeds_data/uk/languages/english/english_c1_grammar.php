@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: Граматика C1 (Просунута)',
     'description' => 'Абсолютний граматичний топ C1. Складні інверсії, номіналізація, емфаза, просунуті умовні (But for), As/Though інверсія, Future in the past, та складні прийменникові зв\'язки.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Advanced Inversion (Продвинутая инверсия) ---
         ['q' => '___ ___ (За жодних обставин) should you open this door.', 'a' => "✅ **Under no circumstances**\n\n*💡 Правило: Інверсія з прийменниковими фразами. Порядок слів запитальний (should you).*"],

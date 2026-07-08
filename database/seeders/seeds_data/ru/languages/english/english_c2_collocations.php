@@ -3,6 +3,8 @@
 return [
     'name' => '🎓 🇬🇧 Английский: C2 Коллокации',
     'description' => 'Непредсказуемые и крайне специфичные сочетания слов (Proficiency).',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Жгучая обида (Глубокое возмущение)', 'a' => 'Bitter resentment'],
         ['q' => 'Ужасающая бедность', 'a' => 'Abject poverty'],

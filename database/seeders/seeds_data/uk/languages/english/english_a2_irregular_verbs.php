@@ -3,6 +3,8 @@
 return [
     'name' => '🟡 🇬🇧 Англійська A2: Неправильні дієслова',
     'description' => 'Топ найважливіших неправильних дієслів англійської мови (Irregular Verbs). Без них неможливо говорити в минулому часі та використовувати Present Perfect.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // Pattern 1: All 3 forms are the same
         ['q' => 'Різати', 'a' => 'Cut — cut — cut'],

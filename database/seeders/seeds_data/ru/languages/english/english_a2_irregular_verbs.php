@@ -3,6 +3,8 @@
 return [
     'name' => '🟡 🇬🇧 Английский A2: Неправильные глаголы',
     'description' => 'Топ самых важных неправильных глаголов английского языка (Irregular Verbs). Без них невозможно говорить в прошедшем времени и использовать Present Perfect.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // Pattern 1: All 3 forms are the same
         ['q' => 'Резать', 'a' => 'Cut — cut — cut'],

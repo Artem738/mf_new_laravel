@@ -3,6 +3,8 @@
 return [
     'name' => '🟢 🇬🇧 Англійська: Ідіоми B2',
     'description' => 'Популярні ідіоми рівня Upper-Intermediate. Знання цих фраз критично важливо для розуміння носіїв мови у повсякденному житті.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Легкотня (Дрібниця)', 'a' => 'A piece of cake'],
         ['q' => 'Коштувати цілий статок', 'a' => 'Cost an arm and a leg'],

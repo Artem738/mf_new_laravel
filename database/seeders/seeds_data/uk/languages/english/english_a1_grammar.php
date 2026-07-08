@@ -3,6 +3,8 @@
 return [
     'name' => '🟢 🇬🇧 Англійська A1: Службові слова та граматика',
     'description' => 'Базова граматика A1: to be, займенники, артиклі, множина, Present Simple, Present Continuous, there is / there are, have got, can, would like, прийменники, питання, заперечення, короткі відповіді та базовий Past Simple.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
 
         // --- To be ---

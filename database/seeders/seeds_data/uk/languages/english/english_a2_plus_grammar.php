@@ -3,6 +3,8 @@
 return [
     'name' => '🟡 🇬🇧 Англійська A2+: Граматика перед B1',
     'description' => 'Просунуті граматичні теми для переходу на рівень B1: пасивний стан, розділові питання, короткі згоди so/neither, порядок прикметників, echo questions та стійкі структури.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Order of Adjectives ---
         ['q' => 'I bought a (red / beautiful / big) car.', 'a' => "✅ **beautiful big red**\n\n*💡 Правило: Порядок прикметників: думка -> розмір -> колір + іменник.*"],

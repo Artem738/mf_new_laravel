@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Английский: C1 Идиомы',
     'description' => 'Идиоматические выражения уровня Advanced для обогащения речи и понимания носителей.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Благословение под маской (Нет худа без добра)', 'a' => 'A blessing in disguise'],
         ['q' => 'Держать кого-то в неведении', 'a' => 'Keep someone in the dark'],

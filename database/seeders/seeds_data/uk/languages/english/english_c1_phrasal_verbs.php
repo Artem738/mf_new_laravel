@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: C1 Фразові дієслова',
     'description' => 'Рідкісні та складні фразові дієслова рівня Advanced (CAE).',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Розбиратися (з проблемою, документами) / Продиратися крізь', 'a' => 'Wade through (e.g. wade through paperwork)'],
         ['q' => 'Ретельно вивчати (документ, деталі)', 'a' => 'Pore over (e.g. pore over a document)'],

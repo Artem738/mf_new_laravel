@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Английский: B2 Слова, которые путают',
     'description' => 'Слова, которые выглядят или звучат одинаково, но имеют разные значения (Confusing words). То, на чем чаще всего теряют баллы на экзаменах.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Разумный (адекватный) vs Чувствительный (ранимый)', 'a' => 'Sensible vs Sensitive'],
         ['q' => 'Исторически важный (судьбоносный) vs Исторический (относящийся к истории)', 'a' => 'Historic (a historic victory) vs Historical (historical documents)'],

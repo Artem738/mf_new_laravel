@@ -14,6 +14,8 @@ return new class extends Migration
             $table->unsignedBigInteger('template_deck_id')->nullable();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('question_lang')->nullable();
+            $table->string('answer_lang')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

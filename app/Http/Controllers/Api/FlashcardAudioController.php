@@ -14,10 +14,8 @@ class FlashcardAudioController extends Controller
         $voiceId = $request->query('voice_id');
 
         // We need to determine the language from the request or the card's deck.
-        // Assuming we pass lang from frontend or get it from deck category.
-        // For now, let's look for 'lang' query param, default to 'en'.
-        // Real implementation might infer this from the Deck category lang.
-        $lang = $request->query('lang', 'en');
+        $flashcard->load('deck');
+        $lang = $flashcard->deck?->answer_lang ?? $request->query('lang', 'en');
 
         $url = $audioService->getAudioUrl($flashcard->answer, $lang, $voiceId);
 
@@ -63,15 +61,19 @@ class FlashcardAudioController extends Controller
             abort(401, 'Unauthorized: Invalid token');
         }
 
-        $flashcard = Flashcard::find($id);
+        $flashcard = Flashcard::with('deck')->find($id);
         if (!$flashcard) {
             abort(404, 'Flashcard not found');
         }
 
         $voiceId = $request->query('voice_id');
-        $lang = $request->query('lang', 'en');
+        $lang = $flashcard->deck?->answer_lang ?? $request->query('lang', 'en');
+        $text = $request->query('text');
+
         // Получаем URL от AudioService
-        $url = $audioService->getAudioUrl($flashcard->answer, $lang, $voiceId);
+        // Если передан конкретный текст, оборачиваем его в теги для AudioService
+        $textToPlay = $text ? "[v]{$text}[/v]" : $flashcard->answer;
+        $url = $audioService->getAudioUrl($textToPlay, $lang, $voiceId);
 
         if (!$url) {
             abort(400, 'Failed to generate audio or no suitable text found');

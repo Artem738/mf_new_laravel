@@ -3,6 +3,8 @@
 return [
     'name' => '⚫ 🇬🇧 Английский: C2 Слова, которые путают',
     'description' => 'Уровень Mastery. Чрезвычайно тонкие различия в значениях слов, которые путают даже образованные носители языка.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Противоречить / Опровергать (факты) vs Отрицать (действительность)', 'a' => 'Contradict (contradict a statement) vs Deny (deny an allegation)'],
         ['q' => 'Смягчать (уменьшать тяжесть) vs Противостоять (мешать / работать против)', 'a' => 'Mitigate (mitigate the risk) vs Militate (militate against success)'],

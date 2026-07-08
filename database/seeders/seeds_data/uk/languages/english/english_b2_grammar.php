@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Англійська: Граматика B2 (Просунута)',
     'description' => 'Максимальний набір граматичних структур рівня B2: Inversion, Participle Clauses, Alternatives to IF, Cleft sentences, Advanced Modals, Causative form, та нюанси злічуваних/незлічуваних іменників.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Inversion (Інверсія) ---
         ['q' => '___ (Ніколи раніше не бачив я) such a terrible storm.', 'a' => "✅ **Never before have I seen**\n\n*💡 Правило: Після заперечних прислівників (Never, Rarely, Seldom) на початку речення відбувається інверсія — допоміжне дієслово ставиться перед підметом.*"],

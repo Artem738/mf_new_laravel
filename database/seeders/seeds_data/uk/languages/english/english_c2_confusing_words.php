@@ -3,6 +3,8 @@
 return [
     'name' => '⚫ 🇬🇧 Англійська: C2 Слова, які плутають',
     'description' => 'Рівень Mastery. Надзвичайно тонкі відмінності у значеннях слів, які плутають навіть освічені носії мови.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Суперечити / Спростовувати (факти) vs Заперечувати (дійсність)', 'a' => 'Contradict (contradict a statement) vs Deny (deny an allegation)'],
         ['q' => 'Пом\'якшувати (зменшувати тяжкість) vs Протистояти (заважати / працювати проти)', 'a' => 'Mitigate (mitigate the risk) vs Militate (militate against success)'],

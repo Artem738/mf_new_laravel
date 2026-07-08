@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: C1 Слова, які плутають',
     'description' => 'Тонкі відмінності у значеннях академічних та просунутих слів.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Мати на увазі / Натякати vs Робити висновок', 'a' => "Imply (The speaker implies) vs Infer (The listener infers)\n\n*💡 Підказка: Той, хто говорить, imply (вкладає сенс), а той, хто слухає, infer (витягує сенс).*"],
         ['q' => 'Зацікавлений / Неупереджений (об\'єктивний) vs Незацікавлений (байдужий)', 'a' => 'Disinterested (impartial judge) vs Uninterested (bored student)'],

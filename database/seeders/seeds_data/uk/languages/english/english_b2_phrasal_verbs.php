@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Англійська: B2 Фразові дієслова',
     'description' => 'Просунуті фразові дієслова рівня Upper-Intermediate. Корисні для іспитів (FCE, IELTS) та вільного мовлення.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- 3-part Phrasal Verbs (B2) ---
         ['q' => 'Вийти сухим із води (Уникнути покарання)', 'a' => 'Get away with (something)'],

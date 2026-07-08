@@ -3,6 +3,8 @@
 return [
     'name' => '🟢 🇬🇧 Английский A1: Служебные слова и грамматика',
     'description' => 'Базовая грамматика A1: to be, местоимения, артикли, множественное число, Present Simple, Present Continuous, there is / there are, have got, can, would like, предлоги, вопросы, отрицания, короткие ответы и базовый Past Simple.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
 
         // --- To be ---

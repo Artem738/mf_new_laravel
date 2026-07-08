@@ -3,6 +3,8 @@
 return [
     'name' => '🟠 🇬🇧 Английский B1: Confusing Words',
     'description' => 'Слова, которые постоянно путают. False Friends и похожие английские слова, разницу между которыми должен знать каждый на уровне B1.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Actions ---
         ['q' => 'Одолжить (у кого-то) / Взять взаймы', 'a' => 'Borrow (from)'],

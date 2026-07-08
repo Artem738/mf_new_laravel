@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Английский: Грамматика B2 (Продвинутая)',
     'description' => 'Максимальный набор грамматических структур уровня B2: Inversion, Participle Clauses, Alternatives to IF, Cleft sentences, Advanced Modals, Causative form, и нюансы исчисляемых/неисчисляемых существительных.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Inversion (Инверсия) ---
         ['q' => '___ (Никогда раньше не видел я) such a terrible storm.', 'a' => "✅ **Never before have I seen**\n\n*💡 Правило: После отрицательных наречий (Never, Rarely, Seldom) в начале предложения происходит инверсия — вспомогательный глагол ставится перед подлежащим.*"],

@@ -3,6 +3,8 @@
 return [
     'name' => '🟠 🇬🇧 Английский B1: Коллокации и связки',
     'description' => 'Устойчивые выражения, предлоги и вводные конструкции уровня Intermediate. Они делают речь плавной и логичной.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Connecting Words ---
         ['q' => 'Хотя', 'a' => 'Although / Even though'],

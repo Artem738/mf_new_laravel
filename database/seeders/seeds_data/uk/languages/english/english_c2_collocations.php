@@ -3,6 +3,8 @@
 return [
     'name' => '🎓 🇬🇧 Англійська: C2 Колокації',
     'description' => 'Непередбачувані та вкрай специфічні поєднання слів (Proficiency).',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Пекуча образа (Глибоке обурення)', 'a' => 'Bitter resentment'],
         ['q' => 'Жахлива бідність', 'a' => 'Abject poverty'],

@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Английский: C1 Коллокации',
     'description' => 'Продвинутые коллокации (Academic words) для сдачи CAE и IELTS 7.5+.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Поразительно очевидный', 'a' => 'Strikingly obvious'],
         ['q' => 'Абсолютно ужасающий', 'a' => 'Absolutely appalling'],

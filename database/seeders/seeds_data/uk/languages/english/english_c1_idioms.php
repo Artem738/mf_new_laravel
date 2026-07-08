@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: C1 Ідіоми',
     'description' => 'Ідіоматичні вирази рівня Advanced для збагачення мовлення та розуміння носіїв.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Приховане благословення (Немає лиха без добра)', 'a' => 'A blessing in disguise'],
         ['q' => 'Тримати когось у невіданні', 'a' => 'Keep someone in the dark'],

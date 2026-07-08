@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Английский: C1 Фразовые глаголы',
     'description' => 'Редкие и сложные фразовые глаголы уровня Advanced (CAE).',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Разбираться (с проблемой, документами) / Продираться сквозь', 'a' => 'Wade through (e.g. wade through paperwork)'],
         ['q' => 'Тщательно изучать (документ, детали)', 'a' => 'Pore over (e.g. pore over a document)'],

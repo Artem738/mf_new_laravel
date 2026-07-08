@@ -3,6 +3,8 @@
 return [
     'name' => '🟠 🇬🇧 Англійська B1: Граматика (Включаючи просунуту)',
     'description' => 'Повна граматика рівня B1. Включає перфектні часи, умовні речення, непряму мову, а також просунуті теми (Causative, Inversion, Mixed Conditionals), які служать містком до B2.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Present Perfect vs Past Simple ---
         ['q' => 'I ___ (знати) him for 5 years.', 'a' => "✅ **have known**\n\n*💡 Правило: Дія почалася в минулому і триває досі (Present Perfect).*"],

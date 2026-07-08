@@ -3,6 +3,8 @@
 return [
     'name' => '🟠 🇬🇧 Английский B1: Грамматика (Включая продвинутую)',
     'description' => 'Полная грамматика уровня B1. Включает перфектные времена, условные предложения, косвенную речь, а также продвинутые темы (Causative, Inversion, Mixed Conditionals), которые служат мостиком к B2.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Present Perfect vs Past Simple ---
         ['q' => 'I ___ (знать) him for 5 years.', 'a' => "✅ **have known**\n\n*💡 Правило: Действие началось в прошлом и длится до сих пор (Present Perfect).*"],

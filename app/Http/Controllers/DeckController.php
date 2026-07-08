@@ -132,6 +132,8 @@ class DeckController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'question_lang' => 'nullable|string|max:10',
+            'answer_lang' => 'nullable|string|max:10',
             'template_deck_id' => 'nullable|exists:template_decks,id'
         ]);
 
@@ -140,6 +142,8 @@ class DeckController extends Controller
             'user_id' => $user->id,
             'name' => $request->input('name'),
             'description' => $request->input('description'),
+            'question_lang' => $request->input('question_lang'),
+            'answer_lang' => $request->input('answer_lang'),
             'template_deck_id' => $request->input('template_deck_id'),
         ]);
 
@@ -161,12 +165,16 @@ class DeckController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'question_lang' => 'nullable|string|max:10',
+            'answer_lang' => 'nullable|string|max:10',
         ]);
 
         // Обновление колоды
         $deck->update([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
+            'question_lang' => $request->input('question_lang'),
+            'answer_lang' => $request->input('answer_lang'),
         ]);
 
         return response()->json($deck);
@@ -238,6 +246,8 @@ class DeckController extends Controller
                 'template_deck_id' => $templateDeck->id,  // Указание template_deck_id
                 'name' => $templateDeck->name,
                 'description' => $templateDeck->description,
+                'question_lang' => $templateDeck->question_lang,
+                'answer_lang' => $templateDeck->answer_lang,
             ]);
 
             // Копирование карточек из шаблонной колоды

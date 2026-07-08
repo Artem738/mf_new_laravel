@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Англійська: C1 Колокації',
     'description' => 'Просунуті колокації (Academic words) для складання CAE та IELTS 7.5+.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Вражаюче очевидний', 'a' => 'Strikingly obvious'],
         ['q' => 'Абсолютно жахливий', 'a' => 'Absolutely appalling'],

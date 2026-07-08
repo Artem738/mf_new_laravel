@@ -3,6 +3,8 @@
 return [
     'name' => '🟠 🇬🇧 Англійська B1: Колокації та зв\'язки',
     'description' => 'Стійкі вирази, прийменники та вставні конструкції рівня Intermediate. Вони роблять мову плавною та логічною.',
+    'question_lang' => 'uk',
+    'answer_lang' => 'en',
     'cards' => [
         // --- Connecting Words ---
         ['q' => 'Хоча', 'a' => 'Although / Even though'],

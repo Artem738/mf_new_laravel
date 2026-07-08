@@ -14,6 +14,8 @@ class Deck extends Model
         'template_deck_id',
         'name',
         'description',
+        'question_lang',
+        'answer_lang',
     ];
 
     // Связь с моделью User

@@ -3,6 +3,8 @@
 return [
     'name' => '🔴 🇬🇧 Английский: B2 Фразовые глаголы',
     'description' => 'Продвинутые фразовые глаголы уровня Upper-Intermediate. Полезны для экзаменов (FCE, IELTS) и свободной речи.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         // --- 3-part Phrasal Verbs (B2) ---
         ['q' => 'Выйти сухим из воды (Избежать наказания)', 'a' => 'Get away with (something)'],

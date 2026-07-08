@@ -3,6 +3,8 @@
 return [
     'name' => '🟣 🇬🇧 Английский: C1 Слова, которые путают',
     'description' => 'Тонкие различия в значениях академических и продвинутых слов.',
+    'question_lang' => 'ru',
+    'answer_lang' => 'en',
     'cards' => [
         ['q' => 'Подразумевать / Намекать vs Делать вывод', 'a' => 'Imply (The speaker implies) vs Infer (The listener infers)\n\n*💡 Подсказка: Говорящий imply (вкладывает смысл), а слушающий infer (извлекает смысл).*'],
         ['q' => 'Заинтересованный / Беспристрастный (объективный) vs Незаинтересованный (равнодушный)', 'a' => 'Disinterested (impartial judge) vs Uninterested (bored student)'],
