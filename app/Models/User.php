@@ -28,6 +28,7 @@ class User extends Authenticatable
         'language_code',
         'allows_write_to_pm',
         'user_lvl',
+        'ai_credits',
         'base_font_size',
         'auto_close_cards',
     ];
@@ -52,5 +53,11 @@ class User extends Authenticatable
         'password' => 'hashed',
         'allows_write_to_pm' => 'boolean',
         'auto_close_cards' => 'boolean',
+        'ai_credits' => 'integer',
     ];
+
+    public function creditTransactions()
+    {
+        return $this->hasMany(CreditTransaction::class);
+    }
 }

@@ -66,6 +66,8 @@ class TelegramAuthController extends Controller
                     'user_lvl' => 1,
                     'base_font_size' => 16.0,
                 ]);
+
+                app(\App\Services\CreditService::class)->adjust($user, 10000, 'signup_bonus', 'Welcome bonus');
                 Log::info('User registered', ['user' => $user]);
             }
 

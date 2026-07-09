@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('language_code')->nullable();
             $table->boolean('allows_write_to_pm')->default(false);
             $table->integer('user_lvl')->nullable();
+            $table->integer('ai_credits')->default(0);
             $table->double('base_font_size')->nullable();
             $table->boolean('auto_close_cards')->default(true);
             

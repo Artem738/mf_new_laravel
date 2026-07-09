@@ -31,6 +31,8 @@ class AuthController extends Controller
                 'language_code' => $validatedData['language_code'] ?? null,
             ]);
 
+            app(\App\Services\CreditService::class)->adjust($user, 10000, 'signup_bonus', 'Welcome bonus');
+
             Log::info('User created', ['user' => $user]);
 
             return response()->json(['message' => 'User registered successfully'], 201);

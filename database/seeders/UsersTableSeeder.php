@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
                 'language_code' => 'ru',
                 'base_font_size' => 16,
                 'user_lvl' => 10,
+                'ai_credits' => 10000,
             ],
         ];
 
