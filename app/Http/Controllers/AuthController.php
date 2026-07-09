@@ -114,7 +114,8 @@ class AuthController extends Controller
                 'key' => 'required|string',
             ]);
 
-            $user = User::where('web_access_key', $validatedData['key'])->first();
+            $hashedKey = hash('sha256', $validatedData['key']);
+            $user = User::where('web_access_key', $hashedKey)->first();
 
             if (!$user) {
                 Log::warning('Invalid web access key provided', ['key' => $validatedData['key']]);
