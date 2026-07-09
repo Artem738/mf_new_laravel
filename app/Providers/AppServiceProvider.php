@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            \App\Services\Audio\Contracts\SpeechToTextProviderInterface::class,
+            \App\Services\Audio\Providers\OpenAiSpeechToTextProvider::class
+        );
     }
 
     /**

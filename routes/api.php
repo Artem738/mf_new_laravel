@@ -48,6 +48,10 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // Progress Routes
     Route::post('/flashcards/{flashcardId}/progress/weight', [ProgressController::class, 'updateWeight']);
+    
+    // Voice Lesson Routes
+    Route::post('/voice-lessons/start', [\App\Http\Controllers\Api\VoiceLessonController::class, 'start']);
+    Route::post('/voice-lessons/answer', [\App\Http\Controllers\Api\VoiceLessonController::class, 'answer']);
 });
 
 // Публичный роут для отдачи аудиофайлов

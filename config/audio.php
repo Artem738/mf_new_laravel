@@ -53,6 +53,15 @@ return [
                 // Spanish
                 'es-ES-Neural2-A', // Female
                 'es-ES-Neural2-B', // Male
+                
+                // Russian
+                'ru-RU-Wavenet-A', // Female
+                'ru-RU-Wavenet-B', // Male
+                'ru-RU-Wavenet-C', // Female
+                'ru-RU-Wavenet-D', // Male
+                
+                // Ukrainian
+                'uk-UA-Wavenet-A', // Female
             ],
             'default_voice' => 'en-US-Neural2-J',
         ],

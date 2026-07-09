@@ -30,7 +30,15 @@ class AudioService
         // Handle voice selection
         $voices = config("audio.providers.{$provider}.voices", []);
         if (!$voiceId || !in_array($voiceId, $voices)) {
-            $voiceId = config("audio.providers.{$provider}.default_voice");
+            // Try to find a voice matching the language code (e.g. 'ru' -> 'ru-RU')
+            $matchingVoices = array_filter($voices, function($v) use ($lang) {
+                return str_starts_with(strtolower($v), strtolower($lang));
+            });
+            if (!empty($matchingVoices)) {
+                $voiceId = array_values($matchingVoices)[0];
+            } else {
+                $voiceId = config("audio.providers.{$provider}.default_voice");
+            }
         }
 
         $textHash = md5($textToSpeak . '_' . $lang);
@@ -224,7 +232,14 @@ class AudioService
         
         $voices = config("audio.providers.{$provider}.voices", []);
         if (!$voiceId || !in_array($voiceId, $voices)) {
-            $voiceId = config("audio.providers.{$provider}.default_voice");
+            $matchingVoices = array_filter($voices, function($v) use ($lang) {
+                return str_starts_with(strtolower($v), strtolower($lang));
+            });
+            if (!empty($matchingVoices)) {
+                $voiceId = array_values($matchingVoices)[0];
+            } else {
+                $voiceId = config("audio.providers.{$provider}.default_voice");
+            }
         }
 
         $textHash = md5($textToSpeak . '_' . $lang);

@@ -68,7 +68,7 @@ class FlashcardAudioController extends Controller
         }
 
         $voiceId = $request->query('voice_id');
-        $lang = $flashcard->deck?->answer_lang ?? $request->query('lang', 'en');
+        $lang = $request->query('lang') ?? $flashcard->deck?->answer_lang ?? 'en';
         $text = $request->query('text');
 
         // Получаем URL от AudioService
