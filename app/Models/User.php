@@ -31,6 +31,7 @@ class User extends Authenticatable
         'ai_credits',
         'base_font_size',
         'auto_close_cards',
+        'web_access_key',
     ];
 
     /**
@@ -41,6 +42,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'web_access_key',
     ];
 
     /**

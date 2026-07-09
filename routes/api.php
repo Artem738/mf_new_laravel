@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // User Routes
     Route::get('/user', [UserController::class, 'show']);
+    Route::get('/user/web-link', [UserController::class, 'generateWebLink']);
     Route::patch('/user/language', [UserController::class, 'updateLanguageCode']);
     Route::put('/user/base-font-size', [UserController::class, 'updateBaseFontSize']);
     Route::get('/user/base-font-size', [UserController::class, 'getBaseFontSize']);
@@ -67,3 +68,4 @@ Route::post('/log', [ApiLoggerController::class, 'logMessage']);
 Route::post('/telegram/auth', [TelegramAuthController::class, 'authenticate']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/web-login', [AuthController::class, 'webLogin']);

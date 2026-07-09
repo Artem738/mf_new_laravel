@@ -55,7 +55,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://localhost:8000/'),
+
+    'web_app_url' => env('WEB_APP_URL', 'https://mf.sitelab-studio.com/a/'),
 
     'asset_url' => env('ASSET_URL'),
 

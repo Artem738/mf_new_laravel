@@ -70,3 +70,26 @@
   * При отсутствии аудиофайла сервер пропускает запрос к OpenAI Whisper, **экономя AI-токены** и время.
   * Карточка моментально оценивается как Red (Неправильно), пользователю озвучивается правильный вариант, после чего загружается следующая карточка.
 * **Распознанный текст (Transcript):** Во время показа результата (фидбека) на экране выводится курсивом текст `You said: '...'`. Это помогает пользователю понять, почему система засчитала ошибку (например, из-за акцента или если микрофон услышал другое слово).
+
+## 5. Затронутые и созданные файлы (History)
+
+В процессе разработки данного модуля были созданы или существенно модифицированы следующие файлы:
+
+### Backend (Laravel)
+* `app/Http/Controllers/Api/VoiceLessonController.php` — API-контроллер для старта урока и приема ответов.
+* `app/Http/Controllers/Api/FlashcardAudioController.php` — Отдача закэшированного аудио (через Google/OpenAI TTS).
+* `app/Services/VoiceLesson/VoiceLessonService.php` — Логика выбора карточек (Leitner).
+* `app/Services/VoiceLesson/AnswerEvaluationService.php` — Оценка правильности ответа (математическое сравнение).
+* `app/Services/Audio/AudioService.php` — Кеширование аудио.
+* `app/Services/Audio/Contracts/SpeechToTextProviderInterface.php` — Интерфейс STT.
+* `app/Services/Audio/Providers/OpenAiSpeechToTextProvider.php` — Провайдер OpenAI Whisper.
+* `config/audio.php` — Конфиг для аудио сервисов.
+* `routes/api.php` — Маршруты `/api/voice-lessons/*`.
+* `app/Providers/AppServiceProvider.php` — Регистрация биндингов.
+
+### Frontend (Flutter)
+* `mindflasher_4/lib/screens/deck/voice_lesson_screen.dart` — UI голосового урока (кнопки, состояния, анимации).
+* `mindflasher_4/lib/providers/voice_lesson_provider.dart` — State Machine логики проведения урока.
+* `mindflasher_4/lib/translates/voice_lesson_screen_translate.dart` — Тексты интерфейса.
+* `mindflasher_4/lib/screens/deck/deck_card.dart` — Точка входа в урок из списка колод.
+* `mindflasher_4/pubspec.yaml` — Подключение зависимостей (`record`, `just_audio` и др.).

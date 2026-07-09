@@ -104,4 +104,54 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    public function webLogin(Request $request)
+    {
+        Log::info('Web login endpoint called');
+
+        try {
+            $validatedData = $request->validate([
+                'key' => 'required|string',
+            ]);
+
+            $user = User::where('web_access_key', $validatedData['key'])->first();
+
+            if (!$user) {
+                Log::warning('Invalid web access key provided', ['key' => $validatedData['key']]);
+
+                throw ValidationException::withMessages([
+                    'key' => ['The provided link is invalid or has expired.'],
+                ]);
+            }
+
+            Log::info('User authenticated via web key', ['user' => $user->id]);
+
+            // Обнуляем ключ, чтобы он стал одноразовым
+            $user->web_access_key = null;
+            $user->save();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'user' => $user->toArray(),
+            ]);
+
+        } catch (ValidationException $e) {
+            Log::error('Validation failed during web login', $e->errors());
+
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Exception $e) {
+            Log::error('An error occurred during web login', ['error' => $e->getMessage()]);
+
+            return response()->json([
+                'message' => 'An error occurred',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
 }

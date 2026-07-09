@@ -113,4 +113,30 @@ class UserController extends Controller
             'user' => $user->toArray(),
         ]);
     }
+
+    /**
+     * Генерирует одноразовую ссылку для входа через браузер.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function generateWebLink(Request $request)
+    {
+        $user = $request->user();
+        
+        $key = \Illuminate\Support\Str::random(64);
+        $user->web_access_key = $key;
+        $user->save();
+
+        $baseUrl = config('app.web_app_url', 'https://mf.sitelab-studio.com/a/');
+        // Убедимся, что добавляем параметр корректно
+        $url = rtrim($baseUrl, '/') . '/?key=' . $key;
+
+        Log::info('Web link generated for user', ['user_id' => $user->id]);
+
+        return response()->json([
+            'status' => 'success',
+            'link' => $url,
+        ]);
+    }
 }

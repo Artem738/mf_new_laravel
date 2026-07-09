@@ -58,3 +58,8 @@ This file guides Antigravity agents working on the Mindflasher recovery project.
 ## Limits & Constraints
 
 - **1000 Cards Limit:** A single deck must not contain more than 1000 flashcards. This is a hard limit designed to ensure optimal UX (Micro-learning) and maintain high performance for JSON responses and SQLite offline caching.
+
+## Documentation & Walkthroughs
+
+- **Project Documentation (`docs/` folder):** When you finish implementing a major feature and need to summarize your work, do NOT just create an isolated `walkthrough.md`. Instead, create or update a clearly named markdown file in the project's `docs/` folder (e.g., `docs/magic_link_auth.md`).
+- This file should describe what was done, how it works, important information, and the files that were modified. This ensures that other agents can easily discover and understand the work later.
