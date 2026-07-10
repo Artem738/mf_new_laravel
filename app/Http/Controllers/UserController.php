@@ -132,8 +132,6 @@ class UserController extends Controller
         // Убедимся, что добавляем параметр корректно
         $url = rtrim($baseUrl, '/') . '/?key=' . $key;
 
-        Log::info('Web link generated for user', ['user_id' => $user->id]);
-
         return response()->json([
             'status' => 'success',
             'link' => $url,
