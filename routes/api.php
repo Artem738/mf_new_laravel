@@ -66,6 +66,7 @@ Route::post('/log', [ApiLoggerController::class, 'logMessage']);
 
 // Аутентификация
 Route::post('/telegram/auth', [TelegramAuthController::class, 'authenticate']);
+Route::post('/telegram/webhook', [\App\Http\Controllers\TelegramWebhookController::class, 'handle']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/web-login', [AuthController::class, 'webLogin']);
