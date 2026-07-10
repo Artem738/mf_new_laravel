@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(CreditTransaction::class);
     }
+
+    public function decks()
+    {
+        return $this->hasMany(Deck::class);
+    }
 }

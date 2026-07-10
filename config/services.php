@@ -37,4 +37,8 @@ return [
         'mini_app_url' => env('TELEGRAM_MINI_APP_URL', 'https://t.me/leitner_flashcards_bot/app'),
     ],
 
+    'dashboard' => [
+        'secret' => env('DASHBOARD_SECRET', 'secret54'),
+    ],
+
 ];

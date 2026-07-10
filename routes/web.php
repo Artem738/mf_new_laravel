@@ -54,4 +54,9 @@ Route::get('/test-hash', function () {
     ]);
 });
 
+Route::get('/dashboard/{secret}', [\App\Http\Controllers\AppUsageDashboardController::class, 'index']);
+Route::get('/dashboard/{secret}/data', [\App\Http\Controllers\AppUsageDashboardController::class, 'data']);
+Route::get('/dashboard/{secret}/user/{id}', [\App\Http\Controllers\AppUsageDashboardController::class, 'userDetails']);
+
+
 
