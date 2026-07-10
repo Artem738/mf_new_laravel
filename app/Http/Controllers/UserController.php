@@ -125,7 +125,7 @@ class UserController extends Controller
         $user = $request->user();
         
         $key = \Illuminate\Support\Str::random(64);
-        $user->web_access_key = $key;
+        $user->web_access_key = hash('sha256', $key);
         $user->save();
 
         $baseUrl = config('app.web_app_url', 'https://mf.sitelab-studio.com/a/');
