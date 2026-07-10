@@ -105,7 +105,7 @@ class PresentationBot
 
     private function buildScreen(string $screen): array
     {
-        $miniAppUrl = (string) config('services.telegram.mini_app_url', 'https://t.me/mindflasher_bot/app');
+        $miniAppUrl = (string) config('services.telegram.mini_app_url', 'https://t.me/leitner_flashcards_bot/app');
         $launchButton = ['text' => __('bot.buttons.launch'), 'web_app' => ['url' => $miniAppUrl]];
         
         switch ($screen) {
