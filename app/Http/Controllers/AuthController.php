@@ -107,7 +107,7 @@ class AuthController extends Controller
 
     public function webLogin(Request $request)
     {
-        Log::info('Web login endpoint called');
+        Log::info('Web login endpoint called', ['received_key' => $request->input('key')]);
 
         try {
             $validatedData = $request->validate([
@@ -115,10 +115,15 @@ class AuthController extends Controller
             ]);
 
             $hashedKey = hash('sha256', $validatedData['key']);
+            Log::info('Web login key hashed', ['hashed_key' => $hashedKey]);
+
             $user = User::where('web_access_key', $hashedKey)->first();
 
             if (!$user) {
-                Log::warning('Invalid web access key provided', ['key' => $validatedData['key']]);
+                Log::warning('Invalid web access key provided', [
+                    'plaintext_key' => $validatedData['key'],
+                    'hashed_key' => $hashedKey,
+                ]);
 
                 throw ValidationException::withMessages([
                     'key' => ['The provided link is invalid or has expired.'],
